@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Techeria</title>
+  </head>
+  <body>
+    <h1>Techeria</h1>
+    <h4>Information for One Product (from database):</h4>
+    <table>
+        {% for p in product %}
+        <tr>
+            <td>Name: {{ p.name }}</td>
+        </tr>
+        <tr>
+            <td>Price: {{ p.price }}</td>
+        </tr>
+        <tr>
+            <td>Description: {{ p.description }}</td>
+        </tr>
+        <tr>
+            <td>Category: {{ p.category }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+  </body>
+</html>
