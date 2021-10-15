@@ -38,9 +38,4 @@ python manage.py inspectdb > models.py
 ```
 python manage.py runserver
 ```
-12. To push changes with updated database, export the database from PHPMyAdmin, and add the lines at the top:
-
-```
-CREATE database techeria_db;
-USE techeria_db;
-```
+12. To push changes with the updated database, export the database from PHPMyAdmin, and replace the techeria_db.sql with the updated version.
