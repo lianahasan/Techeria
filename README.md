@@ -8,11 +8,11 @@ through a secure payment gateway.
 1. Open PHPMyAdmin (http://localhost/phpmyadmin)
 2. Import techeria_db.sql (creates database, inserts tables)
 3. Update settings.py with database password
-4. Run this line in the project folder techeria/ 
+4. Run this line in the project folder techeria/: 
 ```
 python manage.py migrate
 ``` 
-5. Run this line to run the project
+5. Run this line to run the project:
 ``` 
 python manage.py runserver
 ```
@@ -26,7 +26,7 @@ python manage.py runserver
 ``` 
 python manage.py migrate
 ```
-6. Run this line in the same folder
+6. Run this line in the same folder:
 ```
 python manage.py inspectdb > models.py
 ```
@@ -34,8 +34,13 @@ python manage.py inspectdb > models.py
 8. Paste it into the models.py folder located in the project folder 'techeria_app\'
 9. Delete the first models.py that you created.
 10. Update views.py with any new tables that you created.
-11. Run this line to run the project
+11. Run this line to run the project:
 ```
 python manage.py runserver
 ```
+12. To push changes with updated database, export the database from PHPMyAdmin, and add the lines at the top:
 
+```
+CREATE database techeria_db;
+USE techeria_db;
+```
