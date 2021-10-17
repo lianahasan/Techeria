@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'backend.apps.BackendConfig'
+    'techeria_app.apps.TecheriaAppConfig',
 ]
 
 MIDDLEWARE = [
@@ -81,7 +81,7 @@ DATABASES = {
         'USER': 'root',
         'HOST': 'localhost',
         'PORT': 3306,
-        'PASSWORD': ''
+        'PASSWORD': 'orange'
     }
 }
 
