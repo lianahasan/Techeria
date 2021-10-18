@@ -5,7 +5,7 @@ computers, tablets, TVs, etc.) to be sold. Users can select items to add to thei
 through a secure payment gateway.
 
 ## Running the project (Not making changes to the database):
-1. Open PHPMyAdmin (http://localhost/phpmyadmin)
+1. Open PHPMyAdmin (http://localhost/phpmyadmin) or MySQL Workbench
 2. Import techeria_db.sql (creates database, inserts tables)
 3. Update settings.py with database password
 4. Run this line in the project folder techeria_controller/: 
@@ -18,7 +18,7 @@ python manage.py runserver
 ```
 
 ## Running the project + Making changes to the database:
-1. Open PHPMyAdmin (http://localhost/phpmyadmin)
+1. Open PHPMyAdmin (http://localhost/phpmyadmin) or MySQL Workbench
 2. Import techeria_db.sql (creates database, inserts table)
 3. On PHPMyAdmin, make any changes in the database (adding tables, adding values, etc)
 4. Update settings.py with database password
