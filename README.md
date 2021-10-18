@@ -8,7 +8,7 @@ through a secure payment gateway.
 1. Open PHPMyAdmin (http://localhost/phpmyadmin)
 2. Import techeria_db.sql (creates database, inserts tables)
 3. Update settings.py with database password
-4. Run this line in the project folder techeria/: 
+4. Run this line in the project folder techeria_controller/: 
 ```
 python manage.py migrate
 ``` 
@@ -22,7 +22,7 @@ python manage.py runserver
 2. Import techeria_db.sql (creates database, inserts table)
 3. On PHPMyAdmin, make any changes in the database (adding tables, adding values, etc)
 4. Update settings.py with database password
-5. Run this line in the project folder 'techeria/':
+5. Run this line in the project folder 'techeria_controller/':
 ``` 
 python manage.py migrate
 ```

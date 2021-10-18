@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2021 at 12:04 PM
+-- Generation Time: Oct 17, 2021 at 05:16 AM
 -- Server version: 8.0.26
 -- PHP Version: 8.0.10
 --
@@ -31,7 +31,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `price`, `description`, `category`) VALUES
-(12345678, 'Macbook Air 13-inch - 256GB SSD', 999, 'Stunning 13.3-inch Retina display Macbook Air with True Tone technology.', 'Laptops');
+(12345678, 'Macbook Air 13-inch - 256GB SSD', 999, 'Stunning 13.3-inch Retina display Macbook Air with True Tone technology.', 'Laptops'),
+(87654321, 'Apple iPhone 12', 729.99, 'The iPhone 12 has a user interface built with a multi-touch screen.', 'Phones');
 
 --
 -- Indexes for dumped tables
@@ -51,7 +52,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12345679;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87654322;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
