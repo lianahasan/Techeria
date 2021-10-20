@@ -39,3 +39,5 @@ python manage.py inspectdb > models.py
 python manage.py runserver
 ```
 12. To push changes with the updated database, export the database from PHPMyAdmin, and replace the techeria_db.sql with the updated version.
+#Logo 
+![](images/LogoTECHERIA.png)
