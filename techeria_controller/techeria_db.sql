@@ -24,7 +24,7 @@ CREATE TABLE `products` (
   `price` float NOT NULL,
   `description` varchar(255) NOT NULL,
   `category` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `products`
