@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css_login/style.css' %}">
+</head>
+<body>
+
+<h1>Login As a..</h1>
+
+
+	<div class="radio-container">
+		<input type="radio" id="Buyer" name="catagory" />
+		<label for="Buyer">Buyer</label>
+
+		<input type="radio" id="Seller" name="catagory" />
+		<label for="Seller">Seller</label>
+
+		<input type="radio" id="Admin" name="catagory" />
+		<label for="Admin">Admin</label>
+	</div>
+
+
+	<div class="loginbox">
+		<p>Login with your credentials</p>
+		<form action="#" method = "post">
+			<p>User Name</p>
+			<input type="text" name="user" placeholder="User Name">
+			<p>Password</p>
+			<input type="text" name="password" placeholder="Password">
+			<button type="submit">Login</button>
+			<a href="#">Forget  Username/Password</a>	
+			<p>I am new here <a href="#"> SignUp</a></p>
+		</form>
+		
+	</div>
+
+	
+
+
+
+</body>
+</html>

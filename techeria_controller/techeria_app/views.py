@@ -17,3 +17,9 @@ def contact(request):
 
 def watch(request):
     return render(request, 'watch.html')
+
+def loginpage(request):
+    return render(request, 'loginpage.html')
+
+def registration(request):
+    return render(request, 'registration.html')
