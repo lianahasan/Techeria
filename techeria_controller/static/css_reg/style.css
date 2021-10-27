@@ -1,0 +1,63 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	height: 100vh;
+	background-image: url(../css_reg/image/ll.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+h1{
+	color: white;
+	text-align: center;
+	padding: 20px;
+	margin-top: 10%;
+}
+
+h2{
+	color: white;
+	text-align: center;
+	font-style: italic;
+	padding: 20px;
+}
+
+
+
+input{
+	width: 200px;
+}
+
+.ll{
+	position: re
+}
+
+.fbox{
+	float: left;
+	margin-left: 30%;	
+	
+}
+
+.lbox{
+	float: right;
+	margin-left: 5%;
+	margin-right: 30%;
+
+}
+
+#diffuser{
+	width: 205px;
+}
+
+.check{
+text-align: center;
+
+}
+
+
+
+
+
+
+
