@@ -13,6 +13,9 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
+
+
+
   <title>Techeria</title>
 
   <!-- slider stylesheet -->
@@ -32,7 +35,26 @@
   
 
 
-  
+  <style>
+    ul li ul{
+      display:none
+    }
+    ul li ul{
+      list-style-type: none;
+    }
+
+    ul li:hover ul{
+      display: block
+    }
+
+    ul li ul a{
+      color: white;
+      text-decoration: none !important;
+      text-transform: uppercase;
+      
+    }
+
+  </style>
   
   
 </head>
@@ -81,6 +103,13 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href=" {% static '' %} "> Categories </a>
+                  <ul>
+                    <li><a href ="#">Phone</a></li>
+                    <li><a href ="#">Laptop</a></li>
+                    <li><a href ="#">Camera</a></li>
+                    <li><a href ="#">Accesories</a></li>
+                  </ul>
+
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href=" {% url 'loginpage' %} "> Login </a>
