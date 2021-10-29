@@ -23,3 +23,6 @@ def loginpage(request):
 
 def registration(request):
     return render(request, 'registration.html')
+
+def ourproducts(request):
+    return render(request, 'ourproducts.html')
