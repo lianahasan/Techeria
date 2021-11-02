@@ -12,7 +12,9 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  
+
+
+
 
   <title>Techeria</title>
 
@@ -29,14 +31,32 @@
   <!-- responsive style -->
   <link href=" {% static 'css/responsive.css' %} " rel="stylesheet" />
 <!-- icon font awesome-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-  
-  
-  
+
+  <style>
+    ul li ul{
+      display:none
+    }
+    ul li ul{
+      list-style-type: none;
+    }
+
+    ul li:hover ul{
+      display: block
+    }
+
+    ul li ul a{
+      color: white;
+      text-decoration: none !important;
+      text-transform: uppercase;
+
+    }
+
+  </style>
+
+
 </head>
 
 <body>
@@ -74,51 +94,34 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
-              <ul class="navbar-nav">
+              <ul class="navbar-nav  ">
                 <li class="nav-item active">
                   <a class="nav-link" href=" {% static 'index.html' %} ">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href=" {% url 'about' %} "> About </a>
                 </li>
-  
-                  {% comment %} <a class="nav-link" href=" {% static '' %} "> Categories </a> {% endcomment %}
-                  {% comment %} <div class="dropdown">
-                   <botton class="dropbtn" href=" {% static '' %} "> Categories  <i class="fa fa-caret-down"></i></button>
-                    <div class="dropdown-content">
-                      <li href="#">Link 1</li>
-                      <li href="#">Link 2</li>
-                      <li href="#">Link 3</li>
-                      <li href="#">Link 1</li>
-                      <li href="#">Link 2</li>
-                      <li href="#">Link 3</li>
-                    </div>
-                  </div> {% endcomment %}
-                  <li>
-                  <div class="dropdown">
-                    <button class="dropbtn">Categories</button>
-                    <div class="dropdown-content">
-                      <a href="#">Computers</a>
-                      <a href="#">Phones</a>
-                      <a href="#">Tablets/Ipads</a>
-                      <a href="#">Accessory</a>
-                      <a href="#">Chargers</a>
-                      <a href="#">TV</a>
-                      <a href="#">Speakers</a>
-                      <a href="#">Headsets</a>
-                    </div>
-                  </div>
-                  </li>
-                  
-            
+                <li class="nav-item">
+                  <a class="nav-link" href=" {% static '' %} "> Categories </a>
+                  <ul>
+                    <li><a href ="#">Phone</a></li>
+                    <li><a href ="#">Laptop</a></li>
+                    <li><a href ="#">Camera</a></li>
+                    <li><a href ="#">Accesories</a></li>
+                  </ul>
+
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href=" {% url 'loginpage' %} "> Login </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href=" {% url 'registration' %} "> Register </a>
+                </li>
 
                 <li class="nav-item">
-                  <a class="nav-link" href=" {% url 'ourproducts' %} "> Our Products </a>
+                  <a class="nav-link" href=" {% url 'watch' %} "> Our Products </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href=" {% url 'watch' %} "> Returns/Orders </a>
-                </li>
-                
+
                 <li class="nav-item">
                   <a class="nav-link" href=" {% url 'contact' %} ">Contact us</a>
                 </li>
@@ -127,27 +130,12 @@
                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
               </form>
 
-              <div class = "dropdown" >
-              <button class="dropbtn"><i class="glyphicon glyphicon-user" style="font-size:25px"></i></button>
-              <div class="dropdown-content">
-                  <a href="{% url 'loginpage' %}">Login</a>
-                  <a href="{% url 'registration' %}">Sign Up</a>
-                </div>
-              </div>
-              
-              <a href="{% url 'cart' %}">
-                 <button class="btn"><i class="fa fa-shopping-cart" style="font-size:30px"></i></button>
-              </a>
-              
-             
+              <i class="fa fa-shopping-cart" style="font-size:30px"></i>
 
-              
-              
             </div>
           </div>
         </nav>
       </div>
-      
     </header>
     <!-- end header section -->
     <!-- slider section -->
@@ -700,4 +688,3 @@
 </body>
 
 </html>
-

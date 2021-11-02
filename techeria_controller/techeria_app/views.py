@@ -25,19 +25,11 @@ def watch(request):
 def loginpage(request):
     return render(request, 'loginpage.html')
 
-def cart(request):
-    return render(request, 'cart.html')
 
-def checkout(request):
-    return render(request, 'checkout.html')
 
 
 
 def registration(request):
-    return render(request, 'registration.html')
-
-def ourproducts(request):
-    return render(request, 'ourproducts.html')
     
 
     if request.method == 'POST':
