@@ -25,7 +25,7 @@ urlpatterns = [
     path('watch', views.watch, name='watch'),
     path('loginpage', views.loginpage, name='loginpage'),
     path('registration', views.registration, name='registration'), 
-    path('ourproducts', views.ourproducts, name='ourproducts'), 
+    path('product', views.product, name='product'), 
     path('cart', views.cart, name='cart'), 
     path('checkout', views.checkout, name='checkout'), 
 
