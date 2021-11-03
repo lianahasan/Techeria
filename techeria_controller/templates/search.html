@@ -3,6 +3,7 @@
 <html>
 
 <head>
+    <link rel="icon" href="/media/images/techeria_logo1.png">
     <!-- Basic -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -70,8 +71,8 @@
                 <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
                     <a class="navbar-brand" href=" {% static 'index.html' %} ">
                         <span>
-              Techeria
-            </span>
+                            <img src="/media/images/techeria_logo1.png" style="width: 100px; height: auto;" alt="Techeria">
+                        </span>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -83,9 +84,9 @@
                                 <li class="nav-item active">
                                     <a class="nav-link" href=" {% static 'index.html' %} ">Home <span class="sr-only">(current)</span></a>
                                 </li>
-                                <li class="nav-item">
+                                {% comment %} <li class="nav-item">
                                     <a class="nav-link" href=" {% url 'about' %} "> About </a>
-                                </li>
+                                </li> {% endcomment %}
 
                                 {% comment %} <a class="nav-link" href=" {% static '' %} "> Categories </a> {% endcomment %} {% comment %}
                                 <div class="dropdown">
@@ -124,11 +125,12 @@
                                     <a class="nav-link" href=" {% url 'watch' %} "> Returns/Orders </a>
                                 </li>
 
-                                <li class="nav-item">
+                                {% comment %} <li class="nav-item">
                                     <a class="nav-link" href=" {% url 'contact' %} ">Contact us</a>
-                                </li>
+                                </li> {% endcomment %}
                             </ul>
-                            <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
+                            <form class="form-inline my-2 my-lg-0" action="/search">
+                                <input name='q' class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
                             </form>
 
@@ -154,7 +156,7 @@
         </header>
         <!-- end header section -->
         <!-- search results -->
-        
+
     <h3 class="my-4 border-bottom pb-1"><span class="text-muted">Search Results for </span>{{request.GET.q}}</h3>
     <div class="container bcontent">
         {% for p in data %}
