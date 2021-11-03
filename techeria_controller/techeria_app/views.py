@@ -36,8 +36,8 @@ def checkout(request):
 def registration(request):
     return render(request, 'registration.html')
 
-def ourproducts(request):
-    return render(request, 'ourproducts.html')
+def product(request):
+    return render(request, 'product.html')
     
 
     if request.method == 'POST':
