@@ -41,6 +41,8 @@ def search(request):
     q = request.GET['q']
     data = Products.objects.filter(name__icontains=q)
     return render(request, 'search.html', {'data': data})
+def product(request):
+    return render(request, 'product.html')
     
 
     if request.method == 'POST':
