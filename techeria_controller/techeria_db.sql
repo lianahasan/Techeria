@@ -82,10 +82,10 @@ CREATE TABLE 'user_acc' (
 ;
 /* Cart table*/
 CREATE TABLE 'cart' (
-  'account_id' INTEGER REFERENCES account (account_id) ON DELETE CASCADE ON UPDATE RESTRICT,
+  'user_id' INTEGER REFERENCES account (account_id) ON DELETE CASCADE ON UPDATE RESTRICT,
   'product_id' INTEGER REFERENCES product (product_id) ON DELETE CASCADE ON UPDATE RESTRICT,
   'amount' INTEGER,
-  PRIMARY KEY (account_id, product_id);
+  PRIMARY KEY ('user_id', 'product_id');
 /* Order table*/
 
 CREATE TABLE orders (
@@ -94,5 +94,5 @@ CREATE TABLE orders (
   'subtotal' DOUBLE NOT NULL DEFAULT (0.0),
   'purchase_date' DATETIME NOT NULL,
   'tracking_no' INTEGER,
-  'order_status' INTEGER DEFAULT (0) NOT NULL,
+  'order_status' INTEGER DEFAULT (0) NOT NULL
 );
