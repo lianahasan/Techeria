@@ -1,7 +1,7 @@
 from django.db.models.fields import NullBooleanField
 from django.http import response
 from django.shortcuts import redirect, render
-from techeria_app.models import Products, BuyerModel, SellerModel
+from techeria_app.models import BuyerModel, SellerModel, Products
 from django.contrib.auth.models import User, auth
 
 
@@ -25,11 +25,24 @@ def watch(request):
 def loginpage(request):
     return render(request, 'loginpage.html')
 
+def cart(request):
+    return render(request, 'cart.html')
 
-
-
+def checkout(request):
+    return render(request, 'checkout.html')
 
 def registration(request):
+    return render(request, 'registration.html')
+
+def ourproducts(request):
+    return render(request, 'ourproducts.html')
+
+def search(request):
+    q = request.GET['q']
+    data = Products.objects.filter(name__icontains=q)
+    return render(request, 'search.html', {'data': data})
+def product(request):
+    return render(request, 'product.html')
     
 
     if request.method == 'POST':
