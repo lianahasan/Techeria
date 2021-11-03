@@ -78,9 +78,9 @@
                 <li class="nav-item active">
                   <a class="nav-link" href=" {% static 'index.html' %} ">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
+                {% comment %} <li class="nav-item">
                   <a class="nav-link" href=" {% url 'about' %} "> About </a>
-                </li>
+                </li> {% endcomment %}
   
                   {% comment %} <a class="nav-link" href=" {% static '' %} "> Categories </a> {% endcomment %}
                   {% comment %} <div class="dropdown">
@@ -119,11 +119,15 @@
                   <a class="nav-link" href=" {% url 'watch' %} "> Returns/Orders </a>
                 </li>
                 
-                <li class="nav-item">
+                {% comment %} <li class="nav-item">
                   <a class="nav-link" href=" {% url 'contact' %} ">Contact us</a>
-                </li>
+                </li> {% endcomment %}
               </ul>
-              <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
+              {% comment %} <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
+                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
+              </form> {% endcomment %}
+              <form class="form-inline my-2 my-lg-0" action="/search">
+                <input name='q' class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
               </form>
 

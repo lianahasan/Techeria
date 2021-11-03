@@ -4,13 +4,13 @@ from django.db.models.fields import EmailField
 # Create your models here.
 
 class Products(models.Model):
+    image = models.ImageField(null=False, blank=False, upload_to='images/')
     name = models.CharField(max_length=255)
     price = models.FloatField()
-    description = models.CharField(max_length=255)
+    description = models.TextField()
     category = models.CharField(max_length=255)
 
     class Meta:
-        managed = False
         db_table = 'products'
 
 
