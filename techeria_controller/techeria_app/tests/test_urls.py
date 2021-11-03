@@ -1,0 +1,40 @@
+from django.test import SimpleTestCase
+from django.urls import reverse, resolve
+from techeria_app.views import *
+
+class TestUrls(SimpleTestCase):
+    def test_index_url_is_resolved(self):
+        url = reverse('index')
+        self.assertEquals(resolve(url).func, index)
+
+    def test_about_url_is_resolved(self):
+        url = reverse('about')
+        self.assertEquals(resolve(url).func, about)
+
+    def test_contact_url_is_resolved(self):
+        url = reverse('contact')
+        self.assertEquals(resolve(url).func, contact)
+
+    def test_watch_url_is_resolved(self):
+        url = reverse('watch')
+        self.assertEquals(resolve(url).func, watch)
+
+    def test_loginpage_url_is_resolved(self):
+        url = reverse('loginpage')
+        self.assertEquals(resolve(url).func, loginpage)
+
+    def test_cart_url_is_resolved(self):
+        url = reverse('cart')
+        self.assertEquals(resolve(url).func, cart)
+
+    def test_checkout_url_is_resolved(self):
+        url = reverse('checkout')
+        self.assertEquals(resolve(url).func, checkout)
+    
+    def test_ourproducts_url_is_resolved(self):
+        url = reverse('ourproducts')
+        self.assertEquals(resolve(url).func, ourproducts)
+
+    def test_registration_url_is_resolved(self):
+        url = reverse('registration')
+        self.assertEquals(resolve(url).func, registration)
