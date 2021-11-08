@@ -9,8 +9,8 @@
 
 -- Database: `techeria_db`
 --
-CREATE DATABASE `techeria_db2`;
-use `techeria_db2`;
+CREATE DATABASE `techeria_db`;
+use `techeria_db`;
 -- --------------------------------------------------------
 
 -- --------------------------------------------------------
