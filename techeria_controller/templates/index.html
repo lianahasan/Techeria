@@ -13,7 +13,7 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  
+
 
   <title>Techeria</title>
 
@@ -32,33 +32,16 @@
 <!-- icon font awesome-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  
 
 
-  
-  
-  
+
+
+
+
 </head>
 
 <body>
-  <!-- Confirming connection to database
-  <h4>Information for One Product (from database):</h4>
-  <table>
-      {% for p in product %}
-      <tr>
-          <td>Name: {{ p.name }}</td>
-      </tr>
-      <tr>
-          <td>Price: {{ p.price }}</td>
-      </tr>
-      <tr>
-          <td>Description: {{ p.description }}</td>
-      </tr>
-      <tr>
-          <td>Category: {{ p.category }}</td>
-      </tr>
-      {% endfor %}
-  </table> -->
+
   <div class="hero_area">
     <!-- header section strats -->
     <header class="header_section">
@@ -82,7 +65,7 @@
                 {% comment %} <li class="nav-item">
                   <a class="nav-link" href=" {% url 'about' %} "> About </a>
                 </li> {% endcomment %}
-  
+
                   {% comment %} <a class="nav-link" href=" {% static '' %} "> Categories </a> {% endcomment %}
                   {% comment %} <div class="dropdown">
                    <botton class="dropbtn" href=" {% static '' %} "> Categories  <i class="fa fa-caret-down"></i></button>
@@ -110,8 +93,8 @@
                     </div>
                   </div>
                   </li>
-                  
-            
+
+
 
                 <li class="nav-item">
                   <a class="nav-link" href=" {% url 'product' %} "> Our Products </a>
@@ -119,7 +102,7 @@
                 <li class="nav-item">
                   <a class="nav-link" href=" {% url 'watch' %} "> Returns/Orders </a>
                 </li>
-                
+
                 {% comment %} <li class="nav-item">
                   <a class="nav-link" href=" {% url 'contact' %} ">Contact us</a>
                 </li> {% endcomment %}
@@ -139,20 +122,20 @@
                   <a href="{% url 'registration' %}">Sign Up</a>
                 </div>
               </div>
-              
+
               <a href="{% url 'cart' %}">
                  <button class="btn"><i class="fa fa-shopping-cart" style="font-size:30px"></i></button>
               </a>
-              
-             
 
-              
-              
+
+
+
+
             </div>
           </div>
         </nav>
       </div>
-      
+
     </header>
     <!-- end header section -->
     <!-- slider section -->
@@ -702,4 +685,3 @@
 </body>
 
 </html>
-
