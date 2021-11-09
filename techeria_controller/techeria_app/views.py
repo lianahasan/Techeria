@@ -34,9 +34,6 @@ def checkout(request):
 def registration(request):
     return render(request, 'registration.html')
 
-def ourproducts(request):
-    return render(request, 'ourproducts.html')
-
 def search(request):
     q = request.GET['q']
     data = Products.objects.filter(name__icontains=q)
