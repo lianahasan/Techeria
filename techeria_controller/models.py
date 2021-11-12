@@ -77,6 +77,25 @@ class AuthUserUserPermissions(models.Model):
         unique_together = (('user', 'permission'),)
 
 
+class Buyer(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    user_name = models.CharField(max_length=255)
+    date_of_birth = models.DateField()
+    email = models.CharField(max_length=254)
+    mobile_number = models.IntegerField()
+    address = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    state = models.CharField(max_length=255)
+    zip_code = models.CharField(max_length=255)
+    country = models.CharField(max_length=20)
+
+    class Meta:
+        managed = False
+        db_table = 'buyer'
+
+
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()
     object_id = models.TextField(blank=True, null=True)
@@ -122,11 +141,25 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 
-class Products(models.Model):
-    id = models.IntegerField()
+class Laptops(models.Model):
+    id = models.BigIntegerField()
+    image = models.CharField(max_length=100)
     name = models.CharField(max_length=255)
     price = models.FloatField()
-    description = models.CharField(max_length=255)
+    description = models.TextField()
+    category = models.CharField(max_length=255)
+
+    class Meta:
+        managed = False
+        db_table = 'laptops'
+
+
+class Products(models.Model):
+    id = models.BigIntegerField()
+    image = models.CharField(max_length=100)
+    name = models.CharField(max_length=255)
+    price = models.FloatField()
+    description = models.TextField()
     category = models.CharField(max_length=255)
 
     class Meta:
@@ -134,13 +167,20 @@ class Products(models.Model):
         db_table = 'products'
 
 
-class TecheriaAppCategory(models.Model):
+class Seller(models.Model):
     id = models.BigAutoField(primary_key=True)
-    category_name = models.CharField(unique=True, max_length=50)
-    slug = models.CharField(unique=True, max_length=100)
-    description = models.TextField()
-    cat_image = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    user_name = models.CharField(max_length=255)
+    date_of_birth = models.DateField()
+    email = models.CharField(max_length=254)
+    mobile_number = models.IntegerField()
+    address = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    state = models.CharField(max_length=255)
+    zip_code = models.CharField(max_length=255)
+    country = models.CharField(max_length=20)
 
     class Meta:
         managed = False
-        db_table = 'techeria_app_category'
+        db_table = 'seller'
