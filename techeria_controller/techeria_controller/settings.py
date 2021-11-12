@@ -84,6 +84,7 @@ DATABASES = {
         'USER': 'root',
         'HOST': 'localhost',
         'PORT': 3306,
+<<<<<<< HEAD
         'PASSWORD': 'f1234',
         'OPTIONS': {
         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
@@ -91,6 +92,10 @@ DATABASES = {
 
 
     },
+=======
+        'PASSWORD': 'orange'
+    }
+>>>>>>> main
 }
 
 
