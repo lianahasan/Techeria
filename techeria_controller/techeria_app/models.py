@@ -49,17 +49,16 @@ class SellerModel(models.Model):
     country = models.CharField(max_length=20)
 
 
-class laptops(models.Model):
-    image = models.ImageField(null=False, blank=False, upload_to='images/')
-    # cat_image = models.ImageField(upload_to='images/', blank=True)
-
+class Laptops(models.Model):
+    # id = models.BigIntegerField()
+    image = models.CharField(max_length=100)
     name = models.CharField(max_length=255)
     price = models.FloatField()
     description = models.TextField()
-    # slug = models.SlugField(max_length=100, unique=True)
-    category = models.CharField(max_length=255,unique=True)
+    category = models.CharField(max_length=255)
 
     class Meta:
+        managed = False
         db_table = 'laptops'
 
 
