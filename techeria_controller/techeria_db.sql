@@ -32,7 +32,7 @@ CREATE TABLE `buyer` (
   `state` varchar(255) NOT NULL,
   `zip_code` varchar(255) NOT NULL,
   `country` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -49,7 +49,7 @@ CREATE TABLE `products` (
   `price` double NOT NULL,
   `description` longtext NOT NULL,
   `category` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `products`
@@ -70,6 +70,30 @@ INSERT INTO `products` (`id`, `image`, `name`, `price`, `description`, `category
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `products`
+--
+
+CREATE TABLE `laptops` (
+  `id` bigint(20) NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `price` double NOT NULL,
+  `description` longtext NOT NULL,
+  `category` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `laptops`
+--
+
+INSERT INTO `laptops` (`id`, `image`, `name`, `price`, `description`, `category`) VALUES
+(681122, 'laptop1.jpg', 'HP Laptop, 17.3\" FHD Non-Touch Display, 11th Gen Intel Core i5-1135G7 Quad-Core Processor, 16GB DDR4 Memory, 1TB PCIe NVMe SSD, Webcam, HDMI, Wi-Fi, Windows 10 Home, Silver(2021)', 899, '【Memory & Storage】Memory is 16GB high-bandwidth RAM to smoothly run multiple applications and browser tabs all at once. Hard Drive is 1TB PCIe NVMe M.2 Solid State Drive which allows to fast bootup and data transfer\r\n【Operating System】Windows 10 Home 64-bit\r\n【Processor】 11th Gen Intel Core i5-1135G7 2.40GHz Quad-Core Processor (8MB Cache, up to 4.20GHz), Intel Iris Xe Graphics', ''),
+(68329389, 'laptop4.jpg', 'Dell Inspiron 17 7000 2-in-1 Touchscreen Business Laptop 17.3\" QHD, Intel Core i7-1165G7, Window 10 Pro, 32G RAM 1TB SSD, Intel iris xe Graphics, Fingerprint Reader, Backlit Keyboard', 1599.99, '[POWERFUL PERFORMANCE]: The Dell Inspiron 17 7000 2-in-1 laptop is powered with the latest 11th Generation Intel Core i7-1165G7 Processor (12MB Cache, up to 4.7 GHz) and 32GB high-bandwidth DDR4 memory, powerful processing for advanced multitasking, demanding computing, smooth gaming, multiple tabs browsing, and everyday tasks. 1TB PCIe NVMe M.2 SSD (15x faster than HDD, stay cool and quiet) offers ample storage, quick boot-ups, fast data access, and improves the overall performance.\r\n[STUNNING VISUALS]: 17.0-inch QHD+ (2560 x 1600) Truelife Touch Narrow Border IPS Display. Intel iris xe graphics with shared video memory gives you a new level of graphics performance with vibrant, lifelike color and details for internet use, fast photo/video editing, streaming, and gaming', 'laptop'),
+(68329383, 'laptop5.jpg', 'Lenovo Ideapad 3 15.6\" Touch Screen Laptop - Intel Core i3 - 8GB Memory - 256GB SSD - Almond', 469.99, 'Windows 10 Home in S Mode\r\nExperience the most secure Windows ever built with fast boot times, increased responsiveness, and added protection against phishing and malware.\r\n\r\n15.6\" HD multitouch screen\r\nTouch, tap, glide and make the most of Windows 10. Typical 1366 x 768 HD resolution. Supports 720p content. Energy-efficient LED backlight.\r\n\r\n11th Gen Intel® Core™ i3-1115G4 mobile processor\r\nSmart dual-core, four-way processing performance for HD-quality computing.\r\n\r\n8GB system memory for advanced multitasking\r\nSubstantial high-bandwidth RAM to smoothly run your games and photo- and video-editing applications, as well as multiple programs and browser tabs all at once.\r\n\r\n256GB Solid State Drive (NVMe TLC)\r\nSave files fast and store more data. With massive amounts of storage and advanced communication power, NVMe TLC SSDs are great for major gaming applications, multiple servers, daily backups, and more.\r\n\r\nIntel UHD Graphics\r\nOn-processor graphics with shared video memory provide everyday image quality for Internet use, basic photo editing and casual gaming.\r\n\r\nModern aluminum design\r\nCreates a sleek, modern look with clean lines and provides a rigid but lightweight frame.\r\n\r\nWeighs 4.07lbs. and measures 0.78\" thin\r\nThin and light design with DVD/CD drive omitted for improved portability. 2-cell lithium polymer battery.\r\n\r\nWireless/Wired connectivity (WiFi 5 - 802.11 ac)\r\nConnect to a Wireless-AC router for nearly 3x the speed, more capacity and wider coverage than Wireless-N. Backward-compatible with all other Wi-Fi networks and hotspots.', 'laptop'),
+(68329382, 'laptop6.jpg', 'MacBook Pro 14\" Laptop - Apple M1 Pro chip - 16GB Memory - 512GB SSD (Latest Model) - Space Gray', 1897.65, 'The new MacBook Pro delivers game-changing performance for pro users. With the powerful M1 Pro to supercharge pro-level workflows while getting amazing battery life.¹ And with an immersive 14-inch Liquid Retina XDR display and an array of pro ports, you can do more than ever with MacBook Pro.\r\n', 'laptop');
+
+
+--
 -- Table structure for table `seller`
 --
 
@@ -86,7 +110,7 @@ CREATE TABLE `seller` (
   `state` varchar(255) NOT NULL,
   `zip_code` varchar(255) NOT NULL,
   `country` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -132,4 +156,7 @@ ALTER TABLE `products`
 --
 ALTER TABLE `seller`
   MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
+<<<<<<< HEAD
+=======
 
+>>>>>>> main

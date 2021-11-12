@@ -81,9 +81,9 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
                             <ul class="navbar-nav">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href=" {% static 'index.html' %} ">Home <span class="sr-only">(current)</span></a>
-                                </li>
+                              <li class="nav-item active">
+                                <a class="nav-link" href=" {% url 'index' %} ">Home <span class="sr-only">(current)</span></a>
+                              </li>
                                 {% comment %} <li class="nav-item">
                                     <a class="nav-link" href=" {% url 'about' %} "> About </a>
                                 </li> {% endcomment %}
@@ -119,10 +119,14 @@
 
 
                                 <li class="nav-item">
+<<<<<<< HEAD
+                                    <a class="nav-link" href=" {% url 'product' %} "> Products </a>
+=======
                                     <a class="nav-link" href=" {% url 'product' %} "> Our Products </a>
+>>>>>>> main
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href=" {% url 'watch' %} "> Returns/Orders </a>
+                                    <a class="nav-link" href=" {% url 'laptop' %} "> Returns/Orders </a>
                                 </li>
 
                                 {% comment %} <li class="nav-item">
