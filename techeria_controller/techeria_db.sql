@@ -115,27 +115,43 @@ CREATE TABLE `seller` (
 --
 -- Table structure for table 'orders`
 --
+
 CREATE TABLE `orders` (
-  `id` BIGINT(20) NOT NULL,
-  `buyer_id` BIGINT(20) NOT NULL,
-  `subtotal` DOUBLE NOT NULL,
-  `order_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `complete` BOOLEAN NOT NULL DEFAULT '0',
-  `transaction_id` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`id`)
-)  ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+  `id` INT NOT NULL,
+  `buyer_id` BIGINT,
+  'subtotal' DOUBLE NOT NULL DEFAULT(0.0),
+  'order_date' DATETIME NOT NULL,
+  'complete' BOOLEAN DEFAULT(0),
+  'transaction_id' varchar(100),
+  PRIMARY KEY(id),
+  INDEX (buyer_id),
+  FOREIGN KEY (buyer_id)
+      REFERENCES buyer(id)
+      ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Table structure for table 'orders_items`
 --
+
 CREATE TABLE `order_items` (
-  `id` BIGINT(20) NOT NULL,
-  `quantity` INT NOT NULL,
-  `date_added` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `order_id` INT NOT NULL,
-  `product_id` INT NOT NULL,
-  PRIMARY KEY(`id`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
---
+  `id` BIGINT NOT NULL,
+  'quantity' INT DEFAULT(1) NOT NULL,
+  'date_added' DATETIME NOT NULL,
+  'order_id' INT NOT NULL,
+  'product_id' INT NOT NULL,
+  PRIMARY KEY(id),
+  INDEX (order_id),
+  INDEX (product_id),
+  FOREIGN KEY (order_id)
+      REFERENCES orders(id)
+      ON DELETE CASCADE ON DELETE RESTRICT,
+  FOREIGN KEY (product_id)
+      REFERENCES products(id)
+      ON DELETE CASCADE ON DELETE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
 
 
 --
