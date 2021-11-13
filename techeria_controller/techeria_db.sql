@@ -113,6 +113,48 @@ CREATE TABLE `seller` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Table structure for table 'orders`
+--
+
+CREATE TABLE `orders` (
+  `id` INT NOT NULL,
+  `buyer_id` BIGINT,
+  'subtotal' DOUBLE NOT NULL DEFAULT(0.0),
+  'order_date' DATETIME NOT NULL,
+  'complete' BOOLEAN DEFAULT(0),
+  'transaction_id' varchar(100),
+  PRIMARY KEY(id),
+  INDEX (buyer_id),
+  FOREIGN KEY (buyer_id)
+      REFERENCES buyer(id)
+      ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Table structure for table 'orders_items`
+--
+
+CREATE TABLE `order_items` (
+  `id` BIGINT NOT NULL,
+  'quantity' INT DEFAULT(1) NOT NULL,
+  'date_added' DATETIME NOT NULL,
+  'order_id' INT NOT NULL,
+  'product_id' INT NOT NULL,
+  PRIMARY KEY(id),
+  INDEX (order_id),
+  INDEX (product_id),
+  FOREIGN KEY (order_id)
+      REFERENCES orders(id)
+      ON DELETE CASCADE ON DELETE RESTRICT,
+  FOREIGN KEY (product_id)
+      REFERENCES products(id)
+      ON DELETE CASCADE ON DELETE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+
+--
 -- Indexes for dumped tables
 --
 
@@ -152,11 +194,19 @@ ALTER TABLE `products`
   MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98765433;
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10000;
+-- --------------------------------------------------------
+
+-- --------------------------------------------------------
+
+-- --------------------------------------------------------
+
+-- --------------------------------------------------------
+--
 -- AUTO_INCREMENT for table `seller`
 --
 ALTER TABLE `seller`
   MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
-<<<<<<< HEAD
-=======
-
->>>>>>> main
