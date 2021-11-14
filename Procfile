@@ -1,1 +1,1 @@
-web: gunicorn techeria_controller.techeria_controller.wsgi --log-file -
+web: gunicorn --chdir techeria_controller techeria_controller.wsgi --log-file -
