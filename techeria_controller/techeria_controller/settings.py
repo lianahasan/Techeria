@@ -80,11 +80,11 @@ WSGI_APPLICATION = 'techeria_controller.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'techeria_db',
-        'USER': 'root',
-        'HOST': 'localhost',
+        'NAME': 'heroku_d22c2aef8864fa7',
+        'USER': 'b5622bdf144124',
+        'HOST': 'techeria_connection',
         'PORT': 3306,
-        'PASSWORD': '',
+        'PASSWORD': '22be64d5',
         
         
 
