@@ -13,12 +13,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import sys
-from urllib.parse import urlparse
+import urllib.parse
 import django_heroku
 #import dj_database_url
 
 # Register database schemes in URLs.
-urlparse.uses_netloc.append('mysql')
+urllib.parse.uses_netloc.append('mysql')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -90,18 +90,18 @@ try:
         DATABASES = {}
 
     if 'DATABASE_URL' in os.environ:
-        url = urlparse.urlparse(os.environ['DATABASE_URL'])
+        url = urllib.parse.urlparse(os.environ['DATABASE_URL'])
 
         # Ensure default database exists.
         DATABASES['default'] = DATABASES.get('default', {})
 
         # Update with environment configuration.
         DATABASES['default'].update({
-                'NAME': 'heroku_d22c2aef8864fa7',
-                'USER': 'b5622bdf144124',
-                'HOST': 'techeria_connection',
-                'PORT': 3306,
-                'PASSWORD': '22be64d5',
+                'NAME': url.path[1:],
+                'USER': url.username,
+                'PASSWORD': url.password,
+                'HOST': url.hostname,
+                'PORT': url.port,
         })
         if url.scheme == 'mysql':
             DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
