@@ -12,8 +12,13 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import sys
+import urlparse
 import django_heroku
 #import dj_database_url
+
+# Register database schemes in URLs.
+urlparse.uses_netloc.append('mysql')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -76,21 +81,32 @@ WSGI_APPLICATION = 'techeria_controller.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+try:
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'heroku_d22c2aef8864fa7',
-        'USER': 'b5622bdf144124',
-        'HOST': 'techeria_connection',
-        'PORT': 3306,
-        'PASSWORD': '22be64d5',
-        
-        
+    # Check to make sure DATABASES is set in settings.py file.
+    # If not default to {}
 
+    if 'DATABASES' not in locals():
+        DATABASES = {}
 
-    },
-}
+    if 'DATABASE_URL' in os.environ:
+        url = urlparse.urlparse(os.environ['DATABASE_URL'])
+
+        # Ensure default database exists.
+        DATABASES['default'] = DATABASES.get('default', {})
+
+        # Update with environment configuration.
+        DATABASES['default'].update({
+                'NAME': 'heroku_d22c2aef8864fa7',
+                'USER': 'b5622bdf144124',
+                'HOST': 'techeria_connection',
+                'PORT': 3306,
+                'PASSWORD': '22be64d5',
+        })
+        if url.scheme == 'mysql':
+            DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
+except Exception:
+    print('Unexpected error:', sys.exc_info())
 
 
 
