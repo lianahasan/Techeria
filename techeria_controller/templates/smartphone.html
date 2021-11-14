@@ -101,71 +101,15 @@ nav{
   <div class="bg">
 
 
-    <!-- brand section -->
-
-    <!-- <section class="brand_section layout_padding2">
-      <div class="container">
-        <div class="brand_heading">
-          <h3 class="custom_heading">
-            Our watch brands
-          </h3>
-          <p class="font-weight-bold">
-            It is a long established fact that a reader will be distracted by the readable content of a page
-          </p>
-        </div>
-      </div>
-      <div class="container-fluid brand_item-container">
-        <div class="brand_item-box">
-          <div class="brand_img-box  item-1">
-            <a href=" {% static '' %} ">
-              View More
-            </a>
-          </div>
-          <div class="brand_detail-box">
-            <h5>
-              $<span> 40 </span>
-            </h5>
-            <h6 class="">
-              best watch
-            </h6>
-          </div>
-        </div>
-    </div> <!-- End site branding area -->
-<!--
-    <div class="mainmenu-area">
-        <div class="container">
-            <div class="row">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">Home</a></li>
-                        <li><a href="shop.html">Laptops</a></li>
-                        <li><a href="single-product.html">Smartphones</a></li>
-                        <li><a href="cart.html">Accessories</a></li>
-                        <li><a href="checkout.html">Checkout</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End mainmenu area -->
-
-
 
   <h3 class="my-4 border-bottom pb-1"><span class="text-muted">Search Results for </span>{{request.GET.q}}</h3>
     <div class="container bcontent">
-        {% for q in laptop%}
+        {%for q in Smartphone %}
         <hr />
         <div class="card" style="width: 500px;">
             <div class="row no-gutters">
                 <div class="col-sm-5">
-                    <img class="card-img-top" src="/media/laptops/{{q.image}}" alt="Card image cap">
+                    <img class="card-img-top" src="/media/smartphones/{{q.image}}" alt="Card image cap">
                 </div>
                 <div class="col-sm-7">
                     <div class="card-body">

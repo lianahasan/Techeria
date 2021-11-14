@@ -85,9 +85,9 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': 3306,
         'PASSWORD': 'f1234',
-        # 'OPTIONS': {
-        # 'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        
+        'OPTIONS': {
+        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
 
 
     },
@@ -142,7 +142,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-#Activate Heroku settings for Django
+#Activate Heroku settings for
 django_heroku.settings(locals())
 
 # Default primary key field type

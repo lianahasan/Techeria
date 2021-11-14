@@ -156,7 +156,3 @@ ALTER TABLE `products`
 --
 ALTER TABLE `seller`
   MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
-<<<<<<< HEAD
-=======
-
->>>>>>> main
