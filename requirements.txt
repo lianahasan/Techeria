@@ -22,3 +22,5 @@ sqlparse==0.4.2
 sympy==1.8
 django-heroku
 gunicorn
+sys
+urlparse
