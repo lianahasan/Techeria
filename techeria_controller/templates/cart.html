@@ -78,11 +78,10 @@
                                 <li class="nav-item active">
                                     <a class="nav-link" href=" {% static 'index.html' %} ">Home <span class="sr-only">(current)</span></a>
                                 </li>
-                                {% comment %} <li class="nav-item">
+                                {% comment %}
+                                <li class="nav-item">
                                     <a class="nav-link" href=" {% url 'about' %} "> About </a>
-                                </li> {% endcomment %}
-
-                                {% comment %} <a class="nav-link" href=" {% static '' %} "> Categories </a> {% endcomment %} {% comment %}
+                                </li> {% endcomment %} {% comment %} <a class="nav-link" href=" {% static '' %} "> Categories </a> {% endcomment %} {% comment %}
                                 <div class="dropdown">
                                     <botton class="dropbtn" href=" {% static '' %} "> Categories <i class="fa fa-caret-down"></i></button>
                                         <div class="dropdown-content">
@@ -116,10 +115,11 @@
                                     <a class="nav-link" href=" {% url 'product' %} "> Our Products </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href=" {% url 'watch' %} "> Returns/Orders </a>
+                                    <a class="nav-link" href=""> Return Orders </a>
                                 </li>
 
-                                {% comment %} <li class="nav-item">
+                                {% comment %}
+                                <li class="nav-item">
                                     <a class="nav-link" href=" {% url 'contact' %} ">Contact us</a>
                                 </li> {% endcomment %}
                             </ul>
