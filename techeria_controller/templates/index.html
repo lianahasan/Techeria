@@ -47,7 +47,7 @@
     <header class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
-          <a class="navbar-brand" href=" {% static 'index.html' %} ">
+          <a class="navbar-brand" href=" {% url 'index' %} ">
             <span>
               <img src="/media/images/techeria_logo1.png" style="width: 100px; height: auto;" alt="Techeria">
             </span>
@@ -60,7 +60,7 @@
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link" href=" {% static 'index.html' %} ">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href=" {% url 'index' %} ">Home <span class="sr-only">(current)</span></a>
                 </li>
 
                 {% comment %} <li class="nav-item">
