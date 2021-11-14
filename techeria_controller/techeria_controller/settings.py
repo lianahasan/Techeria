@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import sys
-import urlparse
+from urllib.parse import urlparse
 import django_heroku
 #import dj_database_url
 
