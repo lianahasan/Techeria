@@ -1,0 +1,1 @@
+web: gunicorn techeria_controller.wsgi
