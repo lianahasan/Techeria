@@ -12,13 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-import sys
-import urllib.parse
 import django_heroku
-#import dj_database_url
-
-# Register database schemes in URLs.
-urllib.parse.uses_netloc.append('mysql')
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,33 +76,22 @@ WSGI_APPLICATION = 'techeria_controller.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-try:
 
-    # Check to make sure DATABASES is set in settings.py file.
-    # If not default to {}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'techeria_db',
+        'USER': 'root',
+        'HOST': 'localhost',
+        'PORT': 3306,
+        'PASSWORD': 'f1234',
+        'OPTIONS': {
+        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
 
-    if 'DATABASES' not in locals():
-        DATABASES = {}
 
-    if 'DATABASE_URL' in os.environ:
-        url = urllib.parse.urlparse(os.environ['DATABASE_URL'])
-
-        # Ensure default database exists.
-        DATABASES['default'] = DATABASES.get('default', {})
-
-        # Update with environment configuration.
-        DATABASES['default'].update({
-                'NAME': url.path[1:],
-                'USER': url.username,
-                'PASSWORD': url.password,
-                'HOST': url.hostname,
-                'PORT': url.port,
-        })
-        if url.scheme == 'mysql':
-            DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
-except Exception:
-    print('Unexpected error:', sys.exc_info())
-
+    },
+}
 
 
 # Password validation
@@ -157,8 +141,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+#Activate Heroku settings for
 django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

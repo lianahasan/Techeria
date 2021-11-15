@@ -26,6 +26,14 @@ def laptop(request):
     }
     return render(request, 'laptop.html', context)
 
+def smartphone(request):
+    smartphone = Smartphone.objects.all()
+    context = {
+        'smartphone': smartphone
+    }
+    return render(request, 'smartphone.html', context)
+
+
 # def laptops(request):
 #     return render(request, 'laptops.html')
 

@@ -1,10 +1,30 @@
 {% load static %}
 <!DOCTYPE html>
+
+<style>
+body {
+  background-color:#B9CAF1 !important;
+
+}
+</style>
+
 <html>
+
 <head>
 	<title>Login Page</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'css_login/style.css' %}">
+	<!-- fonts style -->
+	<link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href=" {% static 'css/style.css' %} " rel="stylesheet" />
+	<!-- responsive style -->
+	<link href=" {% static 'css/responsive.css' %} " rel="stylesheet" />
+<!-- icon font awesome-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
+
+
+
 <body>
 
 <h1>Login As a..</h1>
@@ -30,13 +50,15 @@
 			<p>Password</p>
 			<input type="text" name="password" placeholder="Password">
 			<button type="submit">Login</button>
-			<a href="#">Forget  Username/Password</a>	
-			<p>I am new here <a href="#"> SignUp</a></p>
+			<a href="#">Forget  Username/Password</a>
+			<p>I am new here <a href=" {% url 'registration' %}"> SignUp</a></p>
+
+
 		</form>
-		
+
 	</div>
 
-	
+
 
 
 
