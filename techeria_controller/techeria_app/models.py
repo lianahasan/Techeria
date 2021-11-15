@@ -65,8 +65,7 @@ class Laptops(models.Model):
         managed = False
         db_table = 'laptops'
 
-    class Meta:
-        db_table = "seller"
+   
 
     def __str__(self):
         return self.techeria_app
