@@ -17,12 +17,19 @@ from django.contrib import admin
 from django.urls import path
 from techeria_app import views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('about', views.about, name='about'),
     path('contact', views.contact, name='contact'),
-    path('watch', views.watch, name='watch'),
+    path('laptop', views.laptop, name='laptop'),
     path('loginpage', views.loginpage, name='loginpage'),
-    path('registration', views.registration, name='registration'), 
-]
+    path('registration', views.registration, name='registration'),
+    path('product', views.product, name='product'),
+    path('cart', views.cart, name='cart'),
+    path('checkout/', views.checkout, name='checkout'),
+    path('search', views.search, name='search'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
