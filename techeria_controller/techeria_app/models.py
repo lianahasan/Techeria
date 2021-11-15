@@ -58,8 +58,21 @@ class Laptops(models.Model):
     category = models.CharField(max_length=255)
 
     class Meta:
-        managed = False
+
         db_table = 'laptops'
+
+class Smartphone(models.Model):
+    # id = models.BigIntegerField()
+    image = models.CharField(max_length=100)
+    name = models.CharField(max_length=255)
+    price = models.FloatField()
+    description = models.TextField()
+    category = models.CharField(max_length=255)
+
+    class Meta:
+        # managed = False
+        db_table = 'smartphone'
+
 
     class Meta:
         db_table = "seller"

@@ -1,7 +1,7 @@
 from django.db.models.fields import NullBooleanField
 from django.http import response
 from django.shortcuts import redirect, render
-from techeria_app.models import BuyerModel, SellerModel, Products, Laptops
+from techeria_app.models import BuyerModel, SellerModel, Products, Laptops, Smartphone
 from django.contrib.auth.models import User, auth
 
 
