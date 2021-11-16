@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'phonenumber_field',
     'techeria_app.apps.TecheriaAppConfig'
 ]
 
@@ -85,6 +86,9 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': 3306,
         'PASSWORD': 'f1234',
+         'TEST': {
+             'MIRROR': 'default',
+        },
         'OPTIONS': {
         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         }

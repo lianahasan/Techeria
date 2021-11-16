@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.fields import EmailField
+from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 
@@ -23,7 +24,9 @@ class BuyerModel(models.Model):
     user_name = models.CharField(max_length=255)
     date_of_birth = models.DateField()
     email = models.EmailField()
-    mobile_number = models.IntegerField(max_length=10)
+    
+    # mobile_number = models.IntegerField(max_length=10)
+    mobile_number = PhoneNumberField(null=False, blank=False, unique=True)
     address = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     state = models.CharField(max_length=255)
@@ -41,7 +44,8 @@ class SellerModel(models.Model):
     user_name = models.CharField(max_length=255)
     date_of_birth = models.DateField()
     email = models.EmailField()
-    mobile_number = models.IntegerField(max_length=10)
+    # mobile_number = models.IntegerField(max_length=10)
+    mobile_number = PhoneNumberField(null=False, blank=False, unique=True)
     address = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     state = models.CharField(max_length=255)
