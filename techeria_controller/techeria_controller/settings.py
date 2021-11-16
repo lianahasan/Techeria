@@ -108,6 +108,19 @@ try:
 except Exception:
     print('Unexpected error:', sys.exc_info())
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'techeria_db',
+#         'USER': 'root',
+#         'HOST': 'localhost',
+#         'PORT': 3306,
+#         'PASSWORD': 'orange',
+#         # 'TEST': {
+#         #     'NAME': 'techeria_test',
+#         # }
+#     },
+# }
 
 
 # Password validation
@@ -158,7 +171,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode']
+#del DATABASES['default']['OPTIONS']['sslmode']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
