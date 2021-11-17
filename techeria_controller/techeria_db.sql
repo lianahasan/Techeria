@@ -9,8 +9,8 @@
 
 -- Database: `techeria_db`
 --
-CREATE DATABASE `techeria_db`
-use `techeria_db`
+CREATE DATABASE `techeria_db`;
+use `techeria_db`;
 -- --------------------------------------------------------
 
 -- --------------------------------------------------------
@@ -70,7 +70,7 @@ INSERT INTO `products` (`id`, `image`, `name`, `price`, `description`, `category
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Table structure for table `laptops`
 --
 
 CREATE TABLE `laptops` (
@@ -92,6 +92,24 @@ INSERT INTO `laptops` (`id`, `image`, `name`, `price`, `description`, `category`
 (68329383, 'laptop5.jpg', 'Lenovo Ideapad 3 15.6\" Touch Screen Laptop - Intel Core i3 - 8GB Memory - 256GB SSD - Almond', 469.99, 'Windows 10 Home in S Mode\r\nExperience the most secure Windows ever built with fast boot times, increased responsiveness, and added protection against phishing and malware.\r\n\r\n15.6\" HD multitouch screen\r\nTouch, tap, glide and make the most of Windows 10. Typical 1366 x 768 HD resolution. Supports 720p content. Energy-efficient LED backlight.\r\n\r\n11th Gen Intel® Core™ i3-1115G4 mobile processor\r\nSmart dual-core, four-way processing performance for HD-quality computing.\r\n\r\n8GB system memory for advanced multitasking\r\nSubstantial high-bandwidth RAM to smoothly run your games and photo- and video-editing applications, as well as multiple programs and browser tabs all at once.\r\n\r\n256GB Solid State Drive (NVMe TLC)\r\nSave files fast and store more data. With massive amounts of storage and advanced communication power, NVMe TLC SSDs are great for major gaming applications, multiple servers, daily backups, and more.\r\n\r\nIntel UHD Graphics\r\nOn-processor graphics with shared video memory provide everyday image quality for Internet use, basic photo editing and casual gaming.\r\n\r\nModern aluminum design\r\nCreates a sleek, modern look with clean lines and provides a rigid but lightweight frame.\r\n\r\nWeighs 4.07lbs. and measures 0.78\" thin\r\nThin and light design with DVD/CD drive omitted for improved portability. 2-cell lithium polymer battery.\r\n\r\nWireless/Wired connectivity (WiFi 5 - 802.11 ac)\r\nConnect to a Wireless-AC router for nearly 3x the speed, more capacity and wider coverage than Wireless-N. Backward-compatible with all other Wi-Fi networks and hotspots.', 'laptop'),
 (68329382, 'laptop6.jpg', 'MacBook Pro 14\" Laptop - Apple M1 Pro chip - 16GB Memory - 512GB SSD (Latest Model) - Space Gray', 1897.65, 'The new MacBook Pro delivers game-changing performance for pro users. With the powerful M1 Pro to supercharge pro-level workflows while getting amazing battery life.¹ And with an immersive 14-inch Liquid Retina XDR display and an array of pro ports, you can do more than ever with MacBook Pro.\r\n', 'laptop');
 
+CREATE TABLE `smartphone` (
+  `id` bigint(20) NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `price` double NOT NULL,
+  `description` longtext NOT NULL,
+  `category` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `smartphone`
+--
+
+INSERT INTO `smartphone` (`id`, `image`, `name`, `price`, `description`, `category`) VALUES
+(58329389, 'smartphone1.jpg', 'Samsung - Galaxy S21 Ultra 5G 128GB - Phantom Black (Verizon)', 1299.99, 'Galaxy S21 Ultra 5G for verizon is crafted so you don’t need to choose between video and photo. With a single tap, you can pull super-clear stills straight from high-resolution 8K video. Or if you’re looking to capture stunning photos, the 108MP camera feels like you’ve brought your own professional studio with you. Galaxy S21 Ultra 5G, designed to be epic in every way.', 'smartphone'),
+(0, 'smartphone2.jpg', 'Apple - iPhone 13 5G 128GB - Pink (Verizon)\r\n', 769.99, '\r\niPhone 13. The most advanced dual-camera system ever on iPhone. Lightning-fast A15 Bionic chip. A big leap in battery life. Durable design. Superfast 5G.¹ And a brighter Super Retina XDR display.', 'smartphone');
 
 --
 -- Table structure for table `seller`
@@ -111,32 +129,6 @@ CREATE TABLE `seller` (
   `zip_code` varchar(255) NOT NULL,
   `country` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Table structure for table 'orders`
---
-CREATE TABLE `orders` (
-  `id` BIGINT(20) NOT NULL,
-  `buyer_id` BIGINT(20) NOT NULL,
-  `subtotal` DOUBLE NOT NULL,
-  `order_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `complete` BOOLEAN NOT NULL DEFAULT '0',
-  `transaction_id` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`id`)
-)  ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
---
--- Table structure for table 'orders_items`
---
-CREATE TABLE `order_items` (
-  `id` BIGINT(20) NOT NULL,
-  `quantity` INT NOT NULL,
-  `date_added` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `order_id` INT NOT NULL,
-  `product_id` INT NOT NULL,
-  PRIMARY KEY(`id`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
---
-
 
 --
 -- Indexes for dumped tables
@@ -178,19 +170,8 @@ ALTER TABLE `products`
   MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98765433;
 
 --
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10000;
--- --------------------------------------------------------
-
--- --------------------------------------------------------
-
--- --------------------------------------------------------
-
--- --------------------------------------------------------
---
 -- AUTO_INCREMENT for table `seller`
 --
 ALTER TABLE `seller`
   MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
+
