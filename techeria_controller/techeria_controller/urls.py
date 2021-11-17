@@ -20,6 +20,8 @@ from techeria_app import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
@@ -32,4 +34,6 @@ urlpatterns = [
     path('cart', views.cart, name='cart'),
     path('checkout/', views.checkout, name='checkout'),
     path('search', views.search, name='search'),
+    path('signUpButton', views.signUpButton, name='signUpButton'),
+    path('ChangePassword', views.ChangePassword, name='ChangePassword'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

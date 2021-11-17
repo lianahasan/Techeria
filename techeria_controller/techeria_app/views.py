@@ -212,3 +212,12 @@ def loginpage(request):
 
     else:
         return render(request, 'loginpage.html')
+
+def signUpButton(request):
+    return render(request, 'registration.html')
+
+def reset_password_email(request):
+    return render(request, 'reset_password_email.html')
+
+def ChangePassword(request):
+    return render(request, 'ChangePassword.html')
