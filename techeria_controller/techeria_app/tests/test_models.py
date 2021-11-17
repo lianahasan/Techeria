@@ -17,6 +17,19 @@ class Test_Product(TestCase):
 
         def test_product_is_assigned_slug_on_creation(self):
             self.assertEqual(self.product.slug,'product')
+ class Test_laptop(TestCase):
+
+    def test_fileds(self):
+
+        def setUp(self):
+             self.laptop = Laptops.object.create(
+                name="HP Laptop, 17.3",
+                price="899",
+                description="11th Gen Intel Core i5-1135G7 Quad-Core Processor, 16GB DDR4 Memory",
+                category="laptop")
+
+        def test_laptop_is_assigned_slug_on_creation(self):
+            self.assertEqual(self.laptop.slug,'laptop')
             
             
 class Test_buyer(TestCase):
