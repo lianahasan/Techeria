@@ -66,19 +66,7 @@
                 {% comment %} <li class="nav-item">
                   <a class="nav-link" href=" {% url 'about' %} "> About </a>
                 </li> {% endcomment %}
-                {% comment %} <a class="nav-link" href=" {% static '' %} "> Categories </a> {% endcomment %}
-                  {% comment %} <div class="dropdown">
-
-                   <botton class="dropbtn" href=" {% static '' %} "> Categories  <i class="fa fa-caret-down"></i></button>
-                    <div class="dropdown-content">
-                      <li href="#">Link 1</li>
-                      <li href="#">Link 2</li>
-                      <li href="#">Link 3</li>
-                      <li href="#">Link 1</li>
-                      <li href="#">Link 2</li>
-                      <li href="#">Link 3</li>
-                    </div>
-                  </div> {% endcomment %}
+              
                   <li>
                   <div class="dropdown">
                     <button class="dropbtn">Categories</button>
@@ -108,9 +96,6 @@
                   <a class="nav-link" href=" {% url 'contact' %} ">Contact us</a>
                 </li> {% endcomment %}
               </ul>
-              {% comment %} <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-              </form> {% endcomment %}
               <form class="form-inline my-2 my-lg-0" action="/search">
                 <input name='q' class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
@@ -127,10 +112,6 @@
               <a href="{% url 'cart' %}">
                  <button class="btn"><i class="fa fa-shopping-cart" style="font-size:30px"></i></button>
               </a>
-
-
-
-
 
             </div>
           </div>

@@ -46,24 +46,6 @@
 </head>
 
 <body style="background-color:#B9CAF1;">
-    <!-- Confirming connection to database
-  <h4>Information for One Product (from database):</h4>
-  <table>
-      {% for p in product %}
-      <tr>
-          <td>Name: {{ p.name }}</td>
-      </tr>
-      <tr>
-          <td>Price: {{ p.price }}</td>
-      </tr>
-      <tr>
-          <td>Description: {{ p.description }}</td>
-      </tr>
-      <tr>
-          <td>Category: {{ p.category }}</td>
-      </tr>
-      {% endfor %}
-  </table> -->
     <div class="hero_area">
         <!-- header section strats -->
         <header class="header_section">
@@ -163,14 +145,14 @@
         <hr />
         <div class="card" style="width: 500px;">
             <div class="row no-gutters">
-                <div class="col-sm-5">
-                    <img class="card-img-top" src="/media/images/{{p.image}}" alt="Card image cap">
+                <div class="col-lg-5">
+                    <img class="card-img-top" width="20%" src="/media/images/{{p.image}}" alt="Card image cap">
                 </div>
                 <div class="col-sm-7">
                     <div class="card-body">
                         <h5 class="card-title">{{ p.name }}</h5>
                         <p class="card-text">${{ p.price }}</p>
-                        <a href="#" class="btn btn-primary">Details</a>
+                        <a href="{% url 'p' p.pk %}" class="btn btn-primary">Details</a>
                     </div>
                 </div>
             </div>

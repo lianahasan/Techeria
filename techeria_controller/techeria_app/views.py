@@ -7,11 +7,7 @@ from django.contrib.auth.models import User, auth
 
 # Create your views here.
 def index(request):
-    product = Products.objects.all()
-    context = {
-        'product': product
-    }
-    return render(request, 'index.html', context)
+    return render(request, 'index.html')
 
 def about(request):
     return render(request, 'about.html')
@@ -45,8 +41,16 @@ def search(request):
     q = request.GET['q']
     data = Products.objects.filter(name__icontains=q)
     return render(request, 'search.html', {'data': data})
+
 def product(request):
     return render(request, 'product.html')
+
+def productInfo(request, i):
+    oneProduct = Products.objects.get(id=i)
+    context = {
+        'oneProduct': oneProduct
+    }
+    return render(request, 'productInfo.html', context)
 
 
     if request.method == 'POST':

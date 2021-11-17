@@ -81,6 +81,48 @@ WSGI_APPLICATION = 'techeria_controller.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+try:
+
+    # Check to make sure DATABASES is set in settings.py file.
+    # If not default to {}
+
+    if 'DATABASES' not in locals():
+        DATABASES = {}
+
+    if 'DATABASE_URL' in os.environ:
+        url = urllib.parse.urlparse(os.environ['DATABASE_URL'])
+
+        # Ensure default database exists.
+        DATABASES['default'] = DATABASES.get('default', {})
+
+        # Update with environment configuration.
+        DATABASES['default'].update({
+                'NAME': url.path[1:],
+                'USER': url.username,
+                'PASSWORD': url.password,
+                'HOST': url.hostname,
+                'PORT': url.port,
+        })
+        if url.scheme == 'mysql':
+            DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
+except Exception:
+    print('Unexpected error:', sys.exc_info())
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'techeria_db',
+#         'USER': 'root',
+#         'HOST': 'localhost',
+#         'PORT': 3306,
+#         'PASSWORD': 'orange',
+#         # 'TEST': {
+#         #     'NAME': 'techeria_test',
+#         # }
+#     },
+# }
+
+
 # try:
 
 #     # Check to make sure DATABASES is set in settings.py file.
@@ -108,16 +150,16 @@ WSGI_APPLICATION = 'techeria_controller.wsgi.application'
 # except Exception:
 #     print('Unexpected error:', sys.exc_info())
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'techeria_db',
-        'USER': 'root',
-        'HOST': 'localhost',
-        'PORT': 3306,
-        'PASSWORD': ''
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'techeria_db',
+#        'USER': 'root',
+#        'HOST': 'localhost',
+#        'PORT': 3306,
+#        'PASSWORD': ''
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -167,7 +209,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode']
+#del DATABASES['default']['OPTIONS']['sslmode']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
