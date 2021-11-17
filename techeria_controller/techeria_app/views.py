@@ -52,6 +52,8 @@ def productInfo(request, i):
     }
     return render(request, 'productInfo.html', context)
 
+def registration(request):
+
 
     if request.method == 'POST':
         first_name = request.POST ['First_Name']
@@ -75,7 +77,7 @@ def productInfo(request, i):
 
 
 
-        from django.db.models.fields import NullBooleanField
+from django.db.models.fields import NullBooleanField
 from django.http import response
 from django.shortcuts import redirect, render
 from techeria_app.models import BuyerModel, SellerModel, Products
