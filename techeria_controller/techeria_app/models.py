@@ -55,7 +55,7 @@ class SellerModel(models.Model):
 
 class Laptops(models.Model):
     # id = models.BigIntegerField()
-    image = models.CharField(max_length=100)
+    image = models.ImageField(null=False, blank=False, upload_to='images/')
     name = models.CharField(max_length=255)
     price = models.FloatField()
     description = models.TextField()
@@ -67,7 +67,7 @@ class Laptops(models.Model):
 
 class Smartphone(models.Model):
     # id = models.BigIntegerField()
-    image = models.CharField(max_length=100)
+    image = models.ImageField(null=False, blank=False, upload_to='images/')
     name = models.CharField(max_length=255)
     price = models.FloatField()
     description = models.TextField()

@@ -15,9 +15,13 @@ class TestUrls(SimpleTestCase):
         url = reverse('contact')
         self.assertEquals(resolve(url).func, contact)
 
-    def test_watch_url_is_resolved(self):
-        url = reverse('watch')
-        self.assertEquals(resolve(url).func, watch)
+    def test_laptop_url_is_resolved(self):
+        url = reverse('laptop')
+        self.assertEquals(resolve(url).func, laptop)
+
+    def test_smartphone_url_is_resolved(self):
+        url = reverse('smartphone')
+        self.assertEquals(resolve(url).func, smartphone)
 
     def test_loginpage_url_is_resolved(self):
         url = reverse('loginpage')
@@ -30,7 +34,7 @@ class TestUrls(SimpleTestCase):
     def test_checkout_url_is_resolved(self):
         url = reverse('checkout')
         self.assertEquals(resolve(url).func, checkout)
-    
+
     def test_product_url_is_resolved(self):
         url = reverse('product')
         self.assertEquals(resolve(url).func, product)

@@ -18,31 +18,33 @@ class Test_Product(TestCase):
         def test_product_is_assigned_slug_on_creation(self):
             self.assertEqual(self.product.slug,'product')
 
-class Laptops(models.Model):
-    # id = models.BigIntegerField()
-    image = models.CharField(max_length=100)
-    name = models.CharField(max_length=255)
-    price = models.FloatField()
-    description = models.TextField()
-    category = models.CharField(max_length=255)
+class Test_laptop(TestCase):
 
-    class Meta:
+    def test_fileds(self):
 
-        db_table = 'laptops'
+        def setUp(self):
+             self.laptop = Laptops.object.create(
+                name="HP Laptop, 17.3",
+                price="899",
+                description="HD Non-Touch Display",
+                category="laptop")
 
-class Smartphone(models.Model):
-    # id = models.BigIntegerField()
-    image = models.CharField(max_length=100)
-    name = models.CharField(max_length=255)
-    price = models.FloatField()
-    description = models.TextField()
-    category = models.CharField(max_length=255)
+        def test_product_is_assigned_slug_on_creation(self):
+            self.assertEqual(self.product.slug,'product')
 
-    class Meta:
-        # managed = False
-        db_table = 'smartphone'
-# #
+class Test_smartphone(TestCase):
 
+    def test_fileds(self):
+
+        def setUp(self):
+             self.smartphone = Smartphone.object.create(
+                name="iPhone11pro",
+                price="899",
+                description="128gb Silver",
+                category="smartphone")
+
+        def test_product_is_assigned_slug_on_creation(self):
+            self.assertEqual(self.product.slug,'product')
 
 class Test_buyer(TestCase):
     def test_fileds(self):
