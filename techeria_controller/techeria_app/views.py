@@ -1,13 +1,19 @@
 from django.db.models.fields import NullBooleanField
 from django.http import response
 from django.shortcuts import redirect, render
-from techeria_app.models import BuyerModel, SellerModel, Products, Laptops
+from techeria_app.models import BuyerModel, SellerModel, Products, Laptops,Smartphone
 from django.contrib.auth.models import User, auth
+
+from django.contrib import messages
 
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    product = Products.objects.all()
+    context = {
+        'product': product
+    }
+    return render(request, 'index.html', context)
 
 def about(request):
     return render(request, 'about.html')
@@ -21,6 +27,13 @@ def laptop(request):
         'laptop': laptop
     }
     return render(request, 'laptop.html', context)
+
+def smartphone(request):
+    smartphone = Smartphone.objects.all()
+    context = {
+        'smartphone': smartphone
+    }
+    return render(request, 'smartphone.html', context)
 
 # def laptops(request):
 #     return render(request, 'laptops.html')
@@ -41,7 +54,6 @@ def search(request):
     q = request.GET['q']
     data = Products.objects.filter(name__icontains=q)
     return render(request, 'search.html', {'data': data})
-
 def product(request):
     return render(request, 'product.html')
 
@@ -77,12 +89,7 @@ def registration(request):
 
 
 
-from django.db.models.fields import NullBooleanField
-from django.http import response
-from django.shortcuts import redirect, render
-from techeria_app.models import BuyerModel, SellerModel, Products
-from django.contrib.auth.models import User, auth
-from django.contrib import messages
+
 
 
 # Create your views here.
@@ -200,21 +207,3 @@ def registration(request):
         return render(request, 'registration.html')
 
 
-
-        
-def loginpage(request):
-    if request.method == 'POST':
-        username = request.POST ['username']
-        password = request.POST ['password']
-      
-        user=auth.authenticate(username=username,password=password)
-        if user is not None:
-            auth.login(request, user)
-            return redirect("/")
-        else:
-            messages.info(request, 'Check your credentials')
-            return redirect("loginpage")
-
-
-    else:
-        return render(request, 'loginpage.html')

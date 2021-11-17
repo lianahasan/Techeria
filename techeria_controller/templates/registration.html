@@ -38,13 +38,18 @@ body {
 <form action="registration" method="POST">
 
   {% csrf_token %}
-
+  <div style="text-align: center;">
+    {% for message in messages %}
+    <h4 style="color: red;">{{message}}</h4>
+    {% endfor %}
+  </div>
+  
 <table align="center" cellpadding = "10">
 
 <!----- First Name ---------------------------------------------------------->
 <tr>
 <td>FIRST NAME</td>
-<td><input type="text" name="First_Name" maxlength="30"/>
+<td><input type="text" name="First_Name" maxlength="30" required/>
 (max 30 characters a-z and A-Z)
 </td>
 </tr>
@@ -52,13 +57,13 @@ body {
 <!----- Last Name ---------------------------------------------------------->
 <tr>
 <td>LAST NAME</td>
-<td><input type="text" name="Last_Name" maxlength="30"/>
+<td><input type="text" name="Last_Name" maxlength="30" required/>
 (max 30 characters a-z and A-Z)
 </td>
 </tr>
 <tr>
   <td>USER NAME</td>
-  <td><input type="text" name="Username" maxlength="30"/>
+  <td><input type="text" name="Username" maxlength="30" required/>
   (max 30 characters a-z and A-Z)
   </td>
   </tr>
@@ -66,21 +71,21 @@ body {
 <!----- Date Of Birth -------------------------------------------------------->
 <tr>
   <td>Date of Birth</td>
-  <td><input type="Date" name="Date_of_Birth"/>
+  <td><input type="Date" name="Date_of_Birth" required/>
   </td>
   </tr>
 
 <!----- Email Id ---------------------------------------------------------->
 <tr>
 <td>EMAIL ID</td>
-<td><input type="Email" name="Email_Id"/></td>
+<td><input type="Email" name="Email_Id" required/></td>
 </tr>
 
 <!----- Mobile Number ---------------------------------------------------------->
 <tr>
 <td>MOBILE NUMBER</td>
 <td>
-<input type="Number" name="Mobile_Number" maxlength="10" />
+<input type="Number" name="Mobile_Number" />
 (10 digit number)
 </td>
 </tr>
@@ -136,11 +141,11 @@ body {
 
 <tr>
   <td>Password</td>
-  <td><input type="text" name="Password"/></td>
+  <td><input type="text" name="Password"  required/></td>
   </tr>
   <tr>
     <td>Confirm Password</td>
-    <td><input type="text" name="Confirm_Password"/></td>
+    <td><input type="text" name="Confirm_Password"  required/></td>
     </tr>
       
 

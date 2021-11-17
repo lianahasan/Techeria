@@ -40,7 +40,7 @@ nav{
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Laptops</title>
+  <title>Smartphones</title>
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
@@ -64,7 +64,7 @@ nav{
         <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
           <a class="navbar-brand" href=" {% static 'index.html' %} ">
             <span>
-              Laptops
+              Smartphones
             </span>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,7 +75,7 @@ nav{
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href=" {% url 'index' %}  ">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href=" {% url 'index' %}  ">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href=" {% static 'about.html' %} "> About </a>
@@ -98,28 +98,29 @@ nav{
   </div>
   <div class="bg">
 
+    <h3 class="my-4 border-bottom pb-1"><span class="text-muted">Search Results for </span>{{request.GET.q}}</h3>
+      <div class="container bcontent">
+          {% for q in smartphone%}
+          <hr />
+          <div class="card" style="width: 500px;">
+              <div class="row no-gutters">
+                  <div class="col-sm-5">
+                      <img class="card-img-top" src="/media/smartphones/{{q.image}}" alt="Card image cap">
+                  </div>
+                  <div class="col-sm-7">
+                      <div class="card-body">
+                          <h5 class="card-title">{{ q.name }}</h5>
+                          <p class="card-text">${{ q.price }}</p>
+                          <a href="#" class="btn btn-primary">Details</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          {% endfor %}
+      </div>
 
 
-  <h3 class="my-4 border-bottom pb-1"><span class="text-muted">Search Results for </span>{{request.GET.q}}</h3>
-    <div class="container bcontent">
-        {% for q in laptop%}
-        <hr />
-        <div class="card" style="width: 500px;">
-            <div class="row no-gutters">
-                <div class="col-sm-5">
-                    <img class="card-img-top" src="/media/laptops/{{q.image}}" alt="Card image cap">
-                </div>
-                <div class="col-sm-7">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ q.name }}</h5>
-                        <p class="card-text">${{ q.price }}</p>
-                        <a href="#" class="btn btn-primary">Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
+
 
 
 <!-- info section -->
@@ -202,4 +203,3 @@ nav{
   </body>
 
   </html>
-
