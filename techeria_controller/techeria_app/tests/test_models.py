@@ -17,8 +17,33 @@ class Test_Product(TestCase):
 
         def test_product_is_assigned_slug_on_creation(self):
             self.assertEqual(self.product.slug,'product')
-            
-            
+
+class Laptops(models.Model):
+    # id = models.BigIntegerField()
+    image = models.CharField(max_length=100)
+    name = models.CharField(max_length=255)
+    price = models.FloatField()
+    description = models.TextField()
+    category = models.CharField(max_length=255)
+
+    class Meta:
+
+        db_table = 'laptops'
+
+class Smartphone(models.Model):
+    # id = models.BigIntegerField()
+    image = models.CharField(max_length=100)
+    name = models.CharField(max_length=255)
+    price = models.FloatField()
+    description = models.TextField()
+    category = models.CharField(max_length=255)
+
+    class Meta:
+        # managed = False
+        db_table = 'smartphone'
+# #
+
+
 class Test_buyer(TestCase):
     def test_fileds(self):
 

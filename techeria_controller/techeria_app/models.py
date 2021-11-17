@@ -49,6 +49,10 @@ class SellerModel(models.Model):
     country = models.CharField(max_length=20)
 
 
+    class Meta:
+        db_table = "seller"
+
+
 class Laptops(models.Model):
     # id = models.BigIntegerField()
     image = models.CharField(max_length=100)
@@ -58,37 +62,38 @@ class Laptops(models.Model):
     category = models.CharField(max_length=255)
 
     class Meta:
-        managed = False
+
         db_table = 'laptops'
 
+class Smartphone(models.Model):
+    # id = models.BigIntegerField()
+    image = models.CharField(max_length=100)
+    name = models.CharField(max_length=255)
+    price = models.FloatField()
+    description = models.TextField()
+    category = models.CharField(max_length=255)
+
     class Meta:
-        db_table = "seller"
+        # managed = False
+        db_table = 'smartphone'
+# #
+# class Smartphone(models.Model):
+#     name = models.CharField(max_length=50, unique=True)
+#     # slug = models.SlugField(max_length=100, unique=True)
+#     description = models.TextField(max_length=255, blank=True)
+#     price = models.FloatField()
+#     image = models.CharField(max_length=100)
+#
+#     class Meta:
+#         verbose_name = 'smartphone'
+#         verbose_name_plural = 'smartphones'
+#         db_table = 'smartphone'
+
+
+
+
+
+
 
     def __str__(self):
         return self.techeria_app
-
-
-class Order(models.Model):
-    buyer = models.ForeignKey(BuyerModel, on_delete=models.SET_NULL, null=True, blank=True)
-    order_date = models.DateTimeField(auto_now_add=True)
-    complete = models.BooleanField(default=False)
-    transaction_id = models.CharField(max_length=100, null=True)
-
-    def __str__(self):
-        return str(self.id)
-
-    class Meta:
-        db_table = "order"
-
-class OrderItem(models.Model):
-    product = models.ForeignKey(Products, on_delete=models.SET_NULL, null=True)
-    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
-    quantity = models.IntegerField(default=0, null=True, blank=True)
-    date_added = models.DateTimeField(auto_now_add=True)
-
-    @property
-    def get_total(self):
-        total = self.product.price * self.quantity
-        return total
-    class Meta:
-        db_table = "order_items"

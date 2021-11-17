@@ -1,7 +1,7 @@
 from django.db.models.fields import NullBooleanField
 from django.http import response
 from django.shortcuts import redirect, render
-from techeria_app.models import BuyerModel, SellerModel, Products, Laptops
+from techeria_app.models import BuyerModel, SellerModel, Products, Laptops,Smartphone
 from django.contrib.auth.models import User, auth
 
 
@@ -25,6 +25,13 @@ def laptop(request):
         'laptop': laptop
     }
     return render(request, 'laptop.html', context)
+
+def smartphone(request):
+    smartphone = Smartphone.objects.all()
+    context = {
+        'smartphone': smartphone
+    }
+    return render(request, 'smartphone.html', context)
 
 # def laptops(request):
 #     return render(request, 'laptops.html')
