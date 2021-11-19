@@ -26,11 +26,12 @@ class Test_laptop(TestCase):
              self.laptop = Laptops.object.create(
                 name="HP Laptop, 17.3",
                 price="899",
-                description="HD Non-Touch Display",
+                description="11th Gen Intel Core i5-1135G7 Quad-Core Processor, 16GB DDR4 Memory",
                 category="laptop")
 
-        def test_product_is_assigned_slug_on_creation(self):
-            self.assertEqual(self.product.slug,'product')
+        def test_laptop_is_assigned_slug_on_creation(self):
+            self.assertEqual(self.laptop.slug,'laptop')
+
 
 class Test_smartphone(TestCase):
 
@@ -38,13 +39,15 @@ class Test_smartphone(TestCase):
 
         def setUp(self):
              self.smartphone = Smartphone.object.create(
-                name="iPhone11pro",
-                price="899",
-                description="128gb Silver",
+                name="Samsung - Galaxy S21",
+                price="1299.99",
+                description="Galaxy S21 Ultra 5G for verizon is crafted",
                 category="smartphone")
 
-        def test_product_is_assigned_slug_on_creation(self):
-            self.assertEqual(self.product.slug,'product')
+        def test_smartphone_is_assigned_slug_on_creation(self):
+            self.assertEqual(self.smartphone.slug,'smartphone')
+
+
 
 class Test_buyer(TestCase):
     def test_fileds(self):

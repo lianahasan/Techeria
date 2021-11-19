@@ -15,6 +15,10 @@ class TestUrls(SimpleTestCase):
         url = reverse('contact')
         self.assertEquals(resolve(url).func, contact)
 
+    def test_product_url_is_resolved(self):
+        url = reverse('product')
+        self.assertEquals(resolve(url).func, product)
+
     def test_laptop_url_is_resolved(self):
         url = reverse('laptop')
         self.assertEquals(resolve(url).func, laptop)
@@ -42,3 +46,7 @@ class TestUrls(SimpleTestCase):
     def test_registration_url_is_resolved(self):
         url = reverse('registration')
         self.assertEquals(resolve(url).func, registration)
+    # 
+    # def test_product_info_is_resolved(self):
+    #     url = reverse('productInfo')
+    #     self.assertEquals(resolve(url).func, productInfo)
