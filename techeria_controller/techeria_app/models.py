@@ -76,18 +76,7 @@ class Smartphone(models.Model):
     class Meta:
         # managed = False
         db_table = 'smartphone'
-# #
-# class Smartphone(models.Model):
-#     name = models.CharField(max_length=50, unique=True)
-#     # slug = models.SlugField(max_length=100, unique=True)
-#     description = models.TextField(max_length=255, blank=True)
-#     price = models.FloatField()
-#     image = models.CharField(max_length=100)
-#
-#     class Meta:
-#         verbose_name = 'smartphone'
-#         verbose_name_plural = 'smartphones'
-#         db_table = 'smartphone'
+
 class Order(models.Model):
     buyer = models.ForeignKey(BuyerModel, on_delete=models.SET_NULL, null=True, blank=True)
     order_date = models.DateTimeField(auto_now_add=True)
