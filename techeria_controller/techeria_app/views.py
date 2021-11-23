@@ -64,32 +64,6 @@ def productInfo(request, i):
     }
     return render(request, 'productInfo.html', context)
 
-def registration(request):
-
-
-    if request.method == 'POST':
-        first_name = request.POST ['First_Name']
-        last_name = request.POST ['Last_Name']
-        date_of_birth = request.POST ['Date_of_Birth']
-        email = request.POST ['Email_Id']
-        mobile_number = request.POST ['Mobile_Number']
-        address = request.POST['Address']
-        user_name = request.POST['Username']
-        city = request.POST ['City']
-        state = request.POST ['State']
-        zip_code = request.POST ['Zip_Code']
-        country = request.POST ['Country']
-        password = request.POST ['Password']
-        confirm_password = request.POST ['Confirm_Password']
-        category = request.POST.get ('kk')
-
-        buyer = BuyerModel()
-        seller = SellerModel()
-
-
-
-
-
 
 
 # Create your views here.
@@ -205,5 +179,33 @@ def registration(request):
     else:
 
         return render(request, 'registration.html')
+
+
+
+def loginpage(request):
+    if request.method == 'POST':
+        username = request.POST ['username']
+        password = request.POST ['password']
+      
+        user=auth.authenticate(username=username,password=password)
+        if user is not None:
+            auth.login(request, user)
+            return redirect("/")
+        else:
+            messages.info(request, 'Check your credentials')
+            return redirect("loginpage")
+
+
+    else:
+        return render(request, 'loginpage.html')
+
+def signUpButton(request):
+    return render(request, 'registration.html')
+
+def reset_password_email(request):
+    return render(request, 'reset_password_email.html')
+
+def ChangePassword(request):
+    return render(request, 'ChangePassword.html')
 
 
