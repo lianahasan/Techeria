@@ -49,29 +49,9 @@ def product(request):
     return render(request, 'product.html')
 
 
-    if request.method == 'POST':
-        first_name = request.POST ['First_Name']
-        last_name = request.POST ['Last_Name']
-        date_of_birth = request.POST ['Date_of_Birth']
-        email = request.POST ['Email_Id']
-        mobile_number = request.POST ['Mobile_Number']
-        address = request.POST['Address']
-        user_name = request.POST['Username']
-        city = request.POST ['City']
-        state = request.POST ['State']
-        zip_code = request.POST ['Zip_Code']
-        country = request.POST ['Country']
-        password = request.POST ['Password']
-        confirm_password = request.POST ['Confirm_Password']
-        category = request.POST.get ('kk')
-
-        buyer = BuyerModel()
-        seller = SellerModel()
 
 
-
-
-        from django.db.models.fields import NullBooleanField
+from django.db.models.fields import NullBooleanField
 from django.http import response
 from django.shortcuts import redirect, render
 from techeria_app.models import BuyerModel, SellerModel, Products
