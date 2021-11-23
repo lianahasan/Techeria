@@ -201,3 +201,7 @@ def reset_password_email(request):
 
 def ChangePassword(request):
     return render(request, 'ChangePassword.html')
+
+def logout(request):
+    auth.logout(request)
+    return render(request, 'index.html')

@@ -36,4 +36,5 @@ urlpatterns = [
     path('search', views.search, name='search'),
     path('signUpButton', views.signUpButton, name='signUpButton'),
     path('ChangePassword', views.ChangePassword, name='ChangePassword'),
+    path('logout', views.logout, name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
