@@ -223,6 +223,5 @@ if len(DATABASES['default']) == 0:
            'PORT': 3306,
            'PASSWORD': ''
     }
-} else {
+else:
     del DATABASES['default']['OPTIONS']['sslmode']
-}
