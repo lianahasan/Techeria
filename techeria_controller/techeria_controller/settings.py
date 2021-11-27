@@ -212,5 +212,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # del DATABASES['default']['OPTIONS']['sslmode']
 django_heroku.settings(locals())
-if len(DATABASES['default']) != 0:
+if len(DATABASES['default']) == 0:
     del DATABASES['default']['OPTIONS']['sslmode'] 
