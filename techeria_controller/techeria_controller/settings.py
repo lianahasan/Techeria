@@ -211,4 +211,18 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode']
+# del DATABASES['default']['OPTIONS']['sslmode']
+django_heroku.settings(locals())
+if len(DATABASES['default']) == 0:
+    DATABASES = {
+        'default': {
+           'ENGINE': 'django.db.backends.mysql',
+           'NAME': 'techeria_db',
+           'USER': 'root',
+           'HOST': 'localhost',
+           'PORT': 3306,
+           'PASSWORD': ''
+    }
+} else {
+    del DATABASES['default']['OPTIONS']['sslmode']
+}
