@@ -13,6 +13,7 @@ import sys
 import urllib.parse
 import django_heroku
 #import dj_database_url
+import psycopg2.extensions
 
 # Register database schemes in URLs.
 urllib.parse.uses_netloc.append('mysql')
@@ -93,6 +94,9 @@ try:
                 'HOST': 'localhost',
                 'PORT': 3306,
                 'PASSWORD': '',
+                'OPTIONS': {
+                    'isolation_level': psycopg2.extensions.ISOLATION_LEVEL_SERIALIZABLE,
+                }
             },
         }
 
