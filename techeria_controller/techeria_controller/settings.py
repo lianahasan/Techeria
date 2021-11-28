@@ -97,7 +97,7 @@ try:
                 'OPTIONS': {
                     'isolation_level': psycopg2.extensions.ISOLATION_LEVEL_SERIALIZABLE,
                 }
-            },
+            }
         }
 
     if 'DATABASE_URL' in os.environ:
