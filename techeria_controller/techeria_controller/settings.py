@@ -85,20 +85,7 @@ try:
     # If not default to {}
 
     if 'DATABASES' not in locals():
-#         DATABASES = {}
-        DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.mysql',
-                'NAME': 'techeria_db',
-                'USER': 'root',
-                'HOST': 'localhost',
-                'PORT': 3306,
-                'PASSWORD': '',
-                'OPTIONS': {
-                    'isolation_level': psycopg2.extensions.ISOLATION_LEVEL_SERIALIZABLE,
-                }
-            }
-        }
+        DATABASES = {}
 
     if 'DATABASE_URL' in os.environ:
         url = urllib.parse.urlparse(os.environ['DATABASE_URL'])
@@ -226,5 +213,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # del DATABASES['default']['OPTIONS']['sslmode']
 django_heroku.settings(locals())
-if len(DATABASES['default']) != 0:
-    del DATABASES['default']['OPTIONS']['sslmode'] 
+del DATABASES['default']['OPTIONS']['sslmode'] 
