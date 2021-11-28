@@ -28,6 +28,7 @@ jobs:
 #     - name: Run Tests
 #       run: |
 #         python ./techeria_controller/manage.py test
+#
   deploy:
       name: Deploy to Heroku
       # The type of runner that the job will run on
@@ -44,3 +45,4 @@ jobs:
         - name: Deployed successfully
           run: |
             echo Deployed!!
+            
