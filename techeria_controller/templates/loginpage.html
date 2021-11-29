@@ -1,23 +1,46 @@
 {% load static %}
 <!DOCTYPE html>
+<style>
+body {
+  background-color:#B9CAF1 !important;
+
+}
+
+body{
+   margin:0px;
+   margin-top:60px;
+   padding: 0px;
+}
+*,*::before,*::after{
+   box-sizing: border-box;
+}
+nav{
+   position: fixed;
+   top: 0;
+   width: 100%;
+   background-color: #B9CAF1;
+   overflow: auto;
+   height: auto;
+   text-align:center;
+}
+
+
+
+</style>
+
+
+
 <html>
 <head>
 	<title>Login Page</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'css_login/style.css' %}">
+	<h1>Login As a..</h1>
+
 </head>
 <body>
 
-	<form action="loginpage" method="POST">
-		{% csrf_token %}
-		<div style="text-align: center;">
-		  {% for message in messages %}
-		  <h4 style="color: red;">{{message}}</h4>
-		  {% endfor %}
-		</div>
 
-<h1 style="text-align: center;">Login As a..</h1>
 
- <div style="text-align: center;">
+
 	<div class="radio-container">
 		<input type="radio" id="Buyer" name="catagory" />
 		<label for="Buyer">Buyer</label>
@@ -28,26 +51,25 @@
 		<input type="radio" id="Admin" name="catagory" />
 		<label for="Admin">Admin</label>
 	</div>
-</div>
 
 
 	<div class="loginbox">
 		<p>Login with your credentials</p>
 		<form action="#" method = "post">
 			<p>User Name</p>
-			<input type="text" name="username" placeholder="User Name">
+			<input type="text" name="user" placeholder="User Name">
 			<p>Password</p>
 			<input type="text" name="password" placeholder="Password">
 			<button type="submit">Login</button>
-			<a href="#">Forget  Username/Password</a>	
+			<a href="#">Forget  Username/Password</a>
 			<p>I am new here <a href="#"> SignUp</a></p>
 		</form>
-		
+
 	</div>
 
-	
 
-</form>
+
+
 
 </body>
 </html>

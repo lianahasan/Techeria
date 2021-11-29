@@ -34,10 +34,7 @@ def smartphone(request):
         'smartphone': smartphone
     }
     return render(request, 'smartphone.html', context)
-
-# def laptops(request):
-#     return render(request, 'laptops.html')
-
+    
 def loginpage(request):
     return render(request, 'loginpage.html')
 
@@ -127,7 +124,7 @@ def search(request):
     return render(request, 'search.html', {'data': data})
 def product(request):
     return render(request, 'product.html')
-    
+
 def registration(request):
     if request.method == 'POST':
         first_name = request.POST ['First_Name']
@@ -160,31 +157,31 @@ def registration(request):
 
             else:
 
-      
-                if category == "Buyer":    
+
+                if category == "Buyer":
                     buyer.username = username
                     buyer.first_name=first_name
                     buyer.last_name=last_name
                     buyer.username=username
-                    buyer.email=email; 
+                    buyer.email=email;
                     buyer.date_of_birth=date_of_birth
                     buyer.mobile_number=mobile_number
                     buyer.address=address
                     buyer.city=city
                     buyer.state=state
                     buyer.zip_code=zip_code
-                    buyer.country=country 
-                    user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name)  
+                    buyer.country=country
+                    user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
                     buyer.save()
                     user.save()
                     return redirect("/")
-                
-                elif category == "Seller":    
+
+                elif category == "Seller":
                     seller.user_name = username
                     seller.first_name=first_name
                     seller.last_name=last_name
                     seller.username=username
-                    seller.email=email; 
+                    seller.email=email;
                     seller.date_of_birth=date_of_birth
                     seller.mobile_number=mobile_number
                     seller.address=address
@@ -192,7 +189,7 @@ def registration(request):
                     seller.state=state
                     seller.zip_code=zip_code
                     seller.country=country
-                    user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name)  
+                    user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
                     seller.save()
                     user.save()
                     return redirect("/")
@@ -201,9 +198,7 @@ def registration(request):
         else:
             messages.info(request, "Password does not match")
             return redirect("registration")
-            
+
     else:
 
         return render(request, 'registration.html')
-
-
