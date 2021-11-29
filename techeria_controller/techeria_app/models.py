@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models.fields import EmailField
+from authentication.models import BuyerModel, SellerModel
 
 # Create your models here.
 
