@@ -1,5 +1,7 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models.fields import EmailField
+from authentication.models import BuyerModel, SellerModel
 
 # Create your models here.
 
@@ -17,59 +19,32 @@ class Products(models.Model):
         db_table = 'products'
 
 
-class BuyerModel(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    username = models.CharField(max_length=255)
-    date_of_birth = models.DateField()
-    email = models.EmailField()
-    mobile_number = models.IntegerField()
-    address = models.CharField(max_length=255)
-    city = models.CharField(max_length=255)
-    state = models.CharField(max_length=255)
-    zip_code = models.CharField(max_length=255)
-    country = models.CharField(max_length=20)
-   
 
-    class Meta:
-        db_table = "buyer"
-
-
-class SellerModel(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    username = models.CharField(max_length=255)
-    date_of_birth = models.DateField()
-    email = models.EmailField()
-    mobile_number = models.IntegerField()
-    address = models.CharField(max_length=255)
-    city = models.CharField(max_length=255)
-    state = models.CharField(max_length=255)
-    zip_code = models.CharField(max_length=255)
-    country = models.CharField(max_length=20)
-    
-
-    class Meta:
-        db_table = "seller"
 
 
 class Laptops(models.Model):
     # id = models.BigIntegerField()
-    image = models.CharField(max_length=100)
+    image = models.ImageField(null=False, blank=False, upload_to='images/')
     name = models.CharField(max_length=255)
     price = models.FloatField()
     description = models.TextField()
     category = models.CharField(max_length=255)
 
     class Meta:
-        managed = False
+
         db_table = 'laptops'
 
-   
+class Smartphone(models.Model):
+    # id = models.BigIntegerField()
+    image = models.ImageField(null=False, blank=False, upload_to='images/')
+    name = models.CharField(max_length=255)
+    price = models.FloatField()
+    description = models.TextField()
+    category = models.CharField(max_length=255)
 
-    def __str__(self):
-        return self.techeria_app
-
+    class Meta:
+        # managed = False
+        db_table = 'smartphone'
 
 class Order(models.Model):
     buyer = models.ForeignKey(BuyerModel, on_delete=models.SET_NULL, null=True, blank=True)
@@ -95,3 +70,11 @@ class OrderItem(models.Model):
         return total
     class Meta:
         db_table = "order_items"
+
+
+
+
+
+
+def __str__(self):
+    return self.techeria_app

@@ -7,9 +7,17 @@
 </head>
 <body>
 
-<h1>Login As a..</h1>
+	<form action="loginpage" method="POST">
+		{% csrf_token %}
+		<div style="text-align: center;">
+		  {% for message in messages %}
+		  <h4 style="color: red;">{{message}}</h4>
+		  {% endfor %}
+		</div>
 
+<h1 style="text-align: center;">Login As a..</h1>
 
+ <div style="text-align: center;">
 	<div class="radio-container">
 		<input type="radio" id="Buyer" name="catagory" />
 		<label for="Buyer">Buyer</label>
@@ -20,25 +28,26 @@
 		<input type="radio" id="Admin" name="catagory" />
 		<label for="Admin">Admin</label>
 	</div>
+</div>
 
 
 	<div class="loginbox">
 		<p>Login with your credentials</p>
 		<form action="#" method = "post">
 			<p>User Name</p>
-			<input type="text" name="user" placeholder="User Name">
+			<input type="text" name="username" placeholder="User Name">
 			<p>Password</p>
 			<input type="text" name="password" placeholder="Password">
 			<button type="submit">Login</button>
 			<a href="#">Forget  Username/Password</a>	
-			<p>I am new here <a href="#"> SignUp</a></p>
+			<p>I am new here <a href="registration"> SignUp</a></p>
 		</form>
 		
 	</div>
 
 	
 
-
+</form>
 
 </body>
 </html>
