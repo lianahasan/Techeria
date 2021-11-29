@@ -15,6 +15,7 @@ import sys
 import urllib.parse
 import django_heroku
 #import dj_database_url
+import psycopg2.extensions
 
 # Register database schemes in URLs.
 urllib.parse.uses_netloc.append('mysql')
@@ -207,10 +208,11 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# del DATABASES['default']['OPTIONS']['sslmode']
+django_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode'] 

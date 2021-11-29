@@ -34,10 +34,7 @@ def smartphone(request):
         'smartphone': smartphone
     }
     return render(request, 'smartphone.html', context)
-
-# def laptops(request):
-#     return render(request, 'laptops.html')
-
+    
 def loginpage(request):
     return render(request, 'loginpage.html')
 
@@ -101,11 +98,4 @@ def search(request):
     return render(request, 'search.html', {'data': data})
 def product(request):
     return render(request, 'product.html')
-
-
-
-
-    
-
-
 

@@ -17,7 +17,8 @@ class Test_Product(TestCase):
 
         def test_product_is_assigned_slug_on_creation(self):
             self.assertEqual(self.product.slug,'product')
- class Test_laptop(TestCase):
+
+class Test_laptop(TestCase):
 
     def test_fileds(self):
 
@@ -30,8 +31,24 @@ class Test_Product(TestCase):
 
         def test_laptop_is_assigned_slug_on_creation(self):
             self.assertEqual(self.laptop.slug,'laptop')
-            
-            
+
+
+class Test_smartphone(TestCase):
+
+    def test_fileds(self):
+
+        def setUp(self):
+             self.smartphone = Smartphone.object.create(
+                name="Samsung - Galaxy S21",
+                price="1299.99",
+                description="Galaxy S21 Ultra 5G for verizon is crafted",
+                category="smartphone")
+
+        def test_smartphone_is_assigned_slug_on_creation(self):
+            self.assertEqual(self.smartphone.slug,'smartphone')
+
+
+
 class Test_buyer(TestCase):
     def test_fileds(self):
 
