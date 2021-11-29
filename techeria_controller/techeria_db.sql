@@ -152,7 +152,90 @@ CREATE TABLE `seller` (
 --
 
 --
+-- Table structure for table `order`
 --
+CREATE TABLE `order` (
+  `id` INT NOT NULL,
+  `start_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ordered_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `odered` boolean NOT NULL DEFAULT '0',
+  `buyer_id` INT NOT NULL,
+  `payment_id` INT NOT NULL,
+  `checkout_address_id` INT NOT NULL,
+  PRIMARY KEY(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Table structure for table `order_item`
+--
+
+CREATE TABLE `order_item` (
+  `id` INT NOT NULL,
+  `item_id` INT NOT NULL,
+  `quantity` INT NOT NULL,
+  `odered` BOOLEAN NOT NULL DEFAULT '0',
+  `buyer_id` INT NOT NULL,
+  PRIMARY KEY(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `id` INT NOT NULL,
+  `order_id` int NOT NULL,
+  `orderitem_id` int NOT NULL,
+  PRIMARY KEY(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `checkoutaddress` (
+  `id` INT NOT NULL,
+  `street_address` VARCHAR(100) NOT NULL,
+  `apartment_address` VARCHAR(100) NOT NULL,
+  `country` VARCHAR(20) NOT NULL,
+  `zip` VARCHAR(255) NOT NULL,
+  `buyer_id` VARCHAR(255) NOT NULL,
+  PRIMARY KEY(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `payment` (
+  `id` INT NOT NULL,
+  `stripe_id` VARCHAR(100) NOT NULL,
+  `amount` REAL NOT NULL,
+  `timestamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `buyer_id` VARCHAR(255) NOT NULL,
+  PRIMARY KEY(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
 -- Indexes for table `buyer`
 --
 ALTER TABLE `buyer`
