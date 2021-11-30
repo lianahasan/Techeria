@@ -132,6 +132,7 @@ def registration(request):
         date_of_birth = request.POST ['Date_of_Birth']
         email = request.POST ['Email_Id']
         mobile_number = request.POST ['Mobile_Number']
+        mobile_number = mobile_number
         address = request.POST['Address']
         username = request.POST['Username']
         city = request.POST ['City']
@@ -163,7 +164,7 @@ def registration(request):
                     buyer.first_name=first_name
                     buyer.last_name=last_name
                     buyer.username=username
-                    buyer.email=email;
+                    buyer.email=email
                     buyer.date_of_birth=date_of_birth
                     buyer.mobile_number=mobile_number
                     buyer.address=address
@@ -171,17 +172,17 @@ def registration(request):
                     buyer.state=state
                     buyer.zip_code=zip_code
                     buyer.country=country
-                    user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
+                    user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name, is_staff = "True")
                     buyer.save()
                     user.save()
-                    return redirect("/")
+                    return redirect("loginpage")
 
                 elif category == "Seller":
                     seller.user_name = username
                     seller.first_name=first_name
                     seller.last_name=last_name
                     seller.username=username
-                    seller.email=email;
+                    seller.email=email
                     seller.date_of_birth=date_of_birth
                     seller.mobile_number=mobile_number
                     seller.address=address
@@ -192,9 +193,10 @@ def registration(request):
                     user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
                     seller.save()
                     user.save()
-                    return redirect("/")
+                    return redirect("loginpage")
                 else:
-                    return render(request, '.html')
+                    messages.info(request, "Something goes wrong")
+                    return redirect("registration")
         else:
             messages.info(request, "Password does not match")
             return redirect("registration")
@@ -212,24 +214,27 @@ def loginpage(request):
         username = request.POST ['username']
         password = request.POST ['password']
         category = request.POST.get ('kk')
+
+
+
       
         user=auth.authenticate(username=username,password=password)
-        if category == "Buyer" and user.is_staff == "True":
-            if user is not None:
+
+        if category == "Buyer":
+            if user is not None and user.is_staff:
                 auth.login(request, user)
                 return redirect("/")
             else:
                 messages.info(request, 'Check your credentials')
                 return redirect("loginpage")
 
-        else:
-            if user is not None:
+        if category == "Seller":
+            if user is not None and not user.is_staff:
                 auth.login(request, user)
-                return redirect("/")
+                return redirect("seller")
             else:
                 messages.info(request, 'Check your credentials')
                 return redirect("loginpage")
-
 
     else:
         return render(request, 'loginpage.html')
@@ -262,3 +267,6 @@ def ChangePassword(request):
 def logout(request):
     auth.logout(request)
     return render(request, 'index.html')
+
+def seller(request):
+    return render(request, 'seller.html')
