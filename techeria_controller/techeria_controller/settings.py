@@ -1,3 +1,4 @@
+
    
 """
 Django settings for techeria_controller project.
@@ -44,8 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'techeria_app.apps.TecheriaAppConfig',
-    'authentication'
+    'techeria_app.apps.TecheriaAppConfig'
 ]
 
 MIDDLEWARE = [
