@@ -202,3 +202,63 @@ def registration(request):
     else:
 
         return render(request, 'registration.html')
+
+
+
+
+
+def loginpage(request):
+    if request.method == 'POST':
+        username = request.POST ['username']
+        password = request.POST ['password']
+        category = request.POST.get ('kk')
+      
+        user=auth.authenticate(username=username,password=password)
+        if category == "Buyer" and user.is_staff == "True":
+            if user is not None:
+                auth.login(request, user)
+                return redirect("/")
+            else:
+                messages.info(request, 'Check your credentials')
+                return redirect("loginpage")
+
+        else:
+            if user is not None:
+                auth.login(request, user)
+                return redirect("/")
+            else:
+                messages.info(request, 'Check your credentials')
+                return redirect("loginpage")
+
+
+    else:
+        return render(request, 'loginpage.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def signUpButton(request):
+    return render(request, 'registration.html')
+
+def reset_password_email(request):
+    return render(request, 'reset_password_email.html')
+
+def ChangePassword(request):
+    return render(request, 'ChangePassword.html')
+
+def logout(request):
+    auth.logout(request)
+    return render(request, 'index.html')
