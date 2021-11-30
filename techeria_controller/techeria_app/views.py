@@ -4,92 +4,21 @@ from django.shortcuts import redirect, render
 from techeria_app.models import BuyerModel, SellerModel, Products, Laptops,Smartphone
 from django.contrib.auth.models import User, auth
 
+from django.contrib.auth.decorators import login_required
+
 from django.contrib import messages
 
-
-# Create your views here.
-def index(request):
-    product = Products.objects.all()
-    context = {
-        'product': product
-    }
-    return render(request, 'index.html', context)
-
-def about(request):
-    return render(request, 'about.html')
-
-def contact(request):
-    return render(request, 'contact.html')
-
-def laptop(request):
-    laptop = Laptops.objects.all()
-    context = {
-        'laptop': laptop
-    }
-    return render(request, 'laptop.html', context)
-
-def smartphone(request):
-    smartphone = Smartphone.objects.all()
-    context = {
-        'smartphone': smartphone
-    }
-    return render(request, 'smartphone.html', context)
-    
-def loginpage(request):
-    return render(request, 'loginpage.html')
-
-def cart(request):
-    return render(request, 'cart.html')
-
-def checkout(request):
-    return render(request, 'checkout.html')
-
-def registration(request):
-    return render(request, 'registration.html')
-
-def search(request):
-    q = request.GET['q']
-    data = Products.objects.filter(name__icontains=q)
-    return render(request, 'search.html', {'data': data})
-def product(request):
-    return render(request, 'product.html')
-
-def productInfo(request, i):
-    oneProduct = Products.objects.get(id=i)
-    context = {
-        'oneProduct': oneProduct
-    }
-    return render(request, 'productInfo.html', context)
-
-def registration(request):
-
-
-    if request.method == 'POST':
-        first_name = request.POST ['First_Name']
-        last_name = request.POST ['Last_Name']
-        date_of_birth = request.POST ['Date_of_Birth']
-        email = request.POST ['Email_Id']
-        mobile_number = request.POST ['Mobile_Number']
-        address = request.POST['Address']
-        user_name = request.POST['Username']
-        city = request.POST ['City']
-        state = request.POST ['State']
-        zip_code = request.POST ['Zip_Code']
-        country = request.POST ['Country']
-        password = request.POST ['Password']
-        confirm_password = request.POST ['Confirm_Password']
-        category = request.POST.get ('kk')
-
-        buyer = BuyerModel()
-        seller = SellerModel()
-
-
-
-
-
+# Verification email
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import EmailMessage
 
 
 # Create your views here.
+
 def index(request):
     product = Products.objects.all()
     context = {
@@ -122,8 +51,32 @@ def search(request):
     q = request.GET['q']
     data = Products.objects.filter(name__icontains=q)
     return render(request, 'search.html', {'data': data})
+
+
 def product(request):
     return render(request, 'product.html')
+
+
+def productInfo(request, i):
+    oneProduct = Products.objects.get(id=i)
+    context = {
+        'oneProduct': oneProduct
+    }
+    return render(request, 'productInfo.html', context)
+
+def laptop(request):
+    laptop = Laptops.objects.all()
+    context = {
+        'laptop': laptop
+    }
+    return render(request, 'laptop.html', context)
+
+def smartphone(request):
+    smartphone = Smartphone.objects.all()
+    context = {
+        'smartphone': smartphone
+    }
+    return render(request, 'smartphone.html', context)
 
 def registration(request):
     if request.method == 'POST':
@@ -145,6 +98,10 @@ def registration(request):
 
         buyer = BuyerModel()
         seller = SellerModel()
+
+
+
+
 
         if password == confirm_password:
 
@@ -177,6 +134,7 @@ def registration(request):
                     user.save()
                     return redirect("loginpage")
 
+
                 elif category == "Seller":
                     seller.user_name = username
                     seller.first_name=first_name
@@ -194,12 +152,14 @@ def registration(request):
                     seller.save()
                     user.save()
                     return redirect("loginpage")
+
                 else:
                     messages.info(request, "Something goes wrong")
                     return redirect("registration")
         else:
             messages.info(request, "Password does not match")
             return redirect("registration")
+
 
     else:
 
@@ -217,7 +177,7 @@ def loginpage(request):
 
 
 
-      
+
         user=auth.authenticate(username=username,password=password)
 
         if category == "Buyer":
@@ -240,29 +200,12 @@ def loginpage(request):
         return render(request, 'loginpage.html')
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def signUpButton(request):
     return render(request, 'registration.html')
 
 def reset_password_email(request):
     return render(request, 'reset_password_email.html')
 
-def ChangePassword(request):
-    return render(request, 'ChangePassword.html')
 
 def logout(request):
     auth.logout(request)
@@ -270,3 +213,50 @@ def logout(request):
 
 def seller(request):
     return render(request, 'seller.html')
+
+def activate(request, uidb64, token):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = BuyerModel._default_manager.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, BuyerModel.DoesNotExist):
+        user = None
+
+    if user is not None and default_token_generator.check_token(user, token):
+        user.is_active = True
+        user.save()
+        messages.success(request, 'Congratulations! Your account is activated.')
+        return redirect('loginpage')
+    else:
+        messages.error(request, 'Invalid activation link')
+        return redirect('registration')
+
+def forgotPassword(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        if User.objects.filter(email=email).exists():
+            user = User.objects.get(email__exact=email)
+
+            # Reset password email
+            current_site = get_current_site(request)
+            mail_subject = 'Reset Your Password'
+            message = render_to_string('reset_password_email.html', {
+                'user': user,
+                # 'domain': current_site,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': default_token_generator.make_token(user),
+            })
+            to_email = email
+            send_email = EmailMessage(mail_subject, message, to=[to_email])
+            send_email.send()
+
+            messages.success(request, 'Reset Password email has been sent to your email address.')
+            return redirect('loginpage')
+
+        else:
+            messages.error(request, 'Account does not exist!')
+            return redirect('forgotPassword')
+    return render(request,'forgotPassword.html')
+
+
+def resetpassword_validate(request, uidb64, token):
+    return HttpResponse('ok')

@@ -19,6 +19,9 @@ from techeria_app import views
 
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,5 +38,8 @@ urlpatterns = [
     path('search', views.search, name='search'),
     path('p/<int:i>/', views.productInfo, name='p'),
     path('logout', views.logout, name='logout'),
+    path('forgotPassword',views.forgotPassword,name='forgotPassword'),
+    
+    path('reset_password/',auth_views.PasswordResetView.as_view(),name='reset_password'),
     path('seller', views.seller, name='seller'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
