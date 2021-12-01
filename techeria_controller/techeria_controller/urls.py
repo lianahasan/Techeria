@@ -35,5 +35,5 @@ urlpatterns = [
     path('search', views.search, name='search'),
     path('p/<int:i>/', views.productInfo, name='p'),
     path('logout', views.logout, name='logout'),
-    path('seller', views.seller, name='seller'),
+    path('addproduct', views.addproduct, name='addproduct'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

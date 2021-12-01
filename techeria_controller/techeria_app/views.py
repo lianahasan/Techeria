@@ -1,8 +1,10 @@
 from django.db.models.fields import NullBooleanField
+from django.forms.fields import ImageField
 from django.http import response
 from django.shortcuts import redirect, render
 from techeria_app.models import BuyerModel, SellerModel, Products, Laptops,Smartphone
 from django.contrib.auth.models import User, auth
+
 
 from django.contrib import messages
 
@@ -61,47 +63,6 @@ def productInfo(request, i):
     }
     return render(request, 'productInfo.html', context)
 
-def registration(request):
-
-
-    if request.method == 'POST':
-        first_name = request.POST ['First_Name']
-        last_name = request.POST ['Last_Name']
-        date_of_birth = request.POST ['Date_of_Birth']
-        email = request.POST ['Email_Id']
-        mobile_number = request.POST ['Mobile_Number']
-        address = request.POST['Address']
-        user_name = request.POST['Username']
-        city = request.POST ['City']
-        state = request.POST ['State']
-        zip_code = request.POST ['Zip_Code']
-        country = request.POST ['Country']
-        password = request.POST ['Password']
-        confirm_password = request.POST ['Confirm_Password']
-        category = request.POST.get ('kk')
-
-        buyer = BuyerModel()
-        seller = SellerModel()
-
-
-
-
-
-
-
-# Create your views here.
-def index(request):
-    product = Products.objects.all()
-    context = {
-        'product': product
-    }
-    return render(request, 'index.html', context)
-
-def about(request):
-    return render(request, 'about.html')
-
-def contact(request):
-    return render(request, 'contact.html')
 
 def watch(request):
     return render(request, 'watch.html')
@@ -109,14 +70,6 @@ def watch(request):
 def loginpage(request):
     return render(request, 'loginpage.html')
 
-def cart(request):
-    return render(request, 'cart.html')
-
-def checkout(request):
-    return render(request, 'checkout.html')
-
-def registration(request):
-    return render(request, 'registration.html')
 
 def search(request):
     q = request.GET['q']
@@ -174,7 +127,7 @@ def registration(request):
                     buyer.country=country
                     user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name, is_staff = "True")
                     buyer.save()
-                    user.save()
+                    
                     return redirect("loginpage")
 
                 elif category == "Seller":
@@ -192,7 +145,7 @@ def registration(request):
                     seller.country=country
                     user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
                     seller.save()
-                    user.save()
+                    
                     return redirect("loginpage")
                 else:
                     messages.info(request, "Something goes wrong")
@@ -231,27 +184,15 @@ def loginpage(request):
         if category == "Seller":
             if user is not None and not user.is_staff:
                 auth.login(request, user)
-                return redirect("seller")
+                return redirect("/")
             else:
                 messages.info(request, 'Check your credentials')
-                return redirect("loginpage")
+                return render(request, 'loginpage.html')
+                
+                
 
     else:
         return render(request, 'loginpage.html')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -268,5 +209,31 @@ def logout(request):
     auth.logout(request)
     return render(request, 'index.html')
 
-def seller(request):
-    return render(request, 'seller.html')
+def addproduct(request):
+    return render(request, 'addproduct.html')
+
+
+def addproduct(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        description = request.POST.get('description')
+        price = request.POST.get('price')
+        category = request.POST.get('category')
+        if len(request.FILES) != 0:
+            image = request.FILES.get('myimage')
+        p = Products()
+        if name != "":          
+            p.name = name
+            p.description=description
+            p.price=price
+            p.category=category
+            if len(request.FILES) != 0:
+                p.image=image
+
+            p.save()
+            return render(request, 'index.html')
+        else:
+            return render(request, 'addproduct.html')
+        
+    else:
+        return render(request, 'addproduct.html')

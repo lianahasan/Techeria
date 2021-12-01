@@ -11,7 +11,7 @@ class Products(models.Model):
     price = models.FloatField()
     description = models.TextField()
     # slug = models.SlugField(max_length=100, unique=True)
-    category = models.CharField(max_length=255,unique=True)
+    category = models.CharField(max_length=255)
 
     class Meta:
         db_table = 'products'
@@ -102,10 +102,7 @@ class OrderItem(models.Model):
     class Meta:
         db_table = "order_items"
 
-
-
-
-
-
     def __str__(self):
         return self.techeria_app
+
+
