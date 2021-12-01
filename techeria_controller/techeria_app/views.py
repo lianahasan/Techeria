@@ -4,9 +4,16 @@ from django.http import response
 from django.shortcuts import redirect, render
 from techeria_app.models import BuyerModel, SellerModel, Products, Laptops,Smartphone
 from django.contrib.auth.models import User, auth
-
-
+from django.core.mail import EmailMessage
+from django.views import View
 from django.contrib import messages
+
+
+from django.utils.encoding import force_bytes, force_text, DjangoUnicodeDecodeError
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.contrib.sites.shortcuts import get_current_site
+from django.urls import reverse
+from .utils import token_generator
 
 
 # Create your views here.
@@ -78,6 +85,20 @@ def search(request):
 def product(request):
     return render(request, 'product.html')
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def registration(request):
     if request.method == 'POST':
         first_name = request.POST ['First_Name']
@@ -126,7 +147,30 @@ def registration(request):
                     buyer.zip_code=zip_code
                     buyer.country=country
                     user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name, is_staff = "True")
+                    user.is_active = False                  
+                    user.save()
                     buyer.save()
+
+
+
+                    domain = get_current_site(request).domain
+                    uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
+
+                    link = reverse('activate', kwargs={'uidb64':uidb64, 'token': token_generator.make_token(user)})
+                    email_subject = 'Activate your account'
+                    activate_url = 'http://'+domain+link
+                    email_body = 'Hi '+ user.first_name+'. please use this link to verify ypur account\n' + activate_url
+                    email = EmailMessage(
+                         email_subject,
+                         email_body,
+                         'noreply@techeria.com',
+                        [email],
+                        ['bcc@example.com'],
+                        
+                    )
+                    email.send(fail_silently=False)
+
+
                     
                     return redirect("loginpage")
 
@@ -144,6 +188,8 @@ def registration(request):
                     seller.zip_code=zip_code
                     seller.country=country
                     user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
+                    user.is_active = False
+                    user.save()
                     seller.save()
                     
                     return redirect("loginpage")
@@ -162,14 +208,29 @@ def registration(request):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def loginpage(request):
     if request.method == 'POST':
         username = request.POST ['username']
         password = request.POST ['password']
         category = request.POST.get ('kk')
-
-
-
       
         user=auth.authenticate(username=username,password=password)
 
@@ -237,3 +298,22 @@ def addproduct(request):
         
     else:
         return render(request, 'addproduct.html')
+
+
+class VerificationView(View):
+    def get(self, request, uidb64, token):
+        try:
+            id = force_text(urlsafe_base64_decode(uidb64))
+            user = User.objects.get(pk=id)
+
+            if not token_generator.check_token(user, token):
+                return redirect('loginpage' + '?message=' + 'user already activate')
+            if user.is_active:
+                return redirect('loginpage')
+            user.is_active = True
+            user.save()
+            messages.success(request, 'Account activated successfully')
+            return redirect('loginpage')
+        except Exception as ex:
+            pass
+        return redirect('loginpage')

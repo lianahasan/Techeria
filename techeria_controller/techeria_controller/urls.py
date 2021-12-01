@@ -20,6 +20,8 @@ from techeria_app import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+from techeria_app.views import VerificationView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
@@ -36,4 +38,5 @@ urlpatterns = [
     path('p/<int:i>/', views.productInfo, name='p'),
     path('logout', views.logout, name='logout'),
     path('addproduct', views.addproduct, name='addproduct'),
+    path('activate/<uidb64>/<token>',VerificationView.as_view(), name='activate')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
