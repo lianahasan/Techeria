@@ -78,6 +78,18 @@ class Smartphone(models.Model):
         db_table = 'smartphone'
 
 
+class Cameras(models.Model):
+    image = models.ImageField(null=False, blank=False, upload_to='images/')
+    name = models.CharField(max_length=255)
+    price = models.FloatField()
+    description = models.TextField()
+    category = models.CharField(max_length=255)
+
+    class Meta:
+
+        db_table = 'camera'
+
+
 
 #Payment models below
 class Payment(models.Model):

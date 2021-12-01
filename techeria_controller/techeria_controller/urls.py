@@ -30,6 +30,8 @@ urlpatterns = [
     path('contact', views.contact, name='contact'),
     path('laptop', views.laptop, name='laptop'),
     path('smartphone', views.smartphone, name='smartphone'),
+    path('camera', views.camera, name='camera'),
+
     path('loginpage', views.loginpage, name='loginpage'),
     path('registration', views.registration, name='registration'),
     path('product', views.product, name='product'),

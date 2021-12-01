@@ -304,7 +304,55 @@ CREATE TABLE `payment` (
 
 --
 -- Indexes for dumped tables
+
 --
+
+CREATE TABLE `camera` (
+  `id` bigint(20) NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `price` double NOT NULL,
+  `description` longtext NOT NULL,
+  `category` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `camera`
+--
+
+INSERT INTO `camera` (`id`, `image`, `name`, `price`, `description`, `category`) VALUES
+(48329389, 'camera1.jpg', 'Canon - EOS Rebel T7 DSLR Video Camera with 18-55mm Lens - Black', 479.99, 'Take professional-looking photos with this Canon DSLR camera bundle. The 24.1-megapixel CMOS sensor captures the smallest details, even in low light, and the optical image stabilizer technology ensures handheld shots are sharp. The 18-55mm lens included in this Canon DSLR camera bundle is suitable for taking wide-angle pictures or zooming in for portraits.', 'cameras'),
+(48329390, 'camera2.jpg', 'Sony - ZV-1 20.1-Megapixel Digital Camera for Content Creators and Vloggers - Black', 630.32, 'Create outstanding content for your viewers with this Sony compact 4K digital camera. The 20-megapixel sensor captures detailed pictures and videos, while Wi-Fi functionality enables easy photo sharing across networks. This Sony compact 4K digital camera features image stabilization for clear shots while walking, and automatic exposure tracks and illuminates faces for consistency in various lighting conditions.', 'cameras'),
+(48329391, 'camera3.jpg', 'Nikon - D7500 DSLR 4K Video Two Lens Kit with 18-55mm and 70-300mm Lenses - Black', 1288.99, 'Born from a desire for flagship performance and innovation in a more compact and streamlined connected camera, the D7500 delivers the game-changing resolution, ISO range, image processing and energy efficiency of the award-winning D500 in an enthusiast-level DSLR. Simply put, the D7500 is built to outperform any camera in its class with top-tier image quality, blazing speed, flawless autofocus, 4K Ultra HD video and pro-grade creative tools - all in a comfortable, rugged design. This is a camera for the generation of creators.The D7500 uses the same 20.9 MP DX-format image sensor and EXPEED 5 image processing engine as the D500, taking your photos and videos to the next level. Capture with phenomenal sharpness and tonality, especially in low light situations like concerts, sporting events, parties and events.', 'cameras'),
+(48329392, 'camera4.jpg', 'Sony - Alpha 7R IV Full-frame Mirrorless Interchangeable Lens 61 MP Camera - Body Only - Black', 2288.99, 'Thanks to an evolutionary leap in image processing power and efficiency, the Alpha 7R IV combines world’s first high-resolution 61MP back-illuminated Exmor R CMOS image sensor with impressive shooting speeds at up to 10 fps with full AF/AE tracking, as well as beautiful 4K HDR video, wide 15-stop dynamic range and high sensitivity with area specific noise reduction.', 'cameras'),
+(48329393, 'camera5.jpg', 'Polaroid - 16MP Waterproof Digital Camera - Red', 49.99, 'The Polaroid iS048 digital camera is the perfect adventure companion. At 16 MP, you can capture great images on-the-go and then preview them on the 2.4\" preview screen. Small and lightweight, it is easy to slip into your pocket so you\'re ready to capture the next perfect moment, even if that is underwater! The Polaroid iS048 is completely waterproof up to 10 ft so feel free to jump into a pool or lake! Save your memories to a micro SD card (not included) for easy transfer to your computer or mobile device and then you can share them with all your family and friends.', 'cameras'),
+(48329394, 'camera6.jpg', 'Canon - Ivy CLIQ+2 Instant Film Camera - Iridescent White', 121.99, 'Easily shoot, print, edit, and stick photos, with the IVY CLIQ+2. Capture every moment with the Canon IVY CLIQ+2 — an easy to use Instant Camera Printer that is portable so you can take it with you! Instantly shoot and print 2”x3” photos and place them almost anywhere thanks to a peel and stick backing. You can take the perfect selfies with a Large Selfie Mirror and 8 LED Ring Light. Plus, you can connect your mobile device to the Canon Mini Print App1 to print photos from your camera roll and add filters, effects, emojis and more!', 'cameras'),
+(48329395, 'camera7.jpg', 'Fujifilm - X Series X-T200 Mirrorless Camera with XC 15-45mm f/3.5-5.6 OIS PZ Lens - Dark Silver', 699.99, 'Capture memories in high resolution using this 24.2MP Fujifilm X-T200 digital camera. The autofocus quickly locks on to your subject, letting you snap photos of fast-moving people or objects, and the 3.5-inch touch-screen makes it easy to change settings. After taking photos with this Fujifilm X-T200 digital camera, use the built-in Wi-Fi to instantly share them to a smartphone or tablet.', 'cameras'),
+(48329396, 'camera8.jpg', 'Sony - Handycam CX405 Flash Memory Camcorder - Black', 399.99, 'Utilizing Optical SteadyShot image stabilization, a BIONZ X image processor and an Exmor R CMOS sensor, this Sony Handycam HDRCX405/B camcorder enables you to capture video footage with 1920 x 1080 resolution and sharp still images.', 'cameras'),
+(48329397, 'camera9.jpg', 'Sony - ZV-1 20.1-Megapixel Digital Camera for Content Creators and Vloggers - White', 632.99, 'Create outstanding content for your viewers with this Sony compact 4K digital camera. The 20-megapixel sensor captures detailed pictures and videos, while Wi-Fi functionality enables easy photo sharing across networks. This Sony compact 4K digital camera features image stabilization for clear shots while walking, and automatic exposure tracks and illuminates faces for consistency in various lighting conditions.', 'cameras'),
+(48329398, 'camera10.jpg', 'Canon - XA11 HD Flash Memory Premium Camcorder - Black', 1099.99, 'Memorialize important events with this Canon camcorder. The HD CMOS Pro Image Sensor and the DIGIC DV 4 Image Processor produce crisp HD video, and the Wide DR Gamma and Highlight Priority modes use natural colors for a realistic picture. This Canon camcorder has a five-axis image stabilization system to prevent shaky, blurry images.', 'cameras');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `camera`
+--
+ALTER TABLE `camera`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `camera`
+--
+ALTER TABLE `camera`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48329399;
+COMMIT;
+
 
 -- Indexes for table `buyer`
 --
@@ -369,5 +417,3 @@ ALTER TABLE `seller`
   ALTER TABLE `techeria_app_payment`
     ADD PRIMARY KEY (`id`),
     ADD KEY `techeria_app_payment_user_id_e33f4c6e_fk_buyer_id` (`user_id`);
-
-  
