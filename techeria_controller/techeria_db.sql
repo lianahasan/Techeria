@@ -128,6 +128,76 @@ INSERT INTO `smartphone` (`id`, `image`, `name`, `price`, `description`, `catego
 (58329395, 'smartphone8.jpg', 'OnePlus - 9 Pro 5G 256GB (Unlocked) - Pine Green', 799.99, 'The new OnePlus 9 Pro is finally here, bringing a flagship camera experience made hand-in-hand with Hasselblad. The device offers a 120Hz Fluid Display and 12GB of RAM, providing an immersive experience wherever, whenever. Top up the massive 4,500 mAh battery with OnePlus’ signature Warp Charge 65T or Warp Charge 50 Wireless, giving you a day’s power in less than half an hour. The OnePlus 9 Pro includes Alexa and Google Assistant Built-in, providing hands-free experience.\r\nMeet Warp Charge 65T, our fastest charging solution yet, capable of delivering a day’s worth of power in only 15 minutes.', 'smartphone'),
 (58329396, 'smartphone9.jpg', 'Apple - Preowned iPhone X with 256GB Memory Cell Phone (Unlocked) - Space Gray', 489.99, 'Stay connected with this preowned Apple iPhone X smartphone. The 5.8-inch Super Retina HD display and the ultrawide and telephoto cameras let you capture high-quality low-light photos, while Face ID enhances security. This slim gray Apple iPhone X smartphone has 256GB of space that handles lots of photos and videos.\r\n', 'smartphone');
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `techeria_app_order`
+--
+
+CREATE TABLE `techeria_app_order` (
+  `id` bigint(20) NOT NULL,
+  `order_number` varchar(20) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `email` varchar(254) NOT NULL,
+  `mobile_number` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `state` varchar(255) NOT NULL,
+  `zip_code` varchar(255) NOT NULL,
+  `country` varchar(20) NOT NULL,
+  `order_note` varchar(100) NOT NULL,
+  `order_total` double NOT NULL,
+  `tax` double NOT NULL,
+  `status` varchar(10) NOT NULL,
+  `ip` varchar(20) NOT NULL,
+  `is_ordered` tinyint(1) NOT NULL,
+  `created_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
+  `payment_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `techeria_app_orderproduct`
+--
+
+CREATE TABLE `techeria_app_orderproduct` (
+  `id` bigint(20) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `product_price` double NOT NULL,
+  `ordered` tinyint(1) NOT NULL,
+  `created_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
+  `order_id` bigint(20) NOT NULL,
+  `payment_id` bigint(20) DEFAULT NULL,
+  `product_id` bigint(20) NOT NULL,
+  `user_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `techeria_app_payment`
+--
+
+CREATE TABLE `techeria_app_payment` (
+  `id` bigint(20) NOT NULL,
+  `payment_id` varchar(100) NOT NULL,
+  `payment_method` varchar(100) NOT NULL,
+  `amount_paid` varchar(100) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `created_at` datetime(6) NOT NULL,
+  `user_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
 --
 -- Table structure for table `seller`
 --
@@ -274,3 +344,30 @@ ALTER TABLE `products`
 --
 ALTER TABLE `seller`
   MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
+
+  --
+  -- Indexes for table `techeria_app_order`
+  --
+  ALTER TABLE `techeria_app_order`
+    ADD PRIMARY KEY (`id`),
+    ADD KEY `techeria_app_order_payment_id_1cd4aab0_fk_techeria_` (`payment_id`),
+    ADD KEY `techeria_app_order_user_id_1e91c823_fk_buyer_id` (`user_id`);
+
+  --
+  -- Indexes for table `techeria_app_orderproduct`
+  --
+  ALTER TABLE `techeria_app_orderproduct`
+    ADD PRIMARY KEY (`id`),
+    ADD KEY `techeria_app_orderpr_order_id_8ff1e5eb_fk_techeria_` (`order_id`),
+    ADD KEY `techeria_app_orderpr_payment_id_dce4d8ed_fk_techeria_` (`payment_id`),
+    ADD KEY `techeria_app_orderproduct_product_id_2843d8aa_fk_products_id` (`product_id`),
+    ADD KEY `techeria_app_orderproduct_user_id_61c10e07_fk_buyer_id` (`user_id`);
+
+  --
+  -- Indexes for table `techeria_app_payment`
+  --
+  ALTER TABLE `techeria_app_payment`
+    ADD PRIMARY KEY (`id`),
+    ADD KEY `techeria_app_payment_user_id_e33f4c6e_fk_buyer_id` (`user_id`);
+
+  
