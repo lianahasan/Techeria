@@ -30,6 +30,8 @@ urlpatterns = [
     path('contact', views.contact, name='contact'),
     path('laptop', views.laptop, name='laptop'),
     path('smartphone', views.smartphone, name='smartphone'),
+    path('camera', views.camera, name='camera'),
+
     path('loginpage', views.loginpage, name='loginpage'),
     path('registration', views.registration, name='registration'),
     path('product', views.product, name='product'),
@@ -39,7 +41,9 @@ urlpatterns = [
     path('p/<int:i>/', views.productInfo, name='p'),
     path('logout', views.logout, name='logout'),
     path('forgotPassword',views.forgotPassword,name='forgotPassword'),
-    
-    path('reset_password/',auth_views.PasswordResetView.as_view(),name='reset_password'),
+    path('place_order', views.place_order, name='place_order'),
+    path('payments/', views.payments, name='payments'),
+    # path('order_complete/', views.order_complete, name='order_complete'),
+    path('reset_password',auth_views.PasswordResetView.as_view(),name='reset_password'),
     path('seller', views.seller, name='seller'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

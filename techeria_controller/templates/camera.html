@@ -1,0 +1,235 @@
+{% load static %}
+<!DOCTYPE html>
+<style>
+body {
+  background-color:#B9CAF1 !important;
+
+}
+
+body{
+   margin:0px;
+   margin-top:60px;
+   padding: 0px;
+}
+*,*::before,*::after{
+   box-sizing: border-box;
+}
+nav{
+   position: fixed;
+   top: 0;
+   width: 100%;
+   background-color: #B9CAF1;
+   overflow: auto;
+   height: auto;
+   text-align:center;
+}
+
+
+
+</style>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Cameras</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href=" {% static 'css/bootstrap.css' %} " />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href=" {% static 'css/style.css' %} " rel="stylesheet" />
+  <!-- responsive style -->
+  <link href=" {% static 'css/responsive.css' %} " rel="stylesheet" />
+</head>
+
+<body class="sub_page">
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+          <a class="navbar-brand" href=" {% static 'index.html' %} ">
+            <span>
+              Cameras
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href=" {% url 'index' %}  ">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href=" {% static 'about.html' %} "> About </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href=" {% static 'contact.html' %} ">Contact us</a>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
+                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+
+  </div>
+  <div class="bg">
+
+
+
+  <h3 class="my-4 border-bottom pb-1"><span class="text-muted">Search Results for </span>{{request.GET.p}}</h3>
+    <div class="container bcontent">
+        {% for p in camera%}
+        <hr />
+        <div class="card" style="width: 500px;">
+            <div class="row no-gutters">
+                <div class="col-lg-5">
+                    <img class="card-img-top" width="20%" src="/media/cameras/{{p.image}}" alt="Card image cap">
+                </div>
+                <div class="col-sm-7">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ p.name }}</h5>
+                        <p class="card-text">${{ p.price }}</p>
+                        <a href="{% url 'p' p.pk %}" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+
+
+
+
+<!-- end info_section -->
+<!-- footer section -->
+ <section class="container-fluid footer_section">
+   <div class="footer-top-area">
+       <div class="zigzag-bottom"></div>
+       <div class="container">
+           <div class="row">
+               <div class="col-md-3 col-sm-6">
+                   <div class="footer-about-us">
+                       <h2><span style="color: white">Techeria</span></h2>
+                       <h2><span style="color: white">Our Values</span></h2>
+                       <p>We are an e-commerce application, focused on making sure all technology products can be purchased in one space with the best deals so you can save your precious time without having to look through multiple websites.</p>
+                       <div class="footer-social">
+                           <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                           <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                           <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                           <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                           <p> testing </p>
+                       </div>
+                   </div>
+               </div>
+
+               <div class="col-md-3 col-sm-6">
+                   <div class="footer-menu">
+                       <h2 class="footer-wid-title" style= "color: white">User Navigation </h2>
+                       <ul>
+                           <li><a href="#">My account</a></li>
+                           <li><a href="#">Order history</a></li>
+                           <li><a href="#">Wishlist</a></li>
+                           <li><a href="#">Buyer contact</a></li>
+                           <li><a href="#">Front page</a></li>
+                       </ul>
+                   </div>
+               </div>
+
+               <div class="col-md-3 col-sm-6">
+                   <div class="footer-menu">
+                       <h2 class="footer-wid-title" style= "color: white">Categories</h2>
+                       <ul>
+                           <li><a href="#">Mobile Phone</a></li>
+                           <li><a href="#">Home accesseries</a></li>
+                           <li><a href="#">LED TV</a></li>
+                           <li><a href="#">Computer</a></li>
+                           <li><a href="#">Gadets</a></li>
+                       </ul>
+                   </div>
+               </div>
+
+               <div class="col-md-3 col-sm-6">
+                   <div class="footer-newsletter">
+                       <h2 class="footer-wid-title" style= "color: white">Newsletter</h2>
+                       <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
+                       <div class="newsletter-form">
+                           <form action="#">
+                               <input type="email" placeholder="Type your email">
+                               <input type="submit" value="Subscribe">
+                           </form>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div> <!-- End footer top area -->
+
+   <div class="footer-bottom-area">
+       <div class="container">
+           <div class="row">
+
+
+               <div class="col-md-4">
+                   <div class="footer-card-icon">
+                       <i class="fa fa-cc-discover"></i>
+                       <i class="fa fa-cc-mastercard"></i>
+                       <i class="fa fa-cc-paypal"></i>
+                       <i class="fa fa-cc-visa"></i>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div> <!-- End footer bottom area -->
+ </section>
+ <!-- footer section -->
+
+<script type="text/javascript" src=" {% static 'js/jquery-3.4.1.min.js' %} "></script>
+<script type="text/javascript" src=" {% static 'js/bootstrap.js' %} "></script>
+</body>
+
+</html>
+
+
+
+
+    <!-- footer section -->
+    <section class="container-fluid footer_section">
+        <p>
+            © 2020 All Rights Reserved By
+            <a href="https://html.design/">Free Html Templates</a>
+        </p>
+    </section>
+    <!-- footer section -->
+
+    <script type="text/javascript" src=" {% static 'js/jquery-3.4.1.min.js' %} "></script>
+    <script type="text/javascript" src=" {% static 'js/bootstrap.js' %} "></script>
+  </body>
+
+  </html>
