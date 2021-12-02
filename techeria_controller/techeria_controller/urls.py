@@ -48,7 +48,7 @@ urlpatterns = [
     path('p/<int:i>/', views.productInfo, name='p'),
     path('logout', views.logout, name='logout'),
 
-    path('forgotPassword',views.forgotPassword,name='forgotPassword'),
+    #path('forgotPassword',views.forgotPassword,name='forgotPassword'),
 
     path('addproduct', views.addproduct, name='addproduct'),
 
@@ -63,7 +63,7 @@ urlpatterns = [
 
 
     
-    path('place_order', views.place_order, name='place_order'),
+    # path('place_order', views.place_order, name='place_order'),
     path('payments/', views.payments, name='payments'),
     # path('order_complete/', views.order_complete, name='order_complete'),
     
