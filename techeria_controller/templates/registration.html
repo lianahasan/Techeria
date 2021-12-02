@@ -1,165 +1,166 @@
 
 <html>
-<head>
-<style>
-body {
-  background-color:#90AACB;
-}
-  h3{
-    font-family: Calibri;
-    font-size: 25pt;
-    font-style: normal;
-    font-weight: bold;
-    color:#22577A;
-    text-align: center;
-    text-decoration: underline
+  <head>
+  <style>
+  body {
+    background-color:#90AACB;
   }
-
-  table{
-    font-family: Calibri;
-    color:white;
-    font-size: 11pt;
-    font-style: normal;
-    font-weight: bold;
-    text-align:center;
-    background-color: #506D84;
-    border-collapse: collapse;
-    border: 2px solid navy
-  }
-
-</style>
-<title>Register</title>
-<link rel="stylesheet" type="text/css" href="accountStyle.css" />
-</head>
-
-<body>
-<h3>Sign UP</h3>
-
-<form action="registration" method="POST">
-
-  {% csrf_token %}
-  <div style="text-align: center;">
-    {% for message in messages %}
-    <h4 style="color: red;">{{message}}</h4>
-    {% endfor %}
-  </div>
+    h3{
+      font-family: Calibri;
+      font-size: 25pt;
+      font-style: normal;
+      font-weight: bold;
+      color:#22577A;
+      text-align: center;
+      text-decoration: underline
+    }
   
-<table align="center" cellpadding = "10">
-
-<!----- First Name ---------------------------------------------------------->
-<tr>
-<td>FIRST NAME</td>
-<td><input type="text" name="First_Name" maxlength="30" required/>
-(max 30 characters a-z and A-Z)
-</td>
-</tr>
-
-<!----- Last Name ---------------------------------------------------------->
-<tr>
-<td>LAST NAME</td>
-<td><input type="text" name="Last_Name" maxlength="30" required/>
-(max 30 characters a-z and A-Z)
-</td>
-</tr>
-<tr>
-  <td>USER NAME</td>
-  <td><input type="text" name="Username" maxlength="30" required/>
+    table{
+      font-family: Calibri;
+      color:white;
+      font-size: 11pt;
+      font-style: normal;
+      font-weight: bold;
+      text-align:center;
+      background-color: #506D84;
+      border-collapse: collapse;
+      border: 2px solid navy
+    }
+  
+  </style>
+  <title>Register</title>
+  <link rel="stylesheet" type="text/css" href="accountStyle.css" />
+  </head>
+  
+  <body>
+  <h3>Sign UP</h3>
+  
+  <form action="registration" method="POST">
+  
+    {% csrf_token %}
+    <div style="text-align: center;">
+      {% for message in messages %}
+      <h4 style="color: red;">{{message}}</h4>
+      {% endfor %}
+    </div>
+    
+  <table align="center" cellpadding = "10">
+  
+  <!----- First Name ---------------------------------------------------------->
+  <tr>
+  <td>FIRST NAME</td>
+  <td><input type="text" name="First_Name" maxlength="30" required/>
   (max 30 characters a-z and A-Z)
   </td>
   </tr>
-
-<!----- Date Of Birth -------------------------------------------------------->
-<tr>
-  <td>Date of Birth</td>
-  <td><input type="Date" name="Date_of_Birth" required/>
+  
+  <!----- Last Name ---------------------------------------------------------->
+  <tr>
+  <td>LAST NAME</td>
+  <td><input type="text" name="Last_Name" maxlength="30" required/>
+  (max 30 characters a-z and A-Z)
   </td>
   </tr>
-
-<!----- Email Id ---------------------------------------------------------->
-<tr>
-<td>EMAIL ID</td>
-<td><input type="Email" name="Email_Id" required/></td>
-</tr>
-
-<!----- Mobile Number ---------------------------------------------------------->
-<tr>
-<td>MOBILE NUMBER</td>
-<td>
-<input type="Number" name="Mobile_Number" />
-(10 digit number)
-</td>
-</tr>
-
-<!----- Gender ----------------------------------------------------------->
-<tr>
-<td>CATEGORY</td>
-<td>
-  <select name = "kk">
-    <option value="kk" disabled>Select one</option>
-    <option value="Buyer">Buyer</option>
-    <option value="Seller">Seller</option>
-   </select>
-</td>
-</tr>
-
-<!----- Address ---------------------------------------------------------->
-<tr>
-<td>ADDRESS <br /><br /><br /></td>
-<td><textarea name="Address" rows="4" cols="30"></textarea></td>
-</tr>
-
-<!----- City ---------------------------------------------------------->
-<tr>
-<td>CITY</td>
-<td><input type="text" name="City" maxlength="30" />
-(max 30 characters a-z and A-Z)
-</td>
-</tr>
-
-<!----- Pin Code ---------------------------------------------------------->
-<tr>
-<td>ZIP CODE</td>
-<td><input type="text" name="Zip_Code" maxlength="6" />
-(6 digit number)
-</td>
-</tr>
-
-<!----- State ---------------------------------------------------------->
-<tr>
-<td>STATE</td>
-<td><input type="text" name="State" maxlength="30" />
-(max 30 characters a-z and A-Z)
-</td>
-</tr>
-
-<!----- Country ---------------------------------------------------------->
-<tr>
-<td>COUNTRY</td>
-<td><input type="text" name="Country"/></td>
-</tr>
-
-
-<tr>
-  <td>Password</td>
-  <td><input type="text" name="Password"  required/></td>
-  </tr>
   <tr>
-    <td>Confirm Password</td>
-    <td><input type="text" name="Confirm_Password"  required/></td>
+    <td>USER NAME</td>
+    <td><input type="text" name="Username" maxlength="30" required/>
+    (max 30 characters a-z and A-Z)
+    </td>
     </tr>
-      
-
-
-<!----- Submit and Reset ------------------------------------------------->
-<tr>
-<td colspan="2" align="center">
-<input type="submit" value="Submit">
-<input type="reset" value="Reset">
-</td>
-</tr>
-</table>
-
-</form>
-
-</body>
-</html>
+  
+  <!----- Date Of Birth -------------------------------------------------------->
+  <tr>
+    <td>Date of Birth</td>
+    <td><input type="Date" name="Date_of_Birth" required/>
+    </td>
+    </tr>
+  
+  <!----- Email Id ---------------------------------------------------------->
+  <tr>
+  <td>EMAIL ID</td>
+  <td><input type="Email" name="Email_Id" required/></td>
+  </tr>
+  
+  <!----- Mobile Number ---------------------------------------------------------->
+  <tr>
+  <td>MOBILE NUMBER</td>
+  <td>
+  <input type="tel" name="Mobile_Number" maxlength="10"/>
+  (10 digit number)
+  </td>
+  </tr>
+  
+  <!----- Gender ----------------------------------------------------------->
+  <tr>
+  <td>CATEGORY</td>
+  <td>
+    <select name = "kk">
+      <option value="kk" disabled>Select one</option>
+      <option value="Buyer">Buyer</option>
+      <option value="Seller">Seller</option>
+     </select>
+  </td>
+  </tr>
+  
+  <!----- Address ---------------------------------------------------------->
+  <tr>
+  <td>ADDRESS <br /><br /><br /></td>
+  <td><textarea name="Address" rows="4" cols="30"></textarea></td>
+  </tr>
+  
+  <!----- City ---------------------------------------------------------->
+  <tr>
+  <td>CITY</td>
+  <td><input type="text" name="City" maxlength="30" />
+  (max 30 characters a-z and A-Z)
+  </td>
+  </tr>
+  
+  <!----- Pin Code ---------------------------------------------------------->
+  <tr>
+  <td>ZIP CODE</td>
+  <td><input type="text" name="Zip_Code" maxlength="6" />
+  (6 digit number)
+  </td>
+  </tr>
+  
+  <!----- State ---------------------------------------------------------->
+  <tr>
+  <td>STATE</td>
+  <td><input type="text" name="State" maxlength="30" />
+  (max 30 characters a-z and A-Z)
+  </td>
+  </tr>
+  
+  <!----- Country ---------------------------------------------------------->
+  <tr>
+  <td>COUNTRY</td>
+  <td><input type="text" name="Country"/></td>
+  </tr>
+  
+  
+  <tr>
+    <td>Password</td>
+    <td><input type="password" name="Password"  required/></td>
+    </tr>
+    <tr>
+      <td>Confirm Password</td>
+      <td><input type="password" name="Confirm_Password"  required/></td>
+      </tr>
+        
+  
+  
+  <!----- Submit and Reset ------------------------------------------------->
+  <tr>
+  <td colspan="2" align="center">
+  <input type="submit" value="Submit">
+  <input type="reset" value="Reset">
+  <p>I alrerady have an account  <a href="loginpage">Login</a></p>
+  </td>
+  </tr>
+  </table>
+  
+  </form>
+  
+  </body>
+  </html>

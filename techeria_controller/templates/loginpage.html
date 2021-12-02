@@ -30,46 +30,51 @@ nav{
 
 
 
+
 <html>
 <head>
 	<title>Login Page</title>
-	<h1>Login As a..</h1>
-
+	<link rel="stylesheet" type="text/css" href="{% static 'css_login/style.css' %}">
 </head>
 <body>
 
+	<form action="loginpage" method="POST">
+		{% csrf_token %}
+		<div style="text-align: center;">
+		  {% for message in messages %}
+		  <h4 style="color: red;">{{message}}</h4>
+		  {% endfor %}
+		</div>
+<br><br><br>
 
 
 
-	<div class="radio-container">
-		<input type="radio" id="Buyer" name="catagory" />
-		<label for="Buyer">Buyer</label>
-
-		<input type="radio" id="Seller" name="catagory" />
-		<label for="Seller">Seller</label>
-
-		<input type="radio" id="Admin" name="catagory" />
-		<label for="Admin">Admin</label>
-	</div>
 
 
 	<div class="loginbox">
 		<p>Login with your credentials</p>
 		<form action="#" method = "post">
 			<p>User Name</p>
-			<input type="text" name="user" placeholder="User Name">
+			<input type="text" name="username" placeholder="User Name">
 			<p>Password</p>
-			<input type="text" name="password" placeholder="Password">
+			<input type="password" name="password" placeholder="Password">
+			<p>Login As</p>
+			<select name = "kk">
+				<option value="kk" disabled>Select one</option>
+				<option value="Buyer">Buyer</option>
+				<option value="Seller">Seller</option>
+			   </select>
+			   <br><br>
 			<button type="submit">Login</button>
-			<a href="#">Forget  Username/Password</a>
-			<p>I am new here <a href="#"> SignUp</a></p>
+      <a href="{% url 'forgotPassword' %}" class="float-right">Forgot password?</a>
+			<p>I am new here <a href="registration"> SignUp</a></p>
 		</form>
 
 	</div>
 
 
 
-
+</form>
 
 </body>
 </html>

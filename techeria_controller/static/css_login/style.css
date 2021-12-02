@@ -6,7 +6,7 @@ body{
 	height: 120vh;
 	display: flex;
 	flex-direction: column;
-	background-image: url('../image_login/ll.png');
+	background-color: #B9CAF1;
 	background-repeat:no-repeat;
 	background-size: cover;
 	align-items: center;
@@ -135,9 +135,9 @@ input[type="radio"]:checked + label::after{
 
 
 .loginbox a{
-	color: cyan;
+	color: rgb(8, 2, 19);
 	margin-left: 10px;
-	text-decoration: none;
+	
 }
 
 
