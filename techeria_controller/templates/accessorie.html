@@ -1,106 +1,148 @@
 {% load static %}
 <!DOCTYPE html>
 <style>
-body {
-  background-color:#B9CAF1 !important;
-
-}
-
-body{
-   margin:0px;
-   margin-top:60px;
-   padding: 0px;
-}
-*,*::before,*::after{
-   box-sizing: border-box;
-}
-nav{
-   position: fixed;
-   top: 0;
-   width: 100%;
-   background-color: #B9CAF1;
-   overflow: auto;
-   height: auto;
-   text-align:center;
-}
-
 
 
 </style>
 <html>
 
 <head>
-  <!-- Basic -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
+    <link rel="icon" href="/media/images/techeria_logo1.png">
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
-  <title>Accessories</title>
 
-  <!-- slider stylesheet -->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+    <title>Techeria</title>
 
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href=" {% static 'css/bootstrap.css' %} " />
+    <!-- slider stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
 
-  <!-- fonts style -->
-  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
-  <!-- Custom styles for this template -->
-  <link href=" {% static 'css/style.css' %} " rel="stylesheet" />
-  <!-- responsive style -->
-  <link href=" {% static 'css/responsive.css' %} " rel="stylesheet" />
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href=" {% static 'css/bootstrap.css' %} " />
+
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href=" {% static 'css/style.css' %} " rel="stylesheet" />
+    <!-- responsive style -->
+    <link href=" {% static 'css/responsive.css' %} " rel="stylesheet" />
+    <!-- icon font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  {% comment %} <link rel="stylesheet" href="/static/watch_css/css/owl.carousel.css"> {% endcomment %}
+  <link rel="stylesheet" href="/static/watch_css/style.css">
+  {% comment %} <link rel="stylesheet" href="/static/watch_css/css/responsive.css"> {% endcomment %}
 </head>
 
 <body class="sub_page">
   <div class="hero_area">
-    <!-- header section strats -->
+      <!-- header section strats -->
     <header class="header_section">
-      <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
-          <a class="navbar-brand" href=" {% static 'index.html' %} ">
-            <span>
-              Accessories
-            </span>
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
-              <ul class="navbar-nav  ">
-                <li class="nav-item active">
-                  <a class="nav-link" href=" {% url 'index' %}  ">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href=" {% static 'about.html' %} "> About </a>
-                </li>
-
-                <li class="nav-item">
-                  <a class="nav-link" href=" {% static 'contact.html' %} ">Contact us</a>
-                </li>
-              </ul>
-              <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-              </form>
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+            <a class="navbar-brand" href=" {% url 'index' %} ">
+              <span>
+                <img src="/media/images/techeria_logo1.png" style="width: 100px; height: auto;" alt="Techeria">
+              </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+  
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+                <ul class="navbar-nav">
+                  <li class="nav-item active">
+                    <a class="nav-link" href=" {% url 'index' %} ">Home <span class="sr-only">(current)</span></a>
+                  </li>
+  
+                  {% comment %} <li class="nav-item">
+                    <a class="nav-link" href=" {% url 'about' %} "> About </a>
+                  </li> {% endcomment %}
+                
+                    <li>
+                    <div class="dropdown">
+                      <button class="dropbtn">Categories</button>
+                      <div class="dropdown-content">
+                        <a href="#">Computers</a>
+                        <a href="#">Phones</a>
+                        <a href="#">Tablets/Ipads</a>
+                        <a href="#">Accessory</a>
+                        <a href="#">Chargers</a>
+                        <a href="#">TV</a>
+                        <a href="#">Speakers</a>
+                        <a href="#">Headsets</a>
+                      </div>
+                    </div>
+                    </li>
+  
+  
+  
+                  <li class="nav-item">
+                    <a class="nav-link" href=" {% url 'product' %} "> Products </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href=" {% url 'index' %} "> Returns/Orders </a>
+                  </li>
+  
+                  {% comment %} <li class="nav-item">
+                    <a class="nav-link" href=" {% url 'contact' %} ">Contact us</a>
+                  </li> {% endcomment %}
+                </ul>
+                <form class="form-inline my-2 my-lg-0" action="/search">
+                  <input name='q' class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
+                </form>
+  
+                <div class = "dropdown" >
+                <button class="dropbtn"><i class="glyphicon glyphicon-user" style="font-size:25px"></i></button>
+                <div class="dropdown-content">
+                  {% if user.is_authenticated and not user.is_staff %}
+                  <a href="#">Hello, {{user.first_name}}</a>
+                  <a href="{% url 'logout' %}">Logout</a>
+                  <a href="{% url 'addproduct' %}">Add product</a>
+  
+                  {% elif user.is_authenticated %}
+                  <a href="#">Hello, {{user.first_name}}</a>
+                  <a href="{% url 'logout' %}">Logout</a>
+                  {% else %}
+  
+                  <a href="{% url 'loginpage' %}">Login</a>
+                  <a href="{% url 'registration' %}">Sign Up</a>
+                  {% endif %}
+                  </div>
+                </div>
+  
+                <a href="{% url 'cart' %}">
+                   <button class="btn"><i class="fa fa-shopping-cart" style="font-size:30px"></i></button>
+                </a>
+  
+              </div>
             </div>
-          </div>
-        </nav>
-      </div>
-    </header>
-    <!-- end header section -->
+          </nav>
+        </div>
+  
+      </header>
+      <!-- end header section -->
+
+      <br>
+      <br>
 
   </div>
   <div class="bg">
 
 
 
-  <h3 class="my-4 border-bottom pb-1"><span class="text-muted">Search Results for </span>{{request.GET.p}}</h3>
+  <h3 class="my-4 border-bottom pb-1"><span class="text-muted">&nbsp;&nbsp;Accessories</span>{{request.GET.p}}</h3>
     <div class="container bcontent">
         {% for p in accessorie%}
         <hr />
@@ -120,7 +162,7 @@ nav{
         </div>
         {% endfor %}
     </div>
-
+<br>
 
 
 
