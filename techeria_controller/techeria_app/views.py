@@ -16,6 +16,7 @@ from django.urls import reverse
 from .utils import token_generator
 
 
+
 # Create your views here.
 def index(request):
     product = Products.objects.all()
