@@ -11,7 +11,7 @@ class Products(models.Model):
     price = models.FloatField()
     description = models.TextField()
     # slug = models.SlugField(max_length=100, unique=True)
-    category = models.CharField(max_length=255,unique=True)
+    category = models.CharField(max_length=255)
 
     class Meta:
         db_table = 'products'
@@ -101,6 +101,11 @@ class Accessories(models.Model):
 
         db_table = 'accessorie'
 
+    def __str__(self):
+        return self.techeria_app
+
+
+
 
 
 #Payment models below
@@ -170,3 +175,4 @@ class OrderProduct(models.Model):
 
     def __str__(self):
         return self.product.product_name
+

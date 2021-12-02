@@ -1,11 +1,12 @@
 from django.db.models.fields import NullBooleanField
+from django.forms.fields import ImageField
 from django.http import response
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from techeria_app.models import BuyerModel, SellerModel, Products, Laptops, Smartphone, Cameras, Accessories
 from django.contrib.auth.models import User, auth
 
-from django.contrib.auth.decorators import login_required
+
 
 from django.contrib import messages
 
@@ -65,12 +66,18 @@ def productInfo(request, i):
     }
     return render(request, 'productInfo.html', context)
 
+
+
+def watch(request):
+    return render(request, 'watch.html')
+
 def laptop(request):
     laptop = Laptops.objects.all()
     context = {
         'laptop': laptop
     }
     return render(request, 'laptop.html', context)
+
 
 def smartphone(request):
     smartphone = Smartphone.objects.all()
@@ -93,6 +100,7 @@ def accessorie(request):
         'accessorie': accessorie
     }
     return render(request, 'accessorie.html', context)
+
 
 
 def registration(request):
@@ -148,7 +156,7 @@ def registration(request):
                     buyer.country=country
                     user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name, is_staff = "True")
                     buyer.save()
-                    user.save()
+                    
                     return redirect("loginpage")
 
 
@@ -167,7 +175,7 @@ def registration(request):
                     seller.country=country
                     user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
                     seller.save()
-                    user.save()
+                    
                     return redirect("loginpage")
 
                 else:
@@ -208,10 +216,12 @@ def loginpage(request):
         if category == "Seller":
             if user is not None and not user.is_staff:
                 auth.login(request, user)
-                return redirect("seller")
+                return redirect("/")
             else:
                 messages.info(request, 'Check your credentials')
-                return redirect("loginpage")
+                return render(request, 'loginpage.html')
+                
+                
 
     else:
         return render(request, 'loginpage.html')
@@ -220,14 +230,42 @@ def loginpage(request):
 def signUpButton(request):
     return render(request, 'registration.html')
 
-def reset_password_email(request):
-    return render(request, 'reset_password_email.html')
+
+
 
 
 def logout(request):
     auth.logout(request)
     return render(request, 'index.html')
 
+
+
+
+def addproduct(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        description = request.POST.get('description')
+        price = request.POST.get('price')
+        category = request.POST.get('category')
+        if len(request.FILES) != 0:
+            image = request.FILES.get('myimage')
+        p = Products()
+        if name != "":          
+            p.name = name
+            p.description=description
+            p.price=price
+            p.category=category
+            if len(request.FILES) != 0:
+                p.image=image
+
+            p.save()
+            return render(request, 'index.html')
+        else:
+            return render(request, 'addproduct.html')
+        
+    else:
+        return render(request, 'addproduct.html')
+=======
 def seller(request):
     return render(request, 'seller.html')
 
@@ -343,3 +381,4 @@ def place_order(request):
 
 def payments(request):
     return render(request, 'payments.html')
+
