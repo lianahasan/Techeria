@@ -9,8 +9,14 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import sys
+import urllib.parse
 import django_heroku
-import dj_database_url
+#import dj_database_url
+import psycopg2.extensions
+
+# Register database schemes in URLs.
+urllib.parse.uses_netloc.append('mysql')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -73,23 +79,85 @@ WSGI_APPLICATION = 'techeria_controller.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+try:
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'techeria_db',
-        'USER': 'root',
-        'HOST': 'localhost',
-        'PORT': 3306,
-        'PASSWORD': 'orange',
-        
-        
+    # Check to make sure DATABASES is set in settings.py file.
+    # If not default to {}
+
+    if 'DATABASES' not in locals():
+        DATABASES = {}
+
+    if 'DATABASE_URL' in os.environ:
+        url = urllib.parse.urlparse(os.environ['DATABASE_URL'])
+
+        # Ensure default database exists.
+        DATABASES['default'] = DATABASES.get('default', {})
+
+        # Update with environment configuration.
+        DATABASES['default'].update({
+                'NAME': url.path[1:],
+                'USER': url.username,
+                'PASSWORD': url.password,
+                'HOST': url.hostname,
+                'PORT': url.port,
+        })
+        if url.scheme == 'mysql':
+            DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
+except Exception:
+    print('Unexpected error:', sys.exc_info())
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'techeria_db',
+#         'USER': 'root',
+#         'HOST': 'localhost',
+#         'PORT': 3306,
+#         'PASSWORD': 'orange',
+#         # 'TEST': {
+#         #     'NAME': 'techeria_test',
+#         # }
+#     },
+# }
 
 
-    },
-}
+# try:
 
+#     # Check to make sure DATABASES is set in settings.py file.
+#     # If not default to {}
 
+#     if 'DATABASES' not in locals():
+#         DATABASES = {}
+
+#     if 'DATABASE_URL' in os.environ:
+#         url = urllib.parse.urlparse(os.environ['DATABASE_URL'])
+
+#         # Ensure default database exists.
+#         DATABASES['default'] = DATABASES.get('default', {})
+
+#         # Update with environment configuration.
+#         DATABASES['default'].update({
+#                 'NAME': url.path[1:],
+#                 'USER': url.username,
+#                 'PASSWORD': url.password,
+#                 'HOST': url.hostname,
+#                 'PORT': url.port,
+#         })
+#         if url.scheme == 'mysql':
+#             DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
+# except Exception:
+#     print('Unexpected error:', sys.exc_info())
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'techeria_db',
+#        'USER': 'root',
+#        'HOST': 'localhost',
+#        'PORT': 3306,
+#        'PASSWORD': ''
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -138,9 +206,20 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-django_heroku.settings(locals())
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# del DATABASES['default']['OPTIONS']['sslmode']
+django_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode'] 
+
+#email staff
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'ikabirul1010@gmail.com'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL =  'ikabirul1010@gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_PASSWORD = 'ForTecheria' 
