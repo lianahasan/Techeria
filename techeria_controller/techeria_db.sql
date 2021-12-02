@@ -318,7 +318,6 @@ CREATE TABLE `accessorie` (
 --
 -- Dumping data for table `accessorie`
 --
-
 INSERT INTO `accessorie` (`id`, `image`, `name`, `price`, `description`, `category`) VALUES
 (38329389, 'accessories1.jpg', 'Beats by Dr. Dre - Beats Studio³ Wireless Noise Cancelling Headphones - Midnight Black', 279.99, 'Enjoy immersive listening with these midnight black Beats Studio³ headphones. Pure ANC technology and the soft ear cushions block off external noise and optimize sound output, and the battery delivers up to 40 hours of playback in low-power mode. The Class 1 Bluetooth connectivity of these Beats Studio³ headphones offers seamless music streaming from compatible devices at extended range.', 'accessories'),
 (38329390, 'accessories2.jpg', 'Bose - SoundLink Wireless Around-Ear Headphones II - White', 239.99, 'Enjoy a better Bluetooth wireless experience with Bose SoundLink around- ear headphones II. Exclusive headphone technology delivers deep, immersive sound at any volume. SoundLink wireless Bluetooth headphones use the latest technology so you can easily connect to your mobile devices with seamless audio/video sync. And a dual microphone system rejects noise and wind, so you will be heard loud and clear. Switch seamlessly between 2 Bluetooth devices, and stay connected to both. And intuitive touch controls give you simple command of your music and calls. The over ear headphone design features soft ear cushions and a contoured headband, they\'re lighter and more comfortable than other comparable wireless headphones so you can enjoy them all day long. Wear them almost anywhere, and experience uncompromised wireless performance. When you\'re done listening, you can fold them flat for storage in their compact matching case.', 'accessories'),
@@ -342,6 +341,17 @@ ALTER TABLE `accessorie`
   ADD PRIMARY KEY (`id`);
 
 
+
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `accessorie`
+--
+ALTER TABLE `accessorie`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38329399;
 --
 -- Indexes for table `camera`
 --
