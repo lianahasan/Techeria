@@ -74,6 +74,9 @@ def productInfo(request, i):
 def watch(request):
     return render(request, 'watch.html')
 
+def seller(request):
+    return render(request, 'seller.html')
+
 
 def registration(request):
     if request.method == 'POST':
