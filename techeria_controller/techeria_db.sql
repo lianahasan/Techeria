@@ -335,7 +335,56 @@ INSERT INTO `camera` (`id`, `image`, `name`, `price`, `description`, `category`)
 --
 -- Indexes for dumped tables
 --
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `accessorie`
+--
+
+CREATE TABLE `accessorie` (
+  `id` bigint(20) NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `price` double NOT NULL,
+  `description` longtext NOT NULL,
+  `category` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `accessorie`
+--
+
+INSERT INTO `accessorie` (`id`, `image`, `name`, `price`, `description`, `category`) VALUES
+(38329389, 'accessories1.jpg', 'Beats by Dr. Dre - Beats Studio³ Wireless Noise Cancelling Headphones - Midnight Black', 279.99, 'Enjoy immersive listening with these midnight black Beats Studio³ headphones. Pure ANC technology and the soft ear cushions block off external noise and optimize sound output, and the battery delivers up to 40 hours of playback in low-power mode. The Class 1 Bluetooth connectivity of these Beats Studio³ headphones offers seamless music streaming from compatible devices at extended range.', 'accessories'),
+(38329390, 'accessories2.jpg', 'Bose - SoundLink Wireless Around-Ear Headphones II - White', 239.99, 'Enjoy a better Bluetooth wireless experience with Bose SoundLink around- ear headphones II. Exclusive headphone technology delivers deep, immersive sound at any volume. SoundLink wireless Bluetooth headphones use the latest technology so you can easily connect to your mobile devices with seamless audio/video sync. And a dual microphone system rejects noise and wind, so you\'ll be heard loud and clear. Switch seamlessly between 2 Bluetooth devices, and stay connected to both. And intuitive touch controls give you simple command of your music and calls. The over ear headphone design features soft ear cushions and a contoured headband, they\'re lighter and more comfortable than other comparable wireless headphones so you can enjoy them all day long. Wear them almost anywhere, and experience uncompromised wireless performance. When you\'re done listening, you can fold them flat for storage in their compact matching case.', 'accessories'),
+(38329391, 'accessories3.jpg', 'Apple - AirPods Pro (with Magsafe Charging Case) - White', 232.99, 'AirPods Pro feature Active Noise Cancellation for immersive sound. Transparency mode for hearing the world around you. They’re sweat and water resistant1 and have a customizable fit for all-day comfort.', 'accessories'),
+(38329392, 'accessories4.jpg', '', 148.99, 'True wireless noise cancelling Beats Studio Bud are made for music. Designed with a custom acoustic platform, Beats Studio Bud are engineered to deliver powerful, balanced sound in a compact, in-ear form factor. The result — immersive sound that pulls the emotion of music from the studio to your ears to keep you inspired. These earphones feature two listening modes, Active Noise Cancelling (ANC) and Transparency mode, to give you total control of your sound. Each earbud has up to 8 hours of listening time¹ with two additional charges provided by its pocket-sized charging case to give you up to 24 hours of combined playback.² Beats Studio Bud also offer simple one-touch pairing for Apple³ and Android⁴ devices', 'accessories'),
+(38329393, 'accessories5.jpg', 'Apple Watch Series 3 (GPS) 38mm Silver Aluminum Case with White Sport Band - Silver Aluminum', 169.99, 'Low and high heart rate notifications. Emergency SOS. New Breathe watch faces. Automatic workout detection. New yoga and hiking workouts. Advanced features for runners like cadence and pace alerts. New head-to-head competitions. Activity sharing with friends. Personalized coaching. Monthly challenges and achievement awards. You can use Walkie-Talkie, make phone calls, and send messages. Listen to Apple Music¹ and Apple Podcasts. And use Siri in all-new ways. Apple Watch Series 3 lets you do it all right from your wrist.', 'accessories'),
+(38329394, 'accessories6.jpg', 'Apple - AirTag - Silver', 29.99, 'AirTag. Keep track of your keys, wallet, luggage, backpack, and more, all in the Find My app. Play a sound on the built-in speaker, or say \"Hey Siri, find my gym bag.\" With select iPhone models, Precision Finding can lead you right to your nearby AirTag.1 If it\'s further away, hundreds of millions of Apple devices in the Find My network can help track it down. All anonymously and encrypted for privacy.', 'accessories'),
+(38329395, 'accessories7.jpg', 'DJI Mini 2 Quadcopter with Remote Controller', 429.99, 'DJI Mini 2 is beginner-friendly, powerful, and well, mini. Impressive performance, stunning image quality, and creative videos are just a few taps away. Explore an entirely new perspective, capturing the moments that make your life truly yours.', 'accessories'),
+(38329396, 'accessories8.jpg', 'JBL - Flip 5 Portable Bluetooth Speaker - Teal', 139.99, 'Get the party started with this JBL Flip 5 portable wireless speaker. Bluetooth 4.2 connectivity offers an effective range of up to 33 feet, and the built-in battery provides up to 12 hours of listening per charge. This JBL Flip 5 portable wireless speaker has advanced drivers that deliver clear, detailed audio and accurate bass.', 'accessories'),
+(38329397, 'accessories9.jpg', 'Samsung - Galaxy Buds Pro True Wireless Earbud Headphones - Phantom Violet', 189.99, 'Samsung Galaxy Buds Pro combines crytal-clear sound with unprecedented control, making it effortless to elevate everyday moments. Use intelligent Active Noise Cancellation to escape into your music at a moment’s notice, even in a noisy crowd. Close the distance with crystal-clear calls, so it always feels like you’re in the same room. And water won’t ruin your workout since the resistant Galaxy Buds Pro keeps the beat going even with a little rain. Pair your Galaxy Buds Pro with a Galaxy S21 and find even more ways to make ordinary extraordinary.', 'accessories'),
+(38329398, 'accessories10.jpg', 'Bose - QuietComfort Earbuds True Wireless Noise Cancelling In-Ear Headphones - Sandstone', 179.99, 'Better sound begins with better silence. That’s why Bose QuietComfort Earbuds are engineered with the world’s most effective noise cancelling and high-fidelity audio. Microphones inside and outside the earphones sense noise and react instantaneously to cancel the signal. Get rid of disruptions so you can turn up the music on your wireless earbuds and amplify whatever you’re most passionate about — from hiking or circuit training to coding or baking. And when you need to be more aware of your surroundings, minimize noise cancelling with a quick double tap, so you can walk down a busy street or listen for your boarding announcement. StayHear™ Max tips provide extra comfort and stability for an even better experience. Rule the Quiet with Bose QuietComfort Earbuds and get an exhilarating experience that’s tough to find in any other Bluetooth earbuds. The Bose QuietComfort Noise Cancelling Earbuds are available in Triple Black, Soapstone and limited-edition Sandstone or Stone Blue.', 'accessories');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `accessorie`
+--
+ALTER TABLE `accessorie`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `accessorie`
+--
+ALTER TABLE `accessorie`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38329399;
 --
 -- Indexes for table `camera`
 --
