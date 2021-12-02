@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Seller Page</title>
+
+</head>
+
+<style>
+    body{
+       background-color: #B9CAF1   
+    }
+
+    body{
+        margin-top: 10%
+    }
+    .mk {
+
+        height: 200px;
+
+
+
+    }
+
+</style>
+
+<body style="text-align: center;">
+
+
+
+
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="fw-bold">Add Product</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="" class="form-label">Name</label>
+                                <input type="text" Required name="name" class="form-control">
+                            </div>
+                            <br>
+                            <div class="mb-3">
+                                <label for="" class="mk">Descritpion</label>
+                                <br>
+                                <textarea rows = "5" cols = "60" name = "description">
+                                </textarea>
+                            <br>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Price</label>
+                                <input type="text" Required name="price" class="form-control">
+                            </div>
+                            <br>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Category</label>
+                                <input type="text" Required name="category" class="form-control">
+                            </div>
+                            <br>
+                             <div class="mb-3">
+                                <label for="" class="form-label">Image</label>
+                                <input type="file" Required name="myimage" class="form-control">
+                            </div>
+                            <br>
+                            <input type="submit" value="Submit">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+

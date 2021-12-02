@@ -113,7 +113,7 @@ except Exception:
 #         'USER': 'root',
 #         'HOST': 'localhost',
 #         'PORT': 3306,
-#         'PASSWORD': 'orange',
+#         'PASSWORD': '3303',
 #         # 'TEST': {
 #         #     'NAME': 'techeria_test',
 #         # }
@@ -148,16 +148,16 @@ except Exception:
 # except Exception:
 #     print('Unexpected error:', sys.exc_info())
 
-#DATABASES = {
+# DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.mysql',
 #        'NAME': 'techeria_db',
 #        'USER': 'root',
 #        'HOST': 'localhost',
 #        'PORT': 3306,
-#        'PASSWORD': ''
+#        'PASSWORD': '3303'
 #    }
-#}
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -214,3 +214,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # del DATABASES['default']['OPTIONS']['sslmode']
 django_heroku.settings(locals())
 del DATABASES['default']['OPTIONS']['sslmode'] 
+
+#email staff
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'ikabirul1010@gmail.com'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL =  'ikabirul1010@gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_PASSWORD = 'ForTecheria' 

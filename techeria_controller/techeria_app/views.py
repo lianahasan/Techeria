@@ -1,22 +1,23 @@
 from django.db.models.fields import NullBooleanField
+from django.forms.fields import ImageField
 from django.http import response
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from techeria_app.models import BuyerModel, SellerModel, Products, Laptops, Smartphone, Cameras
+
+from techeria_app.models import BuyerModel, SellerModel, Products, Laptops, Smartphone, Cameras,Order,OrderItem,Accessories
+
 from django.contrib.auth.models import User, auth
-
-from django.contrib.auth.decorators import login_required
-
+from django.core.mail import EmailMessage
+from django.views import View
 from django.contrib import messages
 
-# Verification email
-from django.contrib.sites.shortcuts import get_current_site
-from django.template.loader import render_to_string
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.utils.encoding import force_bytes
-from django.contrib.auth.tokens import default_token_generator
-from django.core.mail import EmailMessage
 
+
+from django.utils.encoding import force_bytes, force_text, DjangoUnicodeDecodeError
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.contrib.sites.shortcuts import get_current_site
+from django.urls import reverse
+from .utils import token_generator
 
 # Create your views here.
 
@@ -36,26 +37,63 @@ def contact(request):
 def watch(request):
     return render(request, 'watch.html')
 
-def loginpage(request):
-    return render(request, 'loginpage.html')
+
+def smartphone(request):
+    smartphone = Smartphone.objects.all()
+    context = {
+        'smartphone': smartphone
+    }
+    return render(request, 'smartphone.html', context)
+    
+
+
 
 def cart(request):
-    return render(request, 'cart.html')
+    try:
+	    buyer = request.user.buyer
+    except:
+	    device = request.COOKIES['device']
+	    buyer, created = BuyerModel.objects.get_or_create(device=device)
+
+    order, created = Order.objects.get_or_create(buyer=buyer, complete=False)
+
+    context = {'order':order}
+    return render(request, 'cart.html',context)
 
 def checkout(request):
     return render(request, 'checkout.html')
 
-def registration(request):
-    return render(request, 'registration.html')
+
 
 def search(request):
     q = request.GET['q']
     data = Products.objects.filter(name__icontains=q)
     return render(request, 'search.html', {'data': data})
 
+def product(request,pk):
+    product = Products.objects.get(id=pk)
+    
+    if request.method == 'POST':
+        product = Products.objects.get(id=pk)
+        try:
+            buyer = request.user.buyer	
+        except:
+            device = request.COOKIES['device']
+            buyer, created = BuyerModel.objects.get_or_create(device=device)
 
-def product(request):
-    return render(request, 'product.html')
+        order, created = Order.objects.get_or_create(buyer=buyer, complete=False)
+        orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+        orderItem.quantity=request.POST['quantity']
+        orderItem.save()
+
+        return redirect('cart')
+    
+    context = {'product': product
+               }
+    return render(request, 'product.html',context)
+
+def ourproducts(request):
+    return render(request, 'ourproducts.html')
 
 
 def productInfo(request, i):
@@ -65,12 +103,22 @@ def productInfo(request, i):
     }
     return render(request, 'productInfo.html', context)
 
+
+
+def watch(request):
+    return render(request, 'watch.html')
+
+def seller(request):
+    return render(request, 'seller.html')
+
+
 def laptop(request):
     laptop = Laptops.objects.all()
     context = {
         'laptop': laptop
     }
     return render(request, 'laptop.html', context)
+
 
 def smartphone(request):
     smartphone = Smartphone.objects.all()
@@ -85,6 +133,17 @@ def camera(request):
         'camera': camera
     }
     return render(request, 'camera.html', context)
+
+
+def accessorie(request):
+    accessorie = Accessories.objects.all()
+    context = {
+        'accessorie': accessorie
+    }
+    return render(request, 'accessorie.html', context)
+
+
+
 
 def registration(request):
     if request.method == 'POST':
@@ -138,8 +197,31 @@ def registration(request):
                     buyer.zip_code=zip_code
                     buyer.country=country
                     user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name, is_staff = "True")
-                    buyer.save()
+                    user.is_active = False                  
                     user.save()
+                    buyer.save()
+
+
+
+                    domain = get_current_site(request).domain
+                    uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
+
+                    link = reverse('activate', kwargs={'uidb64':uidb64, 'token': token_generator.make_token(user)})
+                    email_subject = 'Activate your account'
+                    activate_url = 'http://'+domain+link
+                    email_body = 'Hi '+ user.first_name+'. please use this link to verify ypur account\n' + activate_url
+                    email = EmailMessage(
+                         email_subject,
+                         email_body,
+                         'noreply@techeria.com',
+                        [email],
+                        ['bcc@example.com'],
+                        
+                    )
+                    email.send(fail_silently=False)
+
+
+                    messages.success(request, 'A verification link has been send to your email. Please confirm the link')
                     return redirect("loginpage")
 
 
@@ -157,8 +239,27 @@ def registration(request):
                     seller.zip_code=zip_code
                     seller.country=country
                     user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
-                    seller.save()
+                    user.is_active = False
                     user.save()
+                    seller.save()
+
+                    domain = get_current_site(request).domain
+                    uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
+
+                    link = reverse('activate', kwargs={'uidb64':uidb64, 'token': token_generator.make_token(user)})
+                    email_subject = 'Activate your account'
+                    activate_url = 'http://'+domain+link
+                    email_body = 'Hi '+ user.first_name+'. please use this link to verify ypur account\n' + activate_url
+                    email = EmailMessage(
+                         email_subject,
+                         email_body,
+                         'noreply@techeria.com',
+                        [email],
+                        ['bcc@example.com'],
+                        
+                    )
+                    email.send(fail_silently=False)
+                    messages.success(request, 'A verification link has been send to your email. Please confirm the link')
                     return redirect("loginpage")
 
                 else:
@@ -174,17 +275,11 @@ def registration(request):
         return render(request, 'registration.html')
 
 
-
-
-
 def loginpage(request):
     if request.method == 'POST':
         username = request.POST ['username']
         password = request.POST ['password']
         category = request.POST.get ('kk')
-
-
-
 
         user=auth.authenticate(username=username,password=password)
 
@@ -199,10 +294,12 @@ def loginpage(request):
         if category == "Seller":
             if user is not None and not user.is_staff:
                 auth.login(request, user)
-                return redirect("seller")
+                return redirect("/")
             else:
                 messages.info(request, 'Check your credentials')
-                return redirect("loginpage")
+                return render(request, 'loginpage.html')
+                
+                
 
     else:
         return render(request, 'loginpage.html')
@@ -211,126 +308,129 @@ def loginpage(request):
 def signUpButton(request):
     return render(request, 'registration.html')
 
-def reset_password_email(request):
-    return render(request, 'reset_password_email.html')
 
 
 def logout(request):
     auth.logout(request)
     return render(request, 'index.html')
 
-def seller(request):
-    return render(request, 'seller.html')
 
-def activate(request, uidb64, token):
-    try:
-        uid = urlsafe_base64_decode(uidb64).decode()
-        user = BuyerModel._default_manager.get(pk=uid)
-    except(TypeError, ValueError, OverflowError, BuyerModel.DoesNotExist):
-        user = None
 
-    if user is not None and default_token_generator.check_token(user, token):
-        user.is_active = True
-        user.save()
-        messages.success(request, 'Congratulations! Your account is activated.')
-        return redirect('loginpage')
-    else:
-        messages.error(request, 'Invalid activation link')
-        return redirect('registration')
-
-def forgotPassword(request):
+def addproduct(request):
     if request.method == 'POST':
-        email = request.POST['email']
-        if User.objects.filter(email=email).exists():
-            user = User.objects.get(email__exact=email)
+        name = request.POST.get('name')
+        description = request.POST.get('description')
+        price = request.POST.get('price')
+        category = request.POST.get('category')
+        if len(request.FILES) != 0:
+            image = request.FILES.get('myimage')
+        p = Products()
+        if name != "":          
+            p.name = name
+            p.description=description
+            p.price=price
+            p.category=category
+            if len(request.FILES) != 0:
+                p.image=image
 
-            # Reset password email
-            current_site = get_current_site(request)
-            mail_subject = 'Reset Your Password'
-            message = render_to_string('reset_password_email.html', {
-                'user': user,
-                # 'domain': current_site,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                'token': default_token_generator.make_token(user),
-            })
-            to_email = email
-            send_email = EmailMessage(mail_subject, message, to=[to_email])
-            send_email.send()
-
-            messages.success(request, 'Reset Password email has been sent to your email address.')
-            return redirect('loginpage')
-
+            p.save()
+            return render(request, 'index.html')
         else:
-            messages.error(request, 'Account does not exist!')
-            return redirect('forgotPassword')
-    return render(request,'forgotPassword.html')
-
-
-def resetpassword_validate(request, uidb64, token):
-    return HttpResponse('ok')
-
-#payment views start HERE::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-def place_order(request):
-    current_user = request.user
-
-    # Cart count is less than or equal to 0, then redirect back to products
-    cart_items = CartItem.objects.filter(user=current_user)
-    cart_count = cart_items.count()
-    if cart_count <= 0:
-        return redirect('techeria_app')
-
-    grand_total = 0
-    tax = 0
-    for cart_item in cart_items:
-        total += (cart_item.product.price * cart_item.quantity)
-        quantity += cart_item.quantity
-    tax = (2 * total)/100
-    grand_total = total + tax
-
-    if request.method == 'POST':
-        form = OrderForm(request.POST)
-        if form.is_valid():
-            # Billing information inside Order table
-            data = Order()
-            data.user = current_user
-            data.first_name = form.cleaned_data['first_name']
-            data.last_name = form.cleaned_data['last_name']
-            data.phone = form.cleaned_data['phone']
-            data.email = form.cleaned_data['email']
-            data.address_line_1 = form.cleaned_data['address_line_1']
-            data.address_line_2 = form.cleaned_data['address_line_2']
-            data.country = form.cleaned_data['country']
-            data.state = form.cleaned_data['state']
-            data.city = form.cleaned_data['city']
-            data.order_note = form.cleaned_data['order_note']
-            data.order_total = grand_total
-            data.tax = tax
-            data.ip = request.META.get('REMOTE_ADDR')
-            data.save()
-            # This will Genertae order number
-            mt = int(datetime.date.today().strftime('%m'))
-            dt = int(datetime.date.today().strftime('%d'))
-            yr = int(datetime.date.today().strftime('%Y'))
-
-
-            d = datetime.date(mt,dt,yr)
-            current_date = d.strftime("%m%d%Y")
-            order_number = current_date + str(data.id)
-            data.order_number = order_number
-            data.save()
-
-            order = Order.objects.get(user=current_user, is_ordered=False, order_number=order_number)
-            context = {
-                'order': order,
-                'cart_items': cart_items,
-                'total': total,
-                'tax': tax,
-                'grand_total': grand_total,
-            }
-            return render(request, 'payments.html', context)
+            return render(request, 'addproduct.html')
+        
     else:
-        return redirect('checkout')
+        return render(request, 'addproduct.html')
+
+
+
+class VerificationView(View):
+    def get(self, request, uidb64, token):
+        try:
+            id = force_text(urlsafe_base64_decode(uidb64))
+            user = User.objects.get(pk=id)
+
+            if not token_generator.check_token(user, token):
+                return redirect('loginpage' + '?message=' + 'user already activate')
+            if user.is_active:
+                return redirect('loginpage')
+            user.is_active = True
+            user.save()
+            messages.success(request, 'Account activated successfully')
+            return redirect('loginpage')
+        except Exception as ex:
+            pass
+        return redirect('loginpage')
+
+
+
+
+
+
+
+# #payment views start HERE::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# def place_order(request):
+#     current_user = request.user
+
+#     # Cart count is less than or equal to 0, then redirect back to products
+#     cart_items = CartItem.objects.filter(user=current_user)
+#     cart_count = cart_items.count()
+#     if cart_count <= 0:
+#         return redirect('techeria_app')
+
+#     grand_total = 0
+#     tax = 0
+#     for cart_item in cart_items:
+#         total += (cart_item.product.price * cart_item.quantity)
+#         quantity += cart_item.quantity
+#     tax = (2 * total)/100
+#     grand_total = total + tax
+
+#     if request.method == 'POST':
+#         form = OrderForm(request.POST)
+#         if form.is_valid():
+#             # Billing information inside Order table
+#             data = Order()
+#             data.user = current_user
+#             data.first_name = form.cleaned_data['first_name']
+#             data.last_name = form.cleaned_data['last_name']
+#             data.phone = form.cleaned_data['phone']
+#             data.email = form.cleaned_data['email']
+#             data.address_line_1 = form.cleaned_data['address_line_1']
+#             data.address_line_2 = form.cleaned_data['address_line_2']
+#             data.country = form.cleaned_data['country']
+#             data.state = form.cleaned_data['state']
+#             data.city = form.cleaned_data['city']
+#             data.order_note = form.cleaned_data['order_note']
+#             data.order_total = grand_total
+#             data.tax = tax
+#             data.ip = request.META.get('REMOTE_ADDR')
+#             data.save()
+#             # This will Genertae order number
+#             mt = int(datetime.date.today().strftime('%m'))
+#             dt = int(datetime.date.today().strftime('%d'))
+#             yr = int(datetime.date.today().strftime('%Y'))
+
+
+#             d = datetime.date(mt,dt,yr)
+#             current_date = d.strftime("%m%d%Y")
+#             order_number = current_date + str(data.id)
+#             data.order_number = order_number
+#             data.save()
+
+#             order = Order.objects.get(user=current_user, is_ordered=False, order_number=order_number)
+#             context = {
+#                 'order': order,
+#                 'cart_items': cart_items,
+#                 'total': total,
+#                 'tax': tax,
+#                 'grand_total': grand_total,
+#             }
+#             return render(request, 'payments.html', context)
+#     else:
+#         return redirect('checkout')
 
 
 def payments(request):
     return render(request, 'payments.html')
+
+
