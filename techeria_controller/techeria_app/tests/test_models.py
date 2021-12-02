@@ -49,6 +49,22 @@ class Test_smartphone(TestCase):
 
 
 
+class Test_camera(TestCase):
+
+    def test_fileds(self):
+
+        def setUp(self):
+             self.camera = Cameras.object.create(
+                name="Canon - EOS Rebel",
+                price="479.99",
+                description="Take professional-looking photos with",
+                category="cameras")
+
+        def test_camera_is_assigned_slug_on_creation(self):
+            self.assertEqual(self.smartphone.slug,'camera')
+
+
+
 class Test_buyer(TestCase):
     def test_fileds(self):
 
