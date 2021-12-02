@@ -23,6 +23,8 @@ from django.contrib.auth import views as auth_views
 
 
 
+from techeria_app.views import VerificationView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
@@ -43,11 +45,14 @@ urlpatterns = [
 
     path('addproduct', views.addproduct, name='addproduct'),
 
+
+
     
     path('place_order', views.place_order, name='place_order'),
     path('payments/', views.payments, name='payments'),
     # path('order_complete/', views.order_complete, name='order_complete'),
     
     path('seller', views.seller, name='seller'),
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
