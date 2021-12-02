@@ -54,6 +54,43 @@ nav{
   <link href=" {% static 'css/style.css' %} " rel="stylesheet" />
   <!-- responsive style -->
   <link href=" {% static 'css/responsive.css' %} " rel="stylesheet" />
+  <script type="text/javascript">
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+
+    function uuidv4() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random() * 16 | 0,
+                v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+
+
+
+
+    let device = getCookie('device')
+
+    if (device == null || device == undefined) {
+        device = uuidv4()
+    }
+
+    document.cookie = 'device=' + device + ";domain=;path=/"
+</script>
 </head>
 
 <body class="sub_page">
@@ -100,25 +137,26 @@ nav{
 
 
 
-  <h3 class="my-4 border-bottom pb-1"><span class="text-muted">Search Results for </span>{{request.GET.p}}</h3>
+  <h3 class="my-4 border-bottom pb-1"><span class="text-muted">Search Results for </span>{{request.GET.product}}</h3>
     <div class="container bcontent">
-        {% for p in laptop%}
-        <hr />
-        <div class="card" style="width: 500px;">
-            <div class="row no-gutters">
-                <div class="col-lg-5">
-                    <img class="card-img-top" width="20%" src="/media/laptops/{{p.image}}" alt="Card image cap">
-                </div>
-                <div class="col-sm-7">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ p.name }}</h5>
-                        <p class="card-text">${{ p.price }}</p>
-                        <a href="{% url 'p' p.pk %}" class="btn btn-primary">Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+      {% for product in laptop%}
+      <hr />
+      <div class="card" style="width: 500px;">
+          <div class="row no-gutters">
+              <div class="col-lg-5">
+                  <img class="card-img-top" width="10%" src="/media/{{product.image}}" alt="Card image cap">
+              </div>
+              <div class="col-sm-7">
+                  <div class="card-body">
+                      <h5 class="card-title">{{ product.name }}</h5>
+                      <p class="card-text">${{ product.price }}</p>
+                      <a href="{% url 'product' product.id %}" class="btn btn-primary">Details</a>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+      {% endfor %}
     </div>
 
 

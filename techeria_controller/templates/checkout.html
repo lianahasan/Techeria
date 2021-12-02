@@ -112,7 +112,7 @@
 
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href=" {% url 'product' %} "> Our Products </a>
+                                    <a class="nav-link" href=" {% url 'ourproducts' %} "> Our Products </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href=""> Return Orders </a>
@@ -155,36 +155,55 @@
                         <form id="form">
                             <div id="user-info">
                                 <div class="form-field">
-                                    <input required class="form-control" type="text" name="name" placeholder="Name..">
+                                    <input required class="form-control" type="text" name="first name" placeholder="First Name..">
+                                </div>
+                                <div class="form-field">
+                                    <input required class="form-control" type="text" name="last name" placeholder="Last Name..">
                                 </div>
                                 <div class="form-field">
                                     <input required class="form-control" type="email" name="email" placeholder="Email..">
                                 </div>
+                                <div class="form-field">
+                                    <input class="form-control" type="text" name="phone number" placeholder="Phone Number..">
+                                </div>
+
                             </div>
 
                             <div id="shipping-info">
                                 <hr>
                                 <p>Shipping Information:</p>
+                                <form action="{% url 'place_order' %}" method="POST">
+                                  {% csrf_token %}
                                 <hr>
+
                                 <div class="form-field">
-                                    <input class="form-control" type="text" name="address" placeholder="Address..">
+                                    <input class="form-control" type="text" name="address line 2" placeholder="Address line 2..">
+                                </div>
+                                <div class="form-field">
+                                    <input class="form-control" type="text" name="address line 1" placeholder="Address line 1..">
                                 </div>
                                 <div class="form-field">
                                     <input class="form-control" type="text" name="city" placeholder="City..">
                                 </div>
+
                                 <div class="form-field">
                                     <input class="form-control" type="text" name="state" placeholder="State..">
                                 </div>
                                 <div class="form-field">
-                                    <input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
+                                    <input class="form-control" type="text" name="zipcode" placeholder="Country..">
                                 </div>
                                 <div class="form-field">
                                     <input class="form-control" type="text" name="country" placeholder="Zip code..">
                                 </div>
+                                <div class="form-field">
+                                    <input class="form-control" type="text" name="order name" placeholder="Order Name..">
+                                </div>
+
                             </div>
+                            
 
                             <hr>
-                            <input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
+                            <!-- <input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue"> -->
                         </form>
                     </div>
 
@@ -216,6 +235,8 @@
                             </div>
                         </div>
                         {% endfor %}
+                        <button type="submit" name="submit" class="btn btn-primary btn-block">Place Order</button>
+			                     <a href="{% url 'product' %}" class="btn btn-light btn-block">Continue Shopping</a>
                         <h5>Items: {{order.get_cart_items}}</h5>
                         <h5>Total: ${{order.get_cart_total|floatformat:2}}</h5>
                     </div>

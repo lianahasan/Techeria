@@ -106,19 +106,19 @@ try:
 except Exception:
     print('Unexpected error:', sys.exc_info())
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'techeria_db',
-#         'USER': 'root',
-#         'HOST': 'localhost',
-#         'PORT': 3306,
-#         'PASSWORD': 'orange',
-#         # 'TEST': {
-#         #     'NAME': 'techeria_test',
-#         # }
-#     },
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'techeria_db',
+        'USER': 'root',
+        'HOST': 'localhost',
+        'PORT': 3306,
+        'PASSWORD': '3303',
+        # 'TEST': {
+        #     'NAME': 'techeria_test',
+        # }
+    },
+}
 
 
 # try:
@@ -213,4 +213,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # del DATABASES['default']['OPTIONS']['sslmode']
 django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode'] 
+# del DATABASES['default']['OPTIONS']['sslmode'] 

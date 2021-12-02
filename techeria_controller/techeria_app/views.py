@@ -1,7 +1,8 @@
 from django.db.models.fields import NullBooleanField
 from django.http import response
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from techeria_app.models import BuyerModel, SellerModel, Products, Laptops,Smartphone
+from techeria_app.models import BuyerModel, SellerModel, Products, Laptops, Smartphone, Cameras,Order,OrderItem
 from django.contrib.auth.models import User, auth
 
 from django.contrib.auth.decorators import login_required
@@ -39,7 +40,16 @@ def loginpage(request):
     return render(request, 'loginpage.html')
 
 def cart(request):
-    return render(request, 'cart.html')
+    try:
+	    buyer = request.user.buyer
+    except:
+	    device = request.COOKIES['device']
+	    buyer, created = BuyerModel.objects.get_or_create(device=device)
+
+    order, created = Order.objects.get_or_create(buyer=buyer, complete=False)
+
+    context = {'order':order}
+    return render(request, 'cart.html',context)
 
 def checkout(request):
     return render(request, 'checkout.html')
@@ -53,9 +63,30 @@ def search(request):
     return render(request, 'search.html', {'data': data})
 
 
-def product(request):
-    return render(request, 'product.html')
+def product(request,pk):
+    product = Products.objects.get(id=pk)
+    
+    if request.method == 'POST':
+        product = Products.objects.get(id=pk)
+        try:
+            buyer = request.user.buyer	
+        except:
+            device = request.COOKIES['device']
+            buyer, created = BuyerModel.objects.get_or_create(device=device)
 
+        order, created = Order.objects.get_or_create(buyer=buyer, complete=False)
+        orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+        orderItem.quantity=request.POST['quantity']
+        orderItem.save()
+
+        return redirect('cart')
+    
+    context = {'product': product
+               }
+    return render(request, 'product.html',context)
+
+def ourproducts(request):
+    return render(request, 'ourproducts.html')
 
 def productInfo(request, i):
     oneProduct = Products.objects.get(id=i)
@@ -77,6 +108,13 @@ def smartphone(request):
         'smartphone': smartphone
     }
     return render(request, 'smartphone.html', context)
+
+def camera(request):
+    camera = Cameras.objects.all()
+    context = {
+        'camera': camera
+    }
+    return render(request, 'camera.html', context)
 
 def registration(request):
     if request.method == 'POST':
@@ -260,3 +298,69 @@ def forgotPassword(request):
 
 def resetpassword_validate(request, uidb64, token):
     return HttpResponse('ok')
+
+# #payment views start HERE::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# def place_order(request):
+#     current_user = request.user
+
+#     # Cart count is less than or equal to 0, then redirect back to products
+#     cart_items = CartItem.objects.filter(user=current_user)
+#     cart_count = cart_items.count()
+#     if cart_count <= 0:
+#         return redirect('techeria_app')
+
+#     grand_total = 0
+#     tax = 0
+#     for cart_item in cart_items:
+#         total += (cart_item.product.price * cart_item.quantity)
+#         quantity += cart_item.quantity
+#     tax = (2 * total)/100
+#     grand_total = total + tax
+
+#     if request.method == 'POST':
+#         form = OrderForm(request.POST)
+#         if form.is_valid():
+#             # Billing information inside Order table
+#             data = Order()
+#             data.user = current_user
+#             data.first_name = form.cleaned_data['first_name']
+#             data.last_name = form.cleaned_data['last_name']
+#             data.phone = form.cleaned_data['phone']
+#             data.email = form.cleaned_data['email']
+#             data.address_line_1 = form.cleaned_data['address_line_1']
+#             data.address_line_2 = form.cleaned_data['address_line_2']
+#             data.country = form.cleaned_data['country']
+#             data.state = form.cleaned_data['state']
+#             data.city = form.cleaned_data['city']
+#             data.order_note = form.cleaned_data['order_note']
+#             data.order_total = grand_total
+#             data.tax = tax
+#             data.ip = request.META.get('REMOTE_ADDR')
+#             data.save()
+#             # This will Genertae order number
+#             mt = int(datetime.date.today().strftime('%m'))
+#             dt = int(datetime.date.today().strftime('%d'))
+#             yr = int(datetime.date.today().strftime('%Y'))
+
+
+#             d = datetime.date(mt,dt,yr)
+#             current_date = d.strftime("%m%d%Y")
+#             order_number = current_date + str(data.id)
+#             data.order_number = order_number
+#             data.save()
+
+#             order = Order.objects.get(user=current_user, is_ordered=False, order_number=order_number)
+#             context = {
+#                 'order': order,
+#                 'cart_items': cart_items,
+#                 'total': total,
+#                 'tax': tax,
+#                 'grand_total': grand_total,
+#             }
+#             return render(request, 'payments.html', context)
+#     else:
+#         return redirect('checkout')
+
+
+def payments(request):
+    return render(request, 'payments.html')
