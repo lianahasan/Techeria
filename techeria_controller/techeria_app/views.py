@@ -17,11 +17,6 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from .utils import token_generator
 
-
-
-
-
-
 # Create your views here.
 
 def index(request):
