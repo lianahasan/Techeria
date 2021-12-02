@@ -35,8 +35,16 @@ def contact(request):
 def watch(request):
     return render(request, 'watch.html')
 
-def loginpage(request):
-    return render(request, 'loginpage.html')
+
+def smartphone(request):
+    smartphone = Smartphone.objects.all()
+    context = {
+        'smartphone': smartphone
+    }
+    return render(request, 'smartphone.html', context)
+    
+
+
 
 def cart(request):
     return render(request, 'cart.html')
@@ -44,14 +52,12 @@ def cart(request):
 def checkout(request):
     return render(request, 'checkout.html')
 
-def registration(request):
-    return render(request, 'registration.html')
+
 
 def search(request):
     q = request.GET['q']
     data = Products.objects.filter(name__icontains=q)
     return render(request, 'search.html', {'data': data})
-
 
 def product(request):
     return render(request, 'product.html')
@@ -68,6 +74,7 @@ def productInfo(request, i):
 
 def watch(request):
     return render(request, 'watch.html')
+
 
 def laptop(request):
     laptop = Laptops.objects.all()
@@ -98,6 +105,7 @@ def accessorie(request):
         'accessorie': accessorie
     }
     return render(request, 'accessorie.html', context)
+
 
 
 
@@ -177,7 +185,7 @@ def registration(request):
                     email.send(fail_silently=False)
 
 
-                    
+                    messages.success(request, 'A verification link has been send to your email. Please confirm the link')
                     return redirect("loginpage")
 
 
@@ -198,7 +206,24 @@ def registration(request):
                     user.is_active = False
                     user.save()
                     seller.save()
-                    
+
+                    domain = get_current_site(request).domain
+                    uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
+
+                    link = reverse('activate', kwargs={'uidb64':uidb64, 'token': token_generator.make_token(user)})
+                    email_subject = 'Activate your account'
+                    activate_url = 'http://'+domain+link
+                    email_body = 'Hi '+ user.first_name+'. please use this link to verify ypur account\n' + activate_url
+                    email = EmailMessage(
+                         email_subject,
+                         email_body,
+                         'noreply@techeria.com',
+                        [email],
+                        ['bcc@example.com'],
+                        
+                    )
+                    email.send(fail_silently=False)
+                    messages.success(request, 'A verification link has been send to your email. Please confirm the link')
                     return redirect("loginpage")
 
                 else:
@@ -212,7 +237,6 @@ def registration(request):
     else:
 
         return render(request, 'registration.html')
-
 
 
 def loginpage(request):
@@ -250,12 +274,9 @@ def signUpButton(request):
 
 
 
-
-
 def logout(request):
     auth.logout(request)
     return render(request, 'index.html')
-
 
 
 
