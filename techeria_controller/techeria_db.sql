@@ -132,63 +132,8 @@ INSERT INTO `smartphone` (`id`, `image`, `name`, `price`, `description`, `catego
 (58329392, 'smartphone5.jpg', 'Motorola - Moto G Stylus (2021) 128GB Memory (Unlocked) - Aurora White', 250.99, 'With a 48MP Quad camera system, you can capture from the smallest details to grand canyon wide images. View them on the stunning 6.8” FHD+ Max Vision display and an 89% screen-to-body ratio. You don’t have to worry about battery life with a 4000mAh battery that can last up to three days.', 'smartphone');
 
 
---
--- Table structure for table `seller`
---
 
-CREATE TABLE `seller` (
-  `id` bigint NOT NULL,
-  `first_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
-  `user_name` varchar(255) NOT NULL,
-  `date_of_birth` date NOT NULL,
-  `email` varchar(254) NOT NULL,
-  `mobile_number` int NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `city` varchar(255) NOT NULL,
-  `state` varchar(255) NOT NULL,
-  `zip_code` varchar(255) NOT NULL,
-  `country` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Indexes for dumped tables
---
-
-CREATE TABLE `orders` (
-  `id` BIGINT(20) NOT NULL,
-  `buyer_id` BIGINT(20) NOT NULL,
-  `subtotal` DOUBLE NOT NULL,
-  `order_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `complete` BOOLEAN NOT NULL DEFAULT '0',
-  `transaction_id` VARCHAR(100),
-  PRIMARY KEY (`id`)
-)  ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
-
---
--- Table structure for table 'orders_items`
---
-CREATE TABLE `order_items` (
-  `id` BIGINT(20) NOT NULL,
-  `quantity` INT NOT NULL,
-  `date_added` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `order_id` INT NOT NULL,
-  `product_id` INT NOT NULL,
-  PRIMARY KEY(`id`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
-
-CREATE TABLE `shippingaddress` (
-  `id` BIGINT(20) NOT NULL,
-  `address` varchar(200) NOT NULL,
-  `city` varchar(20) NOT NULL,
-  `state` varchar(20) NOT NULL,
-  `zipcode` varchar(20) NOT NULL,
-  `date_added` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `buyer_id` BIGINT(20) NOT NULL,
-  `order_id` BIGINT(20) NOT NULL,
-  PRIMARY KEY(`id`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
--- ----------------------------------------------------------
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `techeria_app_order`
@@ -257,6 +202,63 @@ CREATE TABLE `techeria_app_payment` (
 --
 -- Indexes for dumped tables
 --
+--
+-- Table structure for table `seller`
+--
+
+CREATE TABLE `seller` (
+  `id` bigint NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `date_of_birth` date NOT NULL,
+  `email` varchar(254) NOT NULL,
+  `mobile_number` int NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `state` varchar(255) NOT NULL,
+  `zip_code` varchar(255) NOT NULL,
+  `country` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+CREATE TABLE `orders` (
+  `id` BIGINT(20) NOT NULL,
+  `buyer_id` BIGINT(20) NOT NULL,
+  `subtotal` DOUBLE NOT NULL,
+  `order_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `complete` BOOLEAN NOT NULL DEFAULT '0',
+  `transaction_id` VARCHAR(100),
+  PRIMARY KEY (`id`)
+)  ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+
+--
+-- Table structure for table 'orders_items`
+--
+CREATE TABLE `order_items` (
+  `id` BIGINT(20) NOT NULL,
+  `quantity` INT NOT NULL,
+  `date_added` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `order_id` INT NOT NULL,
+  `product_id` INT NOT NULL,
+  PRIMARY KEY(`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+
+CREATE TABLE `shippingaddress` (
+  `id` BIGINT(20) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `city` varchar(20) NOT NULL,
+  `state` varchar(20) NOT NULL,
+  `zipcode` varchar(20) NOT NULL,
+  `date_added` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `buyer_id` BIGINT(20) NOT NULL,
+  `order_id` BIGINT(20) NOT NULL,
+  PRIMARY KEY(`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+-- ----------------------------------------------------------
 
 CREATE TABLE `payment` (
   `id` INT NOT NULL,
@@ -281,22 +283,63 @@ CREATE TABLE `camera` (
   `category` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+
+INSERT INTO `camera` (`id`, `image`, `name`, `price`, `description`, `category`) VALUES
+(48329389, 'camera1.jpg', 'Canon - EOS Rebel T7 DSLR Video Camera with 18-55mm Lens - Black', 479.99, 'Take professional-looking photos with this Canon DSLR camera bundle. The 24.1-megapixel CMOS sensor captures the smallest details, even in low light, and the optical image stabilizer technology ensures handheld shots are sharp. The 18-55mm lens included in this Canon DSLR camera bundle is suitable for taking wide-angle pictures or zooming in for portraits.', 'cameras'),
+(48329390, 'camera2.jpg', 'Sony - ZV-1 20.1-Megapixel Digital Camera for Content Creators and Vloggers - Black', 630.32, 'Create outstanding content for your viewers with this Sony compact 4K digital camera. The 20-megapixel sensor captures detailed pictures and videos, while Wi-Fi functionality enables easy photo sharing across networks. This Sony compact 4K digital camera features image stabilization for clear shots while walking, and automatic exposure tracks and illuminates faces for consistency in various lighting conditions.', 'cameras'),
+(48329391, 'camera3.jpg', 'Nikon - D7500 DSLR 4K Video Two Lens Kit with 18-55mm and 70-300mm Lenses - Black', 1288.99, 'Born from a desire for flagship performance and innovation in a more compact and streamlined connected camera, the D7500 delivers the game-changing resolution, ISO range, image processing and energy efficiency of the award-winning D500 in an enthusiast-level DSLR. Simply put, the D7500 is built to outperform any camera in its class with top-tier image quality, blazing speed, flawless autofocus, 4K Ultra HD video and pro-grade creative tools - all in a comfortable, rugged design. This is a camera for the generation of creators.The D7500 uses the same 20.9 MP DX-format image sensor and EXPEED 5 image processing engine as the D500, taking your photos and videos to the next level. Capture with phenomenal sharpness and tonality, especially in low light situations like concerts, sporting events, parties and events.', 'cameras'),
+(48329392, 'camera4.jpg', 'Sony - Alpha 7R IV Full-frame Mirrorless Interchangeable Lens 61 MP Camera - Body Only - Black', 2288.99, 'Thanks to an evolutionary leap in image processing power and efficiency, the Alpha 7R IV combines world’s first high-resolution 61MP back-illuminated Exmor R CMOS image sensor with impressive shooting speeds at up to 10 fps with full AF/AE tracking, as well as beautiful 4K HDR video, wide 15-stop dynamic range and high sensitivity with area specific noise reduction.', 'cameras'),
+(48329393, 'camera5.jpg', 'Polaroid - 16MP Waterproof Digital Camera - Red', 49.99, 'The Polaroid iS048 digital camera is the perfect adventure companion. At 16 MP, you can capture great images on-the-go and then preview them on the 2.4\" preview screen. Small and lightweight, it is easy to slip into your pocket so you\re ready to capture the next perfect moment, even if that is underwater! The Polaroid iS048 is completely waterproof up to 10 ft so feel free to jump into a pool or lake! Save your memories to a micro SD card (not included) for easy transfer to your computer or mobile device and then you can share them with all your family and friends.', 'cameras'),
+(48329394, 'camera6.jpg', 'Canon - Ivy CLIQ+2 Instant Film Camera - Iridescent White', 121.99, 'Easily shoot, print, edit, and stick photos, with the IVY CLIQ+2. Capture every moment with the Canon IVY CLIQ+2 — an easy to use Instant Camera Printer that is portable so you can take it with you! Instantly shoot and print 2”x3” photos and place them almost anywhere thanks to a peel and stick backing. You can take the perfect selfies with a Large Selfie Mirror and 8 LED Ring Light. Plus, you can connect your mobile device to the Canon Mini Print App1 to print photos from your camera roll and add filters, effects, emojis and more!', 'cameras'),
+(48329395, 'camera7.jpg', 'Fujifilm - X Series X-T200 Mirrorless Camera with XC 15-45mm f/3.5-5.6 OIS PZ Lens - Dark Silver', 699.99, 'Capture memories in high resolution using this 24.2MP Fujifilm X-T200 digital camera. The autofocus quickly locks on to your subject, letting you snap photos of fast-moving people or objects, and the 3.5-inch touch-screen makes it easy to change settings. After taking photos with this Fujifilm X-T200 digital camera, use the built-in Wi-Fi to instantly share them to a smartphone or tablet.', 'cameras'),
+(48329396, 'camera8.jpg', 'Sony - Handycam CX405 Flash Memory Camcorder - Black', 399.99, 'Utilizing Optical SteadyShot image stabilization, a BIONZ X image processor and an Exmor R CMOS sensor, this Sony Handycam HDRCX405/B camcorder enables you to capture video footage with 1920 x 1080 resolution and sharp still images.', 'cameras'),
+(48329397, 'camera9.jpg', 'Sony - ZV-1 20.1-Megapixel Digital Camera for Content Creators and Vloggers - White', 632.99, 'Create outstanding content for your viewers with this Sony compact 4K digital camera. The 20-megapixel sensor captures detailed pictures and videos, while Wi-Fi functionality enables easy photo sharing across networks. This Sony compact 4K digital camera features image stabilization for clear shots while walking, and automatic exposure tracks and illuminates faces for consistency in various lighting conditions.', 'cameras'),
+(48329398, 'camera10.jpg', 'Canon - XA11 HD Flash Memory Premium Camcorder - Black', 1099.99, 'Memorialize important events with this Canon camcorder. The HD CMOS Pro Image Sensor and the DIGIC DV 4 Image Processor produce crisp HD video, and the Wide DR Gamma and Highlight Priority modes use natural colors for a realistic picture. This Canon camcorder has a five-axis image stabilization system to prevent shaky, blurry images.', 'cameras');
+
 --
--- Dumping data for table `camera`
+-- Indexes for dumped tables
+--
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accessorie`
 --
 
--- INSERT INTO `camera` (`id`, `image`, `name`, `price`, `description`, `category`) VALUES
--- (48329389, 'camera1.jpg', 'Canon - EOS Rebel T7 DSLR Video Camera with 18-55mm Lens - Black', 479.99, 'Take professional-looking photos with this Canon DSLR camera bundle. The 24.1-megapixel CMOS sensor captures the smallest details, even in low light, and the optical image stabilizer technology ensures handheld shots are sharp. The 18-55mm lens included in this Canon DSLR camera bundle is suitable for taking wide-angle pictures or zooming in for portraits.', 'cameras'),
--- (48329390, 'camera2.jpg', 'Sony - ZV-1 20.1-Megapixel Digital Camera for Content Creators and Vloggers - Black', 630.32, 'Create outstanding content for your viewers with this Sony compact 4K digital camera. The 20-megapixel sensor captures detailed pictures and videos, while Wi-Fi functionality enables easy photo sharing across networks. This Sony compact 4K digital camera features image stabilization for clear shots while walking, and automatic exposure tracks and illuminates faces for consistency in various lighting conditions.', 'cameras'),
--- (48329391, 'camera3.jpg', 'Nikon - D7500 DSLR 4K Video Two Lens Kit with 18-55mm and 70-300mm Lenses - Black', 1288.99, 'Born from a desire for flagship performance and innovation in a more compact and streamlined connected camera, the D7500 delivers the game-changing resolution, ISO range, image processing and energy efficiency of the award-winning D500 in an enthusiast-level DSLR. Simply put, the D7500 is built to outperform any camera in its class with top-tier image quality, blazing speed, flawless autofocus, 4K Ultra HD video and pro-grade creative tools - all in a comfortable, rugged design. This is a camera for the generation of creators.The D7500 uses the same 20.9 MP DX-format image sensor and EXPEED 5 image processing engine as the D500, taking your photos and videos to the next level. Capture with phenomenal sharpness and tonality, especially in low light situations like concerts, sporting events, parties and events.', 'cameras'),
--- (48329392, 'camera4.jpg', 'Sony - Alpha 7R IV Full-frame Mirrorless Interchangeable Lens 61 MP Camera - Body Only - Black', 2288.99, 'Thanks to an evolutionary leap in image processing power and efficiency, the Alpha 7R IV combines world’s first high-resolution 61MP back-illuminated Exmor R CMOS image sensor with impressive shooting speeds at up to 10 fps with full AF/AE tracking, as well as beautiful 4K HDR video, wide 15-stop dynamic range and high sensitivity with area specific noise reduction.', 'cameras'),
--- (48329393, 'camera5.jpg', 'Polaroid - 16MP Waterproof Digital Camera - Red', 49.99, 'The Polaroid iS048 digital camera is the perfect adventure companion. At 16 MP, you can capture great images on-the-go and then preview them on the 2.4\" preview screen. Small and lightweight, it is easy to slip into your pocket so you\'re ready to capture the next perfect moment, even if that is underwater! The Polaroid iS048 is completely waterproof up to 10 ft so feel free to jump into a pool or lake! Save your memories to a micro SD card (not included) for easy transfer to your computer or mobile device and then you can share them with all your family and friends.', 'cameras'),
--- (48329394, 'camera6.jpg', 'Canon - Ivy CLIQ+2 Instant Film Camera - Iridescent White', 121.99, 'Easily shoot, print, edit, and stick photos, with the IVY CLIQ+2. Capture every moment with the Canon IVY CLIQ+2 — an easy to use Instant Camera Printer that is portable so you can take it with you! Instantly shoot and print 2”x3” photos and place them almost anywhere thanks to a peel and stick backing. You can take the perfect selfies with a Large Selfie Mirror and 8 LED Ring Light. Plus, you can connect your mobile device to the Canon Mini Print App1 to print photos from your camera roll and add filters, effects, emojis and more!', 'cameras'),
--- (48329395, 'camera7.jpg', 'Fujifilm - X Series X-T200 Mirrorless Camera with XC 15-45mm f/3.5-5.6 OIS PZ Lens - Dark Silver', 699.99, 'Capture memories in high resolution using this 24.2MP Fujifilm X-T200 digital camera. The autofocus quickly locks on to your subject, letting you snap photos of fast-moving people or objects, and the 3.5-inch touch-screen makes it easy to change settings. After taking photos with this Fujifilm X-T200 digital camera, use the built-in Wi-Fi to instantly share them to a smartphone or tablet.', 'cameras'),
--- (48329396, 'camera8.jpg', 'Sony - Handycam CX405 Flash Memory Camcorder - Black', 399.99, 'Utilizing Optical SteadyShot image stabilization, a BIONZ X image processor and an Exmor R CMOS sensor, this Sony Handycam HDRCX405/B camcorder enables you to capture video footage with 1920 x 1080 resolution and sharp still images.', 'cameras'),
--- (48329397, 'camera9.jpg', 'Sony - ZV-1 20.1-Megapixel Digital Camera for Content Creators and Vloggers - White', 632.99, 'Create outstanding content for your viewers with this Sony compact 4K digital camera. The 20-megapixel sensor captures detailed pictures and videos, while Wi-Fi functionality enables easy photo sharing across networks. This Sony compact 4K digital camera features image stabilization for clear shots while walking, and automatic exposure tracks and illuminates faces for consistency in various lighting conditions.', 'cameras'),
--- (48329398, 'camera10.jpg', 'Canon - XA11 HD Flash Memory Premium Camcorder - Black', 1099.99, 'Memorialize important events with this Canon camcorder. The HD CMOS Pro Image Sensor and the DIGIC DV 4 Image Processor produce crisp HD video, and the Wide DR Gamma and Highlight Priority modes use natural colors for a realistic picture. This Canon camcorder has a five-axis image stabilization system to prevent shaky, blurry images.', 'cameras');
+CREATE TABLE `accessorie` (
+  `id` bigint(20) NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `price` double NOT NULL,
+  `description` longtext NOT NULL,
+  `category` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `accessorie`
+--
+
+INSERT INTO `accessorie` (`id`, `image`, `name`, `price`, `description`, `category`) VALUES
+(38329389, 'accessories1.jpg', 'Beats by Dr. Dre - Beats Studio³ Wireless Noise Cancelling Headphones - Midnight Black', 279.99, 'Enjoy immersive listening with these midnight black Beats Studio³ headphones. Pure ANC technology and the soft ear cushions block off external noise and optimize sound output, and the battery delivers up to 40 hours of playback in low-power mode. The Class 1 Bluetooth connectivity of these Beats Studio³ headphones offers seamless music streaming from compatible devices at extended range.', 'accessories'),
+(38329390, 'accessories2.jpg', 'Bose - SoundLink Wireless Around-Ear Headphones II - White', 239.99, 'Enjoy a better Bluetooth wireless experience with Bose SoundLink around- ear headphones II. Exclusive headphone technology delivers deep, immersive sound at any volume. SoundLink wireless Bluetooth headphones use the latest technology so you can easily connect to your mobile devices with seamless audio/video sync. And a dual microphone system rejects noise and wind, so you will be heard loud and clear. Switch seamlessly between 2 Bluetooth devices, and stay connected to both. And intuitive touch controls give you simple command of your music and calls. The over ear headphone design features soft ear cushions and a contoured headband, they\'re lighter and more comfortable than other comparable wireless headphones so you can enjoy them all day long. Wear them almost anywhere, and experience uncompromised wireless performance. When you\'re done listening, you can fold them flat for storage in their compact matching case.', 'accessories'),
+(38329391, 'accessories3.jpg', 'Apple - AirPods Pro (with Magsafe Charging Case) - White', 232.99, 'AirPods Pro feature Active Noise Cancellation for immersive sound. Transparency mode for hearing the world around you. They’re sweat and water resistant1 and have a customizable fit for all-day comfort.', 'accessories'),
+(38329392, 'accessories4.jpg', '', 148.99, 'True wireless noise cancelling Beats Studio Bud are made for music. Designed with a custom acoustic platform, Beats Studio Bud are engineered to deliver powerful, balanced sound in a compact, in-ear form factor. The result — immersive sound that pulls the emotion of music from the studio to your ears to keep you inspired. These earphones feature two listening modes, Active Noise Cancelling (ANC) and Transparency mode, to give you total control of your sound. Each earbud has up to 8 hours of listening time¹ with two additional charges provided by its pocket-sized charging case to give you up to 24 hours of combined playback.² Beats Studio Bud also offer simple one-touch pairing for Apple³ and Android⁴ devices', 'accessories'),
+(38329393, 'accessories5.jpg', 'Apple Watch Series 3 (GPS) 38mm Silver Aluminum Case with White Sport Band - Silver Aluminum', 169.99, 'Low and high heart rate notifications. Emergency SOS. New Breathe watch faces. Automatic workout detection. New yoga and hiking workouts. Advanced features for runners like cadence and pace alerts. New head-to-head competitions. Activity sharing with friends. Personalized coaching. Monthly challenges and achievement awards. You can use Walkie-Talkie, make phone calls, and send messages. Listen to Apple Music¹ and Apple Podcasts. And use Siri in all-new ways. Apple Watch Series 3 lets you do it all right from your wrist.', 'accessories'),
+(38329394, 'accessories6.jpg', 'Apple - AirTag - Silver', 29.99, 'AirTag. Keep track of your keys, wallet, luggage, backpack, and more, all in the Find My app. Play a sound on the built-in speaker, or say \"Hey Siri, find my gym bag.\" With select iPhone models, Precision Finding can lead you right to your nearby AirTag.1 If its further away, hundreds of millions of Apple devices in the Find My network can help track it down. All anonymously and encrypted for privacy.', 'accessories'),
+(38329395, 'accessories7.jpg', 'DJI Mini 2 Quadcopter with Remote Controller', 429.99, 'DJI Mini 2 is beginner-friendly, powerful, and well, mini. Impressive performance, stunning image quality, and creative videos are just a few taps away. Explore an entirely new perspective, capturing the moments that make your life truly yours.', 'accessories'),
+(38329396, 'accessories8.jpg', 'JBL - Flip 5 Portable Bluetooth Speaker - Teal', 139.99, 'Get the party started with this JBL Flip 5 portable wireless speaker. Bluetooth 4.2 connectivity offers an effective range of up to 33 feet, and the built-in battery provides up to 12 hours of listening per charge. This JBL Flip 5 portable wireless speaker has advanced drivers that deliver clear, detailed audio and accurate bass.', 'accessories'),
+(38329397, 'accessories9.jpg', 'Samsung - Galaxy Buds Pro True Wireless Earbud Headphones - Phantom Violet', 189.99, 'Samsung Galaxy Buds Pro combines crytal-clear sound with unprecedented control, making it effortless to elevate everyday moments. Use intelligent Active Noise Cancellation to escape into your music at a moment’s notice, even in a noisy crowd. Close the distance with crystal-clear calls, so it always feels like you’re in the same room. And water won’t ruin your workout since the resistant Galaxy Buds Pro keeps the beat going even with a little rain. Pair your Galaxy Buds Pro with a Galaxy S21 and find even more ways to make ordinary extraordinary.', 'accessories'),
+(38329398, 'accessories10.jpg', 'Bose - QuietComfort Earbuds True Wireless Noise Cancelling In-Ear Headphones - Sandstone', 179.99, 'Better sound begins with better silence. That’s why Bose QuietComfort Earbuds are engineered with the world’s most effective noise cancelling and high-fidelity audio. Microphones inside and outside the earphones sense noise and react instantaneously to cancel the signal. Get rid of disruptions so you can turn up the music on your wireless earbuds and amplify whatever you’re most passionate about — from hiking or circuit training to coding or baking. And when you need to be more aware of your surroundings, minimize noise cancelling with a quick double tap, so you can walk down a busy street or listen for your boarding announcement. StayHear™ Max tips provide extra comfort and stability for an even better experience. Rule the Quiet with Bose QuietComfort Earbuds and get an exhilarating experience that’s tough to find in any other Bluetooth earbuds. The Bose QuietComfort Noise Cancelling Earbuds are available in Triple Black, Soapstone and limited-edition Sandstone or Stone Blue.', 'accessories');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `accessorie`
+--
+ALTER TABLE `accessorie`
+  ADD PRIMARY KEY (`id`);
 
 
 --
@@ -361,29 +404,4 @@ ALTER TABLE `orders`
 
 ALTER TABLE `order_items`
   MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
-
-  --
-  -- Indexes for table `techeria_app_order`
-  --
-  ALTER TABLE `techeria_app_order`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `techeria_app_order_payment_id_1cd4aab0_fk_techeria_` (`payment_id`),
-    ADD KEY `techeria_app_order_user_id_1e91c823_fk_buyer_id` (`user_id`);
-
-  --
-  -- Indexes for table `techeria_app_orderproduct`
-  --
-  ALTER TABLE `techeria_app_orderproduct`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `techeria_app_orderpr_order_id_8ff1e5eb_fk_techeria_` (`order_id`),
-    ADD KEY `techeria_app_orderpr_payment_id_dce4d8ed_fk_techeria_` (`payment_id`),
-    ADD KEY `techeria_app_orderproduct_product_id_2843d8aa_fk_products_id` (`product_id`),
-    ADD KEY `techeria_app_orderproduct_user_id_61c10e07_fk_buyer_id` (`user_id`);
-
-  --
-  -- Indexes for table `techeria_app_payment`
-  --
-  ALTER TABLE `techeria_app_payment`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `techeria_app_payment_user_id_e33f4c6e_fk_buyer_id` (`user_id`);
 
