@@ -19,6 +19,9 @@ from techeria_app import views
 
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
+
+
 
 from techeria_app.views import VerificationView
 from django.contrib.auth import views as auth_views
@@ -32,6 +35,8 @@ urlpatterns = [
     path('contact', views.contact, name='contact'),
     path('laptop', views.laptop, name='laptop'),
     path('smartphone', views.smartphone, name='smartphone'),
+    path('camera', views.camera, name='camera'),
+    path('accessorie', views.accessorie, name='accessorie'),
     path('loginpage', views.loginpage, name='loginpage'),
     path('registration', views.registration, name='registration'),
     path('product', views.product, name='product'),
@@ -40,13 +45,26 @@ urlpatterns = [
     path('search', views.search, name='search'),
     path('p/<int:i>/', views.productInfo, name='p'),
     path('logout', views.logout, name='logout'),
+
     path('addproduct', views.addproduct, name='addproduct'),
+
     path('activate/<uidb64>/<token>',VerificationView.as_view(), name='activate'),
 
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name = 'reset_password.html'), name='reset_password'),
     path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(template_name = 'password_reset_send.html'), name='password_reset_done'),
     path('reset/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(template_name = 'password_reset_confirm.html'), name='password_reset_confirm'),
     path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(template_name = 'password_reset_done.html'), name='password_reset_complete'),
+
+
+
+
+    
+    path('place_order', views.place_order, name='place_order'),
+    path('payments/', views.payments, name='payments'),
+    # path('order_complete/', views.order_complete, name='order_complete'),
+    
+    path('seller', views.seller, name='seller'),
+
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
