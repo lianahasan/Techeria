@@ -132,6 +132,76 @@ INSERT INTO `smartphone` (`id`, `image`, `name`, `price`, `description`, `catego
 (58329392, 'smartphone5.jpg', 'Motorola - Moto G Stylus (2021) 128GB Memory (Unlocked) - Aurora White', 250.99, 'With a 48MP Quad camera system, you can capture from the smallest details to grand canyon wide images. View them on the stunning 6.8” FHD+ Max Vision display and an 89% screen-to-body ratio. You don’t have to worry about battery life with a 4000mAh battery that can last up to three days.', 'smartphone');
 
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `techeria_app_order`
+--
+
+CREATE TABLE `techeria_app_order` (
+  `id` bigint(20) NOT NULL,
+  `order_number` varchar(20) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `email` varchar(254) NOT NULL,
+  `mobile_number` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `state` varchar(255) NOT NULL,
+  `zip_code` varchar(255) NOT NULL,
+  `country` varchar(20) NOT NULL,
+  `order_note` varchar(100) NOT NULL,
+  `order_total` double NOT NULL,
+  `tax` double NOT NULL,
+  `status` varchar(10) NOT NULL,
+  `ip` varchar(20) NOT NULL,
+  `is_ordered` tinyint(1) NOT NULL,
+  `created_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
+  `payment_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `techeria_app_orderproduct`
+--
+
+CREATE TABLE `techeria_app_orderproduct` (
+  `id` bigint(20) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `product_price` double NOT NULL,
+  `ordered` tinyint(1) NOT NULL,
+  `created_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
+  `order_id` bigint(20) NOT NULL,
+  `payment_id` bigint(20) DEFAULT NULL,
+  `product_id` bigint(20) NOT NULL,
+  `user_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `techeria_app_payment`
+--
+
+CREATE TABLE `techeria_app_payment` (
+  `id` bigint(20) NOT NULL,
+  `payment_id` varchar(100) NOT NULL,
+  `payment_method` varchar(100) NOT NULL,
+  `amount_paid` varchar(100) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `created_at` datetime(6) NOT NULL,
+  `user_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
 --
 -- Table structure for table `seller`
 --
@@ -386,4 +456,3 @@ ALTER TABLE `order_items`
   ALTER TABLE `techeria_app_payment`
     ADD PRIMARY KEY (`id`),
     ADD KEY `techeria_app_payment_user_id_e33f4c6e_fk_buyer_id` (`user_id`);
-
