@@ -1,34 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<style>
-body {
-  background-color:#B9CAF1 !important;
-
-}
-
-body{
-   margin:0px;
-   margin-top:60px;
-   padding: 0px;
-}
-*,*::before,*::after{
-   box-sizing: border-box;
-}
-nav{
-   position: fixed;
-   top: 0;
-   width: 100%;
-   background-color: #B9CAF1;
-   overflow: auto;
-   height: auto;
-   text-align:center;
-}
-
-
-
-</style>
 <html>
-
 
 <head>
   <!-- Basic -->
@@ -41,7 +13,7 @@ nav{
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Watcher</title>
+  <title>Our Products</title>
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
@@ -55,21 +27,6 @@ nav{
   <link href=" {% static 'css/style.css' %} " rel="stylesheet" />
   <!-- responsive style -->
   <link href=" {% static 'css/responsive.css' %} " rel="stylesheet" />
-  <!-- Google Fonts -->
-  <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
-
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="/static/watch_css/css/bootstrap.min.css">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="/static/watch_css/css/font-awesome.min.css">
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/static/watch_css/css/owl.carousel.css">
-  <link rel="stylesheet" href="/static/watch_css/style.css">
-  <link rel="stylesheet" href="/static/watch_css/css/responsive.css">
 </head>
 
 <body class="sub_page">
@@ -80,7 +37,7 @@ nav{
         <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
           <a class="navbar-brand" href=" {% static 'index.html' %} ">
             <span>
-              Products
+              Techeria
             </span>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,25 +48,19 @@ nav{
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href=" {% url 'index' %} ">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href=" {% static 'index.html' %} ">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-
-
                   <a class="nav-link" href=" {% static 'about.html' %} "> About </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href=" {% static 'watch.html' %} "> Our Products</a>
+                  <a class="nav-link" href=" {% static 'watch.html' %} "> Our Watches </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href=" {% static 'contact.html' %} ">Contact us</a>
                 </li>
               </ul>
-              {% comment %} <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-              </form> {% endcomment %}
-              <form class="form-inline my-2 my-lg-0" action="/search">
-                <input name='q' class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
               </form>
             </div>
@@ -125,400 +76,161 @@ nav{
 
     <!-- brand section -->
 
-    <div class="promo-area">
-        <div class="zigzag-bottom"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="single-promo promo1">
-                      <img src="/static/watch_css/img/laptops21.jpg" alt="">
-                      <a  href=" {% url 'laptop' %} " >
-                        <button> Laptops</button>
-                      </a>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="single-promo promo2">
-                      <img src="/static/watch_css/img/product.jpg" alt="">
-                      <a  href=" {% url 'smartphone' %} " >
-                        <button> Smartphones</button>
-                      </a>
-
-
-
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="single-promo promo3">
-                      <img src="/static/watch_css/img/camera.jpg" alt="">
-                      <a  href=" {% url 'camera' %} " >
-                        <button> Cameras</button>
-                      </a>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="single-promo promo4">
-                      <img src="/static/watch_css/img/earpods.jpg" alt="">
-                      <a  href=" {% url 'ourproducts' %} " >
-                        <button> Accesorries</button>
-                      </a>
-                    </div>
-                </div>
-            </div>
+    <section class="brand_section layout_padding2">
+      <div class="container">
+        <div class="brand_heading">
+          <h3 class="custom_heading">
+            Our watch brands
+          </h3>
+          <p class="font-weight-bold">
+            It is a long established fact that a reader will be distracted by the readable content of a page
+          </p>
         </div>
-    </div> <!-- End promo area -->
-
-    <div class="maincontent-area">
-        <div class="zigzag-bottom"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="latest-product">
-                        <h2 class="section-title">Trending Now</h2>
-                        <div class="product-carousel">
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="/static/watch_css/img/products1.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-
-                                <h2><a href="single-product.html">Samsung Galaxy s5- 2015</a></h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>$700.00</ins> <del>$1000.00</del>
-                                </div>
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="/static/watch_css/img/products2.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-
-                                <h2>Samsung Galaxy S20</h2>
-                                <div class="product-carousel-price">
-                                    <ins>$899.00</ins> <del>$1099.00</del>
-                                </div>
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="/static/watch_css/img/products3.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-
-                                <h2>Apple iphone 13</h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>$1500.00</ins> <del>$1125.00</del>
-                                </div>
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="/static/watch_css/img/samsung2.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-
-                                <h2><a href="single-product.html">Sony Xperia</a></h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>$500.00</ins> <del>$225.00</del>
-                                </div>
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="/static/watch_css/img/smartphones.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-
-                                <h2>iPhone 11</h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>$1200.00</ins> <del>$1355.00</del>
-                                </div>
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="/static/watch_css/img/Smartphone2.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-
-                                <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>$400.00</ins>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="container-fluid brand_item-container">
+        <div class="brand_item-box">
+          <div class="brand_img-box  item-1">
+            <a href=" {% static '' %} ">
+              View More
+            </a>
+          </div>
+          <div class="brand_detail-box">
+            <h5>
+              $<span> 40 </span>
+            </h5>
+            <h6 class="">
+              best watch
+            </h6>
+          </div>
         </div>
-    </div> <!-- End main content area -->
-
-    <div class="brands-area">
-        <div class="zigzag-bottom"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="brand-wrapper">
-                        <div class="brand-list">
-                            <img src="/static/watch_css/img/brand1.png" alt="">
-                            <img src="/static/watch_css/img/brand2.png" alt="">
-                            <img src="/static/watch_css/img/brand3.png" alt="">
-                            <img src="/static/watch_css/img/brand4.png" alt="">
-
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="brand_item-box">
+          <div class="brand_img-box  item-2">
+            <a href=" {% static '' %} ">
+              View More
+            </a>
+          </div>
+          <div class="brand_detail-box">
+            <h5>
+              $<span> 50 </span>
+            </h5>
+            <h6 class="">
+              best watch
+            </h6>
+          </div>
         </div>
-    </div> <!-- End brands area -->
-
-    <div class="product-widget-area">
-        <div class="zigzag-bottom"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="single-product-widget">
-                        <h2 class="product-wid-title">Top Sellers</h2>
-                        <a href="" class="wid-view-more">View All</a>
-                        <div class="single-wid-product">
-                            <!--<a href="single-product.html"><img src="img/product-thumb-1.jpg" alt="" class="product-thumb"></a>-->
-                            <h2><a href="single-product.html">Lenevo ThinkPad</a></h2>
-                            <div class="product-wid-rating">
-
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$1400.00</ins> <del>$1425.00</del>
-                            </div>
-                        </div>
-                        <div class="single-wid-product">
-                            <!--<a href="single-product.html"><img src="img/product-thumb-2.jpg" alt="" class="product-thumb"></a>-->
-                            <h2><a href="single-product.html">Apple new mac book 2021</a></h2>
-                            <div class="product-wid-rating">
-
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$1800.00</ins> <del>$1925.00</del>
-                            </div>
-                        </div>
-                        <div class="single-wid-product">
-                            <!--<a href="single-product.html"><img src="img/product-thumb-3.jpg" alt="" class="product-thumb"></a>-->
-                            <h2><a href="single-product.html">Apple new i phone 13</a></h2>
-                            <div class="product-wid-rating">
-
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$1400.00</ins> <del>$1425.00</del>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="single-product-widget">
-                        <h2 class="product-wid-title">Recently Viewed</h2>
-                        <a href="#" class="wid-view-more">View All</a>
-                        <div class="single-wid-product">
-                            <!--<a href="single-product.html"><img src="img/product-thumb-4.jpg" alt="" class="product-thumb"></a>-->
-                            <h2><a href="single-product.html">samsung galaxy s6</a></h2>
-                            <div class="product-wid-rating">
-
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>
-                        </div>
-                        <div class="single-wid-product">
-                            <!--<a href="single-product.html"><img src="img/product-thumb-1.jpg" alt="" class="product-thumb"></a>-->
-                            <h2><a href="single-product.html">Sony Smart Cameras 21</a></h2>
-                            <div class="product-wid-rating">
-
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$1400.00</ins> <del>$1425.00</del>
-                            </div>
-                        </div>
-                        <div class="single-wid-product">
-                            <!--<a href="single-product.html"><img src="img/product-thumb-2.jpg" alt="" class="product-thumb"></a>-->
-                            <h2><a href="single-product.html">Samsung gallaxy note 10</a></h2>
-                            <div class="product-wid-rating">
-
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$1300.00</ins> <del>$1425.00</del>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="single-product-widget">
-                        <h2 class="product-wid-title">Top New</h2>
-                        <a href="#" class="wid-view-more">View All</a>
-                        <div class="single-wid-product">
-<!--                            <a href="single-product.html"><img src="/static/watch_css/img/product-thumb-3.jpg" alt="" class="product-thumb"></a>
--->                            <h2><a href="single-product.html">Apple new i phone 12</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>
-                        </div>
-                        <div class="single-wid-product">
-                            <!--<a href="single-product.html"><img src="/static/watch_css/img/product-thumb-4.jpg" alt="" class="product-thumb"></a>-->
-                            <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>
-                        </div>
-                        <div class="single-wid-product">
-                            <!--<a href="single-product.html"><img src="img/product-thumb-1.jpg" alt="" class="product-thumb"></a>-->
-                            <h2><a href="single-product.html">Sony playstation microsoft</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="brand_item-box">
+          <div class="brand_img-box  item-3">
+            <a href=" {% static '' %} ">
+              View More
+            </a>
+          </div>
+          <div class="brand_detail-box">
+            <h5>
+              $<span> 60 </span>
+            </h5>
+            <h6 class="">
+              best watch
+            </h6>
+          </div>
         </div>
-    </div> <!-- End product widget area -->
-
-    <div class="footer-top-area">
-        <div class="zigzag-bottom"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="footer-about-us">
-                        <h2><span>Techeria Our Values</span></h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
-                        <div class="footer-social">
-                            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="footer-menu">
-                        <h2 class="footer-wid-title">User Navigation </h2>
-                        <ul>
-                            <li><a href="#">My account</a></li>
-                            <li><a href="#">Order history</a></li>
-                            <li><a href="#">Wishlist</a></li>
-                            <li><a href="#">Buyer contact</a></li>
-                            <li><a href="#">Front page</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="footer-menu">
-                        <h2 class="footer-wid-title">Categories</h2>
-                        <ul>
-                            <li><a href="#">Mobile Phone</a></li>
-                            <li><a href="#">Home accesseries</a></li>
-                            <li><a href="#">LED TV</a></li>
-                            <li><a href="#">Computer</a></li>
-                            <li><a href="#">Gadets</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="footer-newsletter">
-                        <h2 class="footer-wid-title">Newsletter</h2>
-                        <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
-                        <div class="newsletter-form">
-                            <form action="#">
-                                <input type="email" placeholder="Type your email">
-                                <input type="submit" value="Subscribe">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="brand_item-box">
+          <div class="brand_img-box  item-4">
+            <a href=" {% static '' %} ">
+              View More
+            </a>
+          </div>
+          <div class="brand_detail-box">
+            <h5>
+              $<span> 70 </span>
+            </h5>
+            <h6 class="">
+              best watch
+            </h6>
+          </div>
         </div>
-    </div> <!-- End footer top area -->
-
-    <div class="footer-bottom-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="copyright">
-                        <p>&copy; 2021 Techeria. All Rights Reserved. techeria.com</a></p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="footer-card-icon">
-                        <i class="fa fa-cc-discover"></i>
-                        <i class="fa fa-cc-mastercard"></i>
-                        <i class="fa fa-cc-paypal"></i>
-                        <i class="fa fa-cc-visa"></i>
-                    </div>
-                </div>
-            </div>
+        <div class="brand_item-box">
+          <div class="brand_img-box  item-5">
+            <a href=" {% static '' %} ">
+              View More
+            </a>
+          </div>
+          <div class="brand_detail-box">
+            <h5>
+              $<span> 80 </span>
+            </h5>
+            <h6 class="">
+              best watch
+            </h6>
+          </div>
         </div>
-    </div> <!-- End footer bottom area -->
+      </div>
 
-    <!-- Latest jQuery form server -->
-    <script src="https://code.jquery.com/jquery.min.js"></script>
+    </section>
 
-    <!-- Bootstrap JS form CDN -->
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-    <!-- jQuery sticky menu -->
-    <script src="/static/js/owl.carousel.min.js"></script>
-    <script src="/static/js/jquery.sticky.js"></script>
+    <!-- end brand section -->
 
-    <!-- jQuery easing -->
-    <script src="/static/js/jquery.easing.1.3.min.js"></script>
+  </div>
 
-    <!-- Main Script -->
-    <script src="/static/js/main.js"></script>
+  <!-- info section -->
+  <section class="info_section layout_padding">
+    <div class="container">
+      <div class="info_items">
+        <a href=" {% static '' %} ">
+          <div class="item ">
+            <div class="img-box box-1">
+              <img src=" {% static '' %} " alt="">
+            </div>
+            <div class="detail-box">
+              <p>
+                Lorem Ipsum is simply dummy text
+              </p>
+            </div>
+          </div>
+        </a>
+        <a href=" {% static '' %} ">
+          <div class="item ">
+            <div class="img-box box-2">
+              <img src=" {% static '' %} " alt="">
+            </div>
+            <div class="detail-box">
+              <p>
+                +02 1234567890
+              </p>
+            </div>
+          </div>
+        </a>
+        <a href=" {% static '' %} ">
+          <div class="item ">
+            <div class="img-box box-3">
+              <img src=" {% static '' %} " alt="">
+            </div>
+            <div class="detail-box">
+              <p>
+                demo@gmail.com
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 
-    <!-- Slider -->
-    <script type="text/javascript" src="/static/js/bxslider.min.js"></script>
-  <script type="text/javascript" src="/static/js/script.slider.js"></script>
-  </body>
+
+
+  <!-- end info_section -->
+
+  <!-- footer section -->
+  <section class="container-fluid footer_section">
+    <p>
+      © 2020 All Rights Reserved By
+      <a href="https://html.design/">Free Html Templates</a>
+    </p>
+  </section>
+  <!-- footer section -->
+
+  <script type="text/javascript" src=" {% static 'js/jquery-3.4.1.min.js' %} "></script>
+  <script type="text/javascript" src=" {% static 'js/bootstrap.js' %} "></script>
+</body>
+
 </html>

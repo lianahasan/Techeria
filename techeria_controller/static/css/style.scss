@@ -312,34 +312,34 @@ a:focus {
 }
 
 .brand_item-box {
-  width: 285px;
+  width: 265px;
   margin: 30px 10px 0 10px;
 }
 
 .brand_img-box {
-  height: 330px;
+  height: 310px;
   background-size: cover;
   background-position: center;
   position: relative;
 
   &.item-1 {
-    background-image: url(../images/laptop4.jpg);
+    background-image: url(../images/item-1.jpg);
   }
 
   &.item-2 {
-    background-image: url(../images/camera3.jpg);
+    background-image: url(../images/item-2.jpg);
   }
 
   &.item-3 {
-    background-image: url(../images/smartphone1.jpg);
+    background-image: url(../images/item-3.jpg);
   }
 
   &.item-4 {
-    background-image: url(../images/laptop7.jpg);
+    background-image: url(../images/item-4.jpg);
   }
 
   &.item-5 {
-    background-image: url(../images/camera1.jpg);
+    background-image: url(../images/item-5.jpg);
   }
 }
 
