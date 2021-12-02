@@ -39,12 +39,16 @@ urlpatterns = [
     path('accessorie', views.accessorie, name='accessorie'),
     path('loginpage', views.loginpage, name='loginpage'),
     path('registration', views.registration, name='registration'),
-    path('product', views.product, name='product'),
+    path('product/<int:pk>/', views.product, name="product"),
     path('cart', views.cart, name='cart'),
+
+    path('ourproducts', views.ourproducts, name='ourproducts'),
     path('checkout/', views.checkout, name='checkout'),
     path('search', views.search, name='search'),
     path('p/<int:i>/', views.productInfo, name='p'),
     path('logout', views.logout, name='logout'),
+
+    #path('forgotPassword',views.forgotPassword,name='forgotPassword'),
 
     path('addproduct', views.addproduct, name='addproduct'),
 
@@ -59,7 +63,7 @@ urlpatterns = [
 
 
     
-    path('place_order', views.place_order, name='place_order'),
+    # path('place_order', views.place_order, name='place_order'),
     path('payments/', views.payments, name='payments'),
     # path('order_complete/', views.order_complete, name='order_complete'),
     

@@ -113,7 +113,7 @@ except Exception:
 #         'USER': 'root',
 #         'HOST': 'localhost',
 #         'PORT': 3306,
-#         'PASSWORD': 'orange',
+#         'PASSWORD': '3303',
 #         # 'TEST': {
 #         #     'NAME': 'techeria_test',
 #         # }
@@ -148,16 +148,16 @@ except Exception:
 # except Exception:
 #     print('Unexpected error:', sys.exc_info())
 
-#DATABASES = {
+# DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.mysql',
 #        'NAME': 'techeria_db',
 #        'USER': 'root',
 #        'HOST': 'localhost',
 #        'PORT': 3306,
-#        'PASSWORD': ''
+#        'PASSWORD': '3303'
 #    }
-#}
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
