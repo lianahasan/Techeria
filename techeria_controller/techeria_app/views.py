@@ -2,7 +2,7 @@ from django.db.models.fields import NullBooleanField
 from django.http import response
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from techeria_app.models import BuyerModel, SellerModel, Products, Laptops, Smartphone, Cameras
+from techeria_app.models import BuyerModel, SellerModel, Products, Laptops, Smartphone, Cameras, Accessories
 from django.contrib.auth.models import User, auth
 
 from django.contrib.auth.decorators import login_required
@@ -85,6 +85,15 @@ def camera(request):
         'camera': camera
     }
     return render(request, 'camera.html', context)
+
+
+def accessorie(request):
+    accessorie = Accessories.objects.all()
+    context = {
+        'accessorie': accessorie
+    }
+    return render(request, 'accessorie.html', context)
+
 
 def registration(request):
     if request.method == 'POST':
