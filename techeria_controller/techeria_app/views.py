@@ -64,7 +64,6 @@ def checkout(request):
     return render(request, 'checkout.html')
 
 
-
 def search(request):
     q = request.GET['q']
     data = Products.objects.filter(name__icontains=q)
@@ -92,14 +91,29 @@ def product(request,pk):
                }
     return render(request, 'product.html',context)
 
+
 def ourproducts(request):
     return render(request, 'ourproducts.html')
 
 
-def productInfo(request, i):
-    oneProduct = Products.objects.get(id=i)
+def productInfo(request, pk):
+    p = Products.objects.get(id=pk)
+    if request.method == 'POST':
+        p = Products.objects.get(id=pk)
+        try:
+            buyer = request.user.buyer	
+        except:
+            device = request.COOKIES['device']
+            buyer, created = BuyerModel.objects.get_or_create(device=device)
+
+        order, created = Order.objects.get_or_create(buyer=buyer, complete=False)
+        orderItem, created = OrderItem.objects.get_or_create(order=order, product = p)
+        orderItem.quantity=request.POST['quantity']
+        orderItem.save()
+
+        return redirect('cart')
     context = {
-        'oneProduct': oneProduct
+        'p': p
     }
     return render(request, 'productInfo.html', context)
 

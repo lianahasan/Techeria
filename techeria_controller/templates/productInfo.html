@@ -33,7 +33,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.2/css/all.css'>
+    <script type="text/javascript">
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
 
+
+        function uuidv4() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                var r = Math.random() * 16 | 0,
+                    v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+
+
+
+
+        let device = getCookie('device')
+
+        if (device == null || device == undefined) {
+            device = uuidv4()
+        }
+
+        document.cookie = 'device=' + device + ";domain=;path=/"
+    </script>
     <style>
         .single_product {
             background-color: #B9CAF1;
@@ -270,58 +306,50 @@
                     <div class="row">
                         <div class="col-lg-2 order-lg-1 order-2">
                             <ul class="image_list" style="list-style-type: none">
-                                <li> <img width="80%" src="/media/images/{{ oneProduct.image}}" alt=""></li>
-                                <li> <img width="80%" src="/media/images/{{ oneProduct.image}}" alt=""></li>
-                                <li> <img width="80%" src="/media/images/{{ oneProduct.image}}" alt=""></li>
+                                <li> <img width="80%" src="/media/images/{{ p.image}}" alt=""></li>
+                                <li> <img width="80%" src="/media/images/{{ p.image}}" alt=""></li>
+                                <li> <img width="80%" src="/media/images/{{ p.image}}" alt=""></li>
                             </ul>
                         </div>
                         <div class="col-lg-4 order-lg-2 order-1">
-                            <div class="image_selected"><img width="70%" src="/media/images/{{ oneProduct.image}}" alt=""></div>
+                            <div class="image_selected"><img width="70%" src="/media/images/{{ p.image}}" alt=""></div>
                         </div>
                         <div class="col-lg-6 order-3">
                             <div class="product_description">
-                                <div class="product_name">{{ oneProduct.name }}</div>
+                                <div class="product_name">{{ p.name }}</div>
                                 <div class="product-rating"> <a class="rating-review" href="#" style="color:black; text-decoration:underline;">Reviews</a></div> <br>
-                                <div> <span class="product_price">${{ oneProduct.price }}</span> </div>
+                                <div> <span class="product_price">${{ p.price }}</span> </div>
                                 <hr class="singleline">
-                                <div> <span class="product_info">{{ oneProduct.description }}</span></div>
+                                <div> <span class="product_info">{{ p.description }}</span></div>
                                 <hr class="singleline">
                                 <div class="row">
-                                    <div class="col-xs-6" style="margin-left: 13px;">
-                                        <div class="product_quantity"> <span>QTY: </span> <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-                                            <div class="quantity_buttons">
-                                                <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
-                                                <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6"> <button type="button" class="btn btn-primary shop-button">Add to Cart</button> <span style="display:inline-block; width: 10px;"></span> <button type="button" class="btn btn-success shop-button">Buy Now</button>
-                                        <span style="display:inline-block; width: 10px;"></span>
-                                        <div <button type="button" class="product_fav"><i class="fas fa-heart"></i></button>
-                                        </div>
-                                    </div>
+                                    <form method="POST" action="{% url 'p' p.id %}">
+                                        {% csrf_token %}
+                                        <input value=1 type="number" name="quantity">
+                                        <input class="btn btn-primary" type="submit" value="Add to Cart">
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <br>
-                    <br>
-                    <br>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
 
 
-                    <!-- footer section -->
+            <!-- footer section -->
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
-                    <script type="text/javascript" src=" {% static 'js/jquery-3.4.1.min.js' %} "></script>
-                    <script type="text/javascript" src=" {% static 'js/bootstrap.js' %} "></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+            <script type="text/javascript" src=" {% static 'js/jquery-3.4.1.min.js' %} "></script>
+            <script type="text/javascript" src=" {% static 'js/bootstrap.js' %} "></script>
 </body>
 
-<section class="container-fluid footer_section">
-    <p>
-        © 2020 All Rights Reserved By
-        <a href="https://html.design/">Free Html Templates</a>
-    </p>
-</section>
 
-<!-- footer section -->
 
 </html>
