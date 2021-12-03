@@ -45,7 +45,7 @@ urlpatterns = [
     path('ourproducts', views.ourproducts, name='ourproducts'),
     path('checkout/', views.checkout, name='checkout'),
     path('search', views.search, name='search'),
-    path('p/<int:i>/', views.productInfo, name='p'),
+    path('p/<int:pk>/', views.productInfo, name='p'),
     path('logout', views.logout, name='logout'),
 
     #path('forgotPassword',views.forgotPassword,name='forgotPassword'),
