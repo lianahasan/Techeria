@@ -7,40 +7,46 @@
 <html>
 
 <head>
-    <link rel="icon" href="/media/images/techeria_logo1.png">
-    <!-- Basic -->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <!-- Site Metas -->
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+  <link rel="icon" href="/media/images/techeria_logo1.png">
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
 
+  <title>Cameras</title>
 
-    <title>Techeria</title>
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
 
-    <!-- slider stylesheet -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href=" {% static 'css/bootstrap.css' %} " />
 
-    <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href=" {% static 'css/bootstrap.css' %} " />
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href=" {% static 'css/style.css' %} " rel="stylesheet" />
+  <!-- responsive style -->
+  <link href=" {% static 'css/responsive.css' %} " rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
 
-    <!-- fonts style -->
-    <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href=" {% static 'css/style.css' %} " rel="stylesheet" />
-    <!-- responsive style -->
-    <link href=" {% static 'css/responsive.css' %} " rel="stylesheet" />
-    <!-- icon font awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="/static/watch_css/css/bootstrap.min.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/static/watch_css/css/font-awesome.min.css">
 
   <!-- Custom CSS -->
-  {% comment %} <link rel="stylesheet" href="/static/watch_css/css/owl.carousel.css"> {% endcomment %}
+  <link rel="stylesheet" href="/static/watch_css/css/owl.carousel.css">
   <link rel="stylesheet" href="/static/watch_css/style.css">
-  {% comment %} <link rel="stylesheet" href="/static/watch_css/css/responsive.css"> {% endcomment %}
+  <link rel="stylesheet" href="/static/watch_css/css/responsive.css">
 </head>
 
 <body class="sub_page">
@@ -88,7 +94,7 @@
   
   
                   <li class="nav-item">
-                    <a class="nav-link" href=" {% url 'product' %} "> Products </a>
+                    <a class="nav-link" href=" {% url 'ourproducts' %} "> Products </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href=" {% url 'index' %} "> Returns/Orders </a>
@@ -135,7 +141,7 @@
       <!-- end header section -->
 
       <br>
-      <br>
+      
 
   </div>
   <div class="bg">
