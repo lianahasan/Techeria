@@ -60,6 +60,21 @@ def cart(request):
     context = {'order':order}
     return render(request, 'cart.html',context)
 
+
+def remove_cart(request,pk):
+    p = Products.objects.get(id=pk)
+    try:
+	    buyer = request.user.buyer
+    except:
+	    device = request.COOKIES['device']
+	    buyer, created = BuyerModel.objects.get_or_create(device=device)
+
+    order, created = Order.objects.get_or_create(buyer=buyer, complete=False)
+    OrderItem.objects.filter(order=order,product=p).delete()
+    
+    context = {'order':order}
+    return render(request, 'cart.html',context)
+
 def checkout(request):
     return render(request, 'checkout.html')
 
