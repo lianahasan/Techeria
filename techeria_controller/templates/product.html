@@ -109,19 +109,19 @@
                                             </div>
                                     </div> {% endcomment %}
                                     <li>
-                                        <div class="dropdown">
-                                            <button class="dropbtn">Categories</button>
-                                            <div class="dropdown-content">
-                                                <a href="#">Computers</a>
-                                                <a href="#">Phones</a>
-                                                <a href="#">Tablets/Ipads</a>
-                                                <a href="#">Accessory</a>
-                                                <a href="#">Chargers</a>
-                                                <a href="#">TV</a>
-                                                <a href="#">Speakers</a>
-                                                <a href="#">Headsets</a>
-                                            </div>
-                                        </div>
+                                    <div class="dropdown">
+                                      <button class="dropbtn">Categories</button>
+                                      <div class="dropdown-content">
+                                        <a href="{% url 'laptop' %}">Laptops</a>
+                                        <a href="{% url 'smartphone' %}">Smartphones</a>
+                                        <a href="{% url 'camera' %}">Cameras</a>
+                                        <a href="{% url 'accessorie' %}">Headphones</a>
+                                        <a href="{% url 'notFound' %}">Tablets/ipads</a>
+                                        <a href="{% url 'notFound' %}">TV</a>
+                                        <a href="{% url 'notFound' %}">Speakers</a>
+                                        <a href="{% url 'notFound' %}">Chargers</a>
+                                      </div>
+                                    </div>
                                     </li>
 
 

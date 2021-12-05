@@ -66,19 +66,19 @@
                 {% comment %} <li class="nav-item">
                   <a class="nav-link" href=" {% url 'about' %} "> About </a>
                 </li> {% endcomment %}
-              
+
                   <li>
                   <div class="dropdown">
                     <button class="dropbtn">Categories</button>
                     <div class="dropdown-content">
-                      <a href="#">Computers</a>
-                      <a href="#">Phones</a>
-                      <a href="#">Tablets/Ipads</a>
-                      <a href="#">Accessory</a>
-                      <a href="#">Chargers</a>
-                      <a href="#">TV</a>
-                      <a href="#">Speakers</a>
-                      <a href="#">Headsets</a>
+                      <a href="{% url 'laptop' %}">Laptops</a>
+                      <a href="{% url 'smartphone' %}">Smartphones</a>
+                      <a href="{% url 'camera' %}">Cameras</a>
+                      <a href="{% url 'accessorie' %}">Headphones</a>
+                      <a href="{% url 'notFound' %}">Tablets/ipads</a>
+                      <a href="{% url 'notFound' %}">TV</a>
+                      <a href="{% url 'notFound' %}">Speakers</a>
+                      <a href="{% url 'notFound' %}">Chargers</a>
                     </div>
                   </div>
                   </li>
@@ -611,7 +611,7 @@
     <div class="footer-bottom-area">
         <div class="container">
             <div class="row">
-                
+
 
                 <div class="col-md-4">
                     <div class="footer-card-icon">
@@ -626,7 +626,7 @@
     </div> <!-- End footer bottom area -->
   </section>
   <!-- footer section -->
- 
+
 
   <script type="text/javascript" src=" {% static 'js/jquery-3.4.1.min.js' %} "></script>
   <script type="text/javascript" src=" {% static 'js/bootstrap.js' %} "></script>

@@ -4,19 +4,19 @@
     {% comment %} body {
         background-color: #B9CAF1 !important;
     }
-    
+
     body {
         margin: 0px;
         margin-top: 60px;
         padding: 0px;
     }
-    
+
     *,
     *::before,
     *::after {
         box-sizing: border-box;
     }
-    
+
     nav {
         position: fixed;
         top: 0;
@@ -86,43 +86,43 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-  
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
                 <ul class="navbar-nav">
                   <li class="nav-item active">
                     <a class="nav-link" href=" {% url 'index' %} ">Home <span class="sr-only">(current)</span></a>
                   </li>
-  
+
                   {% comment %} <li class="nav-item">
                     <a class="nav-link" href=" {% url 'about' %} "> About </a>
                   </li> {% endcomment %}
-                
-                    <li>
-                    <div class="dropdown">
-                      <button class="dropbtn">Categories</button>
-                      <div class="dropdown-content">
-                        <a href="#">Computers</a>
-                        <a href="#">Phones</a>
-                        <a href="#">Tablets/Ipads</a>
-                        <a href="#">Accessory</a>
-                        <a href="#">Chargers</a>
-                        <a href="#">TV</a>
-                        <a href="#">Speakers</a>
-                        <a href="#">Headsets</a>
-                      </div>
+
+                  <li>
+                  <div class="dropdown">
+                    <button class="dropbtn">Categories</button>
+                    <div class="dropdown-content">
+                      <a href="{% url 'laptop' %}">Laptops</a>
+                      <a href="{% url 'smartphone' %}">Smartphones</a>
+                      <a href="{% url 'camera' %}">Cameras</a>
+                      <a href="{% url 'accessorie' %}">Headphones</a>
+                      <a href="{% url 'notFound' %}">Tablets/ipads</a>
+                      <a href="{% url 'notFound' %}">TV</a>
+                      <a href="{% url 'notFound' %}">Speakers</a>
+                      <a href="{% url 'notFound' %}">Chargers</a>
                     </div>
-                    </li>
-  
-  
-  
+                  </div>
+                  </li>
+
+
+
                   <li class="nav-item">
                     <a class="nav-link" href=" {% url 'ourproducts' %} "> Products </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href=" {% url 'index' %} "> Returns/Orders </a>
                   </li>
-  
+
                   {% comment %} <li class="nav-item">
                     <a class="nav-link" href=" {% url 'contact' %} ">Contact us</a>
                   </li> {% endcomment %}
@@ -131,7 +131,7 @@
                   <input name='q' class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                   <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
                 </form>
-  
+
                 <div class = "dropdown" >
                 <button class="dropbtn"><i class="glyphicon glyphicon-user" style="font-size:25px"></i></button>
                 <div class="dropdown-content">
@@ -139,27 +139,27 @@
                   <a href="#">Hello, {{user.first_name}}</a>
                   <a href="{% url 'logout' %}">Logout</a>
                   <a href="{% url 'addproduct' %}">Add product</a>
-  
+
                   {% elif user.is_authenticated %}
                   <a href="#">Hello, {{user.first_name}}</a>
                   <a href="{% url 'logout' %}">Logout</a>
                   {% else %}
-  
+
                   <a href="{% url 'loginpage' %}">Login</a>
                   <a href="{% url 'registration' %}">Sign Up</a>
                   {% endif %}
                   </div>
                 </div>
-  
+
                 <a href="{% url 'cart' %}">
                    <button class="btn"><i class="fa fa-shopping-cart" style="font-size:30px"></i></button>
                 </a>
-  
+
               </div>
             </div>
           </nav>
         </div>
-  
+
       </header>
       <!-- end header section -->
       <br>
