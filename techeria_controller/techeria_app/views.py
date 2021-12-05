@@ -464,6 +464,18 @@ class VerificationView(View):
 #     else:
 #         return redirect('checkout')
 
+def checkout(request):
+    try:
+	    buyer = request.user.buyer
+    except:
+	    device = request.COOKIES['device']
+	    buyer, created = BuyerModel.objects.get_or_create(device=device)
+
+    order, created = Order.objects.get_or_create(buyer=buyer, complete=False)
+
+    context = {'order':order}
+    return render(request, 'checkout.html',context)
+
 
 def payments(request):
     return render(request, 'payments.html')
