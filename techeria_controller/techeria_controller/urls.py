@@ -23,6 +23,7 @@ from django.contrib.auth import views as auth_views
 
 
 
+
 from techeria_app.views import VerificationView
 from django.contrib.auth import views as auth_views
 
@@ -47,6 +48,8 @@ urlpatterns = [
     path('search', views.search, name='search'),
     path('p/<int:pk>/', views.productInfo, name='p'),
     path('logout', views.logout, name='logout'),
+    path('notFound', views.notFound, name='notFound'),
+
 
     #path('forgotPassword',views.forgotPassword,name='forgotPassword'),
 
@@ -62,11 +65,11 @@ urlpatterns = [
 
 
 
-    
+
     # path('place_order', views.place_order, name='place_order'),
     path('payments/', views.payments, name='payments'),
     # path('order_complete/', views.order_complete, name='order_complete'),
-    
+
     path('seller', views.seller, name='seller'),
 
 

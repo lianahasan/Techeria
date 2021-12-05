@@ -44,7 +44,7 @@ def smartphone(request):
         'smartphone': smartphone
     }
     return render(request, 'smartphone.html', context)
-    
+
 
 
 
@@ -71,7 +71,7 @@ def remove_cart(request,pk):
 
     order, created = Order.objects.get_or_create(buyer=buyer, complete=False)
     OrderItem.objects.filter(order=order,product=p).delete()
-    
+
     context = {'order':order}
     return render(request, 'cart.html',context)
 
@@ -86,11 +86,11 @@ def search(request):
 
 def product(request,pk):
     product = Products.objects.get(id=pk)
-    
+
     if request.method == 'POST':
         product = Products.objects.get(id=pk)
         try:
-            buyer = request.user.buyer	
+            buyer = request.user.buyer
         except:
             device = request.COOKIES['device']
             buyer, created = BuyerModel.objects.get_or_create(device=device)
@@ -101,7 +101,7 @@ def product(request,pk):
         orderItem.save()
 
         return redirect('cart')
-    
+
     context = {'product': product
                }
     return render(request, 'product.html',context)
@@ -111,12 +111,18 @@ def ourproducts(request):
     return render(request, 'ourproducts.html')
 
 
+
+def notFound(request):
+   context = {}
+   return render(request,'notFound.html', context)
+
+
 def productInfo(request, pk):
     p = Products.objects.get(id=pk)
     if request.method == 'POST':
         p = Products.objects.get(id=pk)
         try:
-            buyer = request.user.buyer	
+            buyer = request.user.buyer
         except:
             device = request.COOKIES['device']
             buyer, created = BuyerModel.objects.get_or_create(device=device)
@@ -226,7 +232,7 @@ def registration(request):
                     buyer.zip_code=zip_code
                     buyer.country=country
                     user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name, is_staff = "True")
-                    user.is_active = False                  
+                    user.is_active = False
                     user.save()
                     buyer.save()
 
@@ -245,7 +251,7 @@ def registration(request):
                          'noreply@techeria.com',
                         [email],
                         ['bcc@example.com'],
-                        
+
                     )
                     email.send(fail_silently=False)
 
@@ -285,7 +291,7 @@ def registration(request):
                          'noreply@techeria.com',
                         [email],
                         ['bcc@example.com'],
-                        
+
                     )
                     email.send(fail_silently=False)
                     messages.success(request, 'A verification link has been send to your email. Please confirm the link')
@@ -327,8 +333,8 @@ def loginpage(request):
             else:
                 messages.info(request, 'Check your credentials')
                 return render(request, 'loginpage.html')
-                
-                
+
+
 
     else:
         return render(request, 'loginpage.html')
@@ -354,7 +360,7 @@ def addproduct(request):
         if len(request.FILES) != 0:
             image = request.FILES.get('myimage')
         p = Products()
-        if name != "":          
+        if name != "":
             p.name = name
             p.description=description
             p.price=price
@@ -366,7 +372,7 @@ def addproduct(request):
             return render(request, 'index.html')
         else:
             return render(request, 'addproduct.html')
-        
+
     else:
         return render(request, 'addproduct.html')
 
@@ -461,5 +467,3 @@ class VerificationView(View):
 
 def payments(request):
     return render(request, 'payments.html')
-
-
