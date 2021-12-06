@@ -88,13 +88,10 @@
                 <li class="nav-item">
                   <a class="nav-link" href=" {% url 'ourproducts' %} "> Products </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href=" {% url 'index' %} "> Returns/Orders </a>
-                </li>
 
-                {% comment %} <li class="nav-item">
+                <li class="nav-item">
                   <a class="nav-link" href=" {% url 'contact' %} ">Contact us</a>
-                </li> {% endcomment %}
+                </li>
               </ul>
               <form class="form-inline my-2 my-lg-0" action="/search">
                 <input name='q' class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -160,7 +157,7 @@
                             <a href=" {% static '' %} " class="slider-btn1 mr-3">
                               Read More
                             </a>
-                            <a href=" {% static '' %} " class="slider-btn2">
+                            <a href="{% url 'contact' %}" class="slider-btn2">
                               Contact Us
                             </a>
                           </div>
@@ -198,7 +195,7 @@
                             <a href=" {% static '' %} " class="slider-btn1 mr-3">
                               Read More
                             </a>
-                            <a href=" {% static '' %} " class="slider-btn2">
+                            <a href="{% url 'contact' %}" class="slider-btn2">
                               Contact Us
                             </a>
                           </div>
