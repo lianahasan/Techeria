@@ -13,7 +13,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Watcher</title>
+  <title>Techeria</title>
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
@@ -37,7 +37,7 @@
         <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
           <a class="navbar-brand" href=" {% static 'index.html' %} ">
             <span>
-              Watcher
+              Techeria
             </span>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,21 +48,21 @@
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href=" {% static 'index.html' %} ">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href=" {% url 'index' %} ">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href=" {% static 'about.html' %} "> About </a>
+                  <a class="nav-link" href=" {% url 'about' %} "> About </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href=" {% static 'watch.html' %} "> Our Watches </a>
+                  <a class="nav-link" href=" {% url 'ourproducts' %} "> Our Products </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href=" {% static 'contact.html' %} ">Contact us</a>
-                </li>
+
               </ul>
-              <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
+              <form class="form-inline my-2 my-lg-0" action="/search">
+                <input name='q' class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
               </form>
+
             </div>
           </div>
         </nav>
@@ -103,6 +103,8 @@
   </section>
 
   <!-- end contact section -->
+  <!-- end info_section -->
+  <!-- end contact section -->
 
   <!-- info section -->
   <section class="info_section layout_padding">
@@ -115,7 +117,7 @@
             </div>
             <div class="detail-box">
               <p>
-                Lorem Ipsum is simply dummy text
+                123 Main Street, New York, NY
               </p>
             </div>
           </div>
@@ -127,7 +129,7 @@
             </div>
             <div class="detail-box">
               <p>
-                +02 1234567890
+                +1-222-222-2222
               </p>
             </div>
           </div>
@@ -139,7 +141,7 @@
             </div>
             <div class="detail-box">
               <p>
-                demo@gmail.com
+                techeria@gmail.com
               </p>
             </div>
           </div>
@@ -153,13 +155,87 @@
   <!-- end info_section -->
 
   <!-- footer section -->
+   <!-- footer section -->
   <section class="container-fluid footer_section">
-    <p>
-      © 2020 All Rights Reserved By
-      <a href="https://html.design/">Free Html Templates</a>
-    </p>
+    <div class="footer-top-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="footer-about-us">
+                        <h2><span style="color: white">Techeria</span></h2>
+                        <h2><span style="color: white">Our Values</span></h2>
+                        <p>We are an e-commerce application, focused on making sure all technology products can be purchased in one space with the best deals so you can save your precious time without having to look through multiple websites.</p>
+                        <div class="footer-social">
+                            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                            <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="footer-menu">
+                        <h2 class="footer-wid-title" style= "color: white">User Navigation </h2>
+                        <ul>
+                            <li><a href="#">My account</a></li>
+                            <li><a href="#">Order history</a></li>
+                            <li><a href="#">Wishlist</a></li>
+                            <li><a href="#">Buyer contact</a></li>
+                            <li><a href="#">Front page</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="footer-menu">
+                        <h2 class="footer-wid-title" style= "color: white">Categories</h2>
+                        <ul>
+                            <li><a href="#">Mobile Phone</a></li>
+                            <li><a href="#">Home accesseries</a></li>
+                            <li><a href="#">LED TV</a></li>
+                            <li><a href="#">Computer</a></li>
+                            <li><a href="#">Gadets</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="footer-newsletter">
+                        <h2 class="footer-wid-title" style= "color: white">Newsletter</h2>
+                        <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
+                        <div class="newsletter-form">
+                            <form action="#">
+                                <input type="email" placeholder="Type your email">
+                                <input type="submit" value="Subscribe">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End footer top area -->
+
+    <div class="footer-bottom-area">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-md-4">
+                    <div class="footer-card-icon">
+                        <i class="fa fa-cc-discover"></i>
+                        <i class="fa fa-cc-mastercard"></i>
+                        <i class="fa fa-cc-paypal"></i>
+                        <i class="fa fa-cc-visa"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End footer bottom area -->
   </section>
   <!-- footer section -->
+
 
   <script type="text/javascript" src=" {% static 'js/jquery-3.4.1.min.js' %} "></script>
   <script type="text/javascript" src=" {% static 'js/bootstrap.js' %} "></script>

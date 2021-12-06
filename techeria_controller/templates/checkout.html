@@ -1,7 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-   
+
 
 <head>
     <!-- Basic -->
@@ -76,7 +76,7 @@
                         <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
                             <ul class="navbar-nav">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href=" {% static 'index.html' %} ">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href=" {% url 'index' %} ">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href=" {% url 'about' %} "> About </a>
@@ -95,19 +95,19 @@
                                         </div>
                                 </div> {% endcomment %}
                                 <li>
-                                    <div class="dropdown">
-                                        <button class="dropbtn">Categories</button>
-                                        <div class="dropdown-content">
-                                            <a href="#">Computers</a>
-                                            <a href="#">Phones</a>
-                                            <a href="#">Tablets/Ipads</a>
-                                            <a href="#">Accessory</a>
-                                            <a href="#">Chargers</a>
-                                            <a href="#">TV</a>
-                                            <a href="#">Speakers</a>
-                                            <a href="#">Headsets</a>
-                                        </div>
-                                    </div>
+                                <div class="dropdown">
+                                  <button class="dropbtn">Categories</button>
+                                  <div class="dropdown-content">
+                                    <a href="{% url 'laptop' %}">Laptops</a>
+                                    <a href="{% url 'smartphone' %}">Smartphones</a>
+                                    <a href="{% url 'camera' %}">Cameras</a>
+                                    <a href="{% url 'accessorie' %}">Headphones</a>
+                                    <a href="{% url 'notFound' %}">Tablets/ipads</a>
+                                    <a href="{% url 'notFound' %}">TV</a>
+                                    <a href="{% url 'notFound' %}">Speakers</a>
+                                    <a href="{% url 'notFound' %}">Chargers</a>
+                                  </div>
+                                </div>
                                 </li>
 
 
@@ -154,7 +154,7 @@
                 <div class="col-lg-6">
                     <div class="box-element" id="form-wrapper">
                         <form id="form">
-                      
+
                             <div id="user-info">
                                 <div class="form-field">
                                     <input required class="form-control" type="text" name="first name" placeholder="{{user.first_name}}">
@@ -165,7 +165,7 @@
                                 <div class="form-field">
                                     <input required class="form-control" type="email" name="email" placeholder="{{user.email}}">
                                 </div>
-                                
+
                                 <div class="form-field">
                                     <input class="form-control" type="text" name="phone number" placeholder="Phone">
                                 </div>
@@ -180,7 +180,7 @@
                                 <hr>
 
                                 <div class="form-field">
-                                    <input class="form-control" type="text" name="address line 2" placeholder="Address line 2..">
+                                    <input class="form-control" type="text" name="address line 1" placeholder="Address line 1..">
                                 </div>
                                 <div class="form-field">
                                     <input class="form-control" type="text" name="address line 1" placeholder="{{buyer.address}}">
@@ -203,42 +203,6 @@
                                 </div>
 
                             </div>
-                            
-
-
-
-                            <div id="Card-Info">
-                                <hr>
-                                <p>Card Information:</p>
-                                <form action="{% url 'checkout' %}" method="POST">
-                                  {% csrf_token %}
-                                <hr>
-
-                                <div class="form-field">
-                                    <input class="form-control" type="text" name="card_name" placeholder="Name on Card" required>
-                                </div>
-                                <div class="form-field">
-                                    <input class="form-control" type="number" name="card_number" placeholder="Card Number" required>
-                                </div>
-                                <div class="form-field">
-                                    <input class="form-control" type="number" name="card_security" placeholder="Security Code" required>
-                                </div>
-
-                                <div class="form-field">
-                                    <input class="form-control" type="number" name="card_zipcode" placeholder="Zip Code">
-                                </div>
-                                <!-- <div class="form-field">
-                                    <input class="form-control" type="text" name="zipcode" placeholder="Country..">
-                                </div>
-                                <div class="form-field">
-                                    <input class="form-control" type="text" name="country" placeholder="Zip code..">
-                                </div>
-                                <div class="form-field">
-                                    <input class="form-control" type="text" name="order name" placeholder="Order Name..">
-                                </div> -->
-
-                            </div>
-
 
                             <hr>
                             <!-- <input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue"> -->
@@ -246,10 +210,51 @@
                     </div>
 
                     <br>
-                    <div class="box-element hidden" id="payment-info">
-                        <small>Paypal Options</small>
+                    <div class="box-element" id="payment-info">
+                        <small>Payment Options</small>
                         <!--<button id="make-payment">Make payment</button>-->
                         <div id="paypal-button-container"></div>
+
+
+                        <!-- Include the PayPal JavaScript SDK -->
+                        <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+
+                        <script>
+                        // Render the PayPal button into #paypal-button-container
+                        paypal.Buttons({
+
+                         // Set up the transaction
+                         createOrder: function(data, actions) {
+                             return actions.order.create({
+                                 purchase_units: [{
+                                     amount: {
+                                         value: '88.44'
+                                     }
+                                 }]
+                             });
+                         },
+
+                       // Finalize the transaction
+                       onApprove: function(data, actions) {
+                           return actions.order.capture().then(function(orderData) {
+                               // Successful capture! For demo purposes:
+                               console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                               var transaction = orderData.purchase_units[0].payments.captures[0];
+                               alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+
+                               // Replace the above to show a success message within this page, e.g.
+                               // const element = document.getElementById('paypal-button-container');
+                               // element.innerHTML = '';
+                               // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                               // Or go to another URL:  actions.redirect('thank_you.html');
+                           });
+                       }
+
+
+     }).render('#paypal-button-container');
+ </script>
+
+
                     </div>
 
                 </div>
@@ -284,6 +289,7 @@
                             </div> -->
                         </div>
                         {% endfor %}
+
                         <button type="submit" name="submit" class="btn btn-primary btn-block">Place Order</button>
 			                     <a href="{% url 'ourproducts' %}" class="btn btn-light btn-block">Continue Shopping</a>
                         <h5>Items: {{order.get_cart_items}}</h5>

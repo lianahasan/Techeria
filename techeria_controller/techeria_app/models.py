@@ -12,7 +12,7 @@ class Products(models.Model):
     description = models.TextField()
     # slug = models.SlugField(max_length=100, unique=True)
     category = models.CharField(max_length=255)
-    
+
     def __str__(self):
     	return self.name
 
@@ -34,14 +34,14 @@ class BuyerModel(models.Model):
     zip_code = models.CharField(max_length=255, blank=True, null=True)
     country = models.CharField(max_length=20, blank=True, null=True)
     device = models.CharField(max_length=200, null=True, blank=True)
-    
+
     def __str__(self):
         if self.user_name:
             user_name = self.user_name
         else:
             user_name = self.device
         return str(user_name)
-    
+
     class Meta:
         db_table = "buyer"
 
@@ -71,7 +71,7 @@ class Laptops(models.Model):
     price = models.FloatField()
     description = models.TextField()
     category = models.CharField(max_length=255)
-    
+
     class Meta:
         db_table = 'laptops'
 
@@ -120,7 +120,7 @@ class Accessories(models.Model):
 
 #Payment models below
 class Payment(models.Model):
-    user = models.ForeignKey(BuyerModel, on_delete=models.CASCADE)
+    buyer = models.ForeignKey(BuyerModel, on_delete=models.CASCADE)
     payment_id = models.CharField(max_length=100)
     payment_method = models.CharField(max_length=100)
     amount_paid = models.CharField(max_length=100) # this is the total amount paid
@@ -132,11 +132,11 @@ class Payment(models.Model):
 
 class Order(models.Model):
     buyer = models.ForeignKey(
-        BuyerModel, on_delete=models.SET_NULL, null=True, blank=True)
+    BuyerModel, on_delete=models.SET_NULL, null=True, blank=True)
     order_date = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
     transaction_id = models.CharField(max_length=100, blank=True, null=True)
-    
+
     def __str__(self):
         return str(self.id)
 
@@ -182,62 +182,44 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
 	    return self.address
-    
+
     class Meta:
         db_table = "shippingaddress"
-        
-# class Order(models.Model):
-#     STATUS = (
-#         ('New', 'New'),
-#         ('Accepted', 'Accepted'),
-#         ('Completed', 'Completed'),
-#         ('Cancelled', 'Cancelled'),
-#     )
-
-#     user = models.ForeignKey(BuyerModel, on_delete=models.SET_NULL, null=True)
-#     payment = models.ForeignKey(Payment, on_delete=models.SET_NULL, blank=True, null=True)
-#     order_number = models.CharField(max_length=20)
-#     first_name = models.CharField(max_length=50)
-#     last_name = models.CharField(max_length=50)
-#     phone = models.CharField(max_length=15)
-#     email = models.EmailField()
-#     mobile_number = models.CharField(max_length=255)
-#     address = models.CharField(max_length=255)
-#     city = models.CharField(max_length=255)
-#     state = models.CharField(max_length=255)
-#     zip_code = models.CharField(max_length=255)
-#     country = models.CharField(max_length=20)
-#     order_note = models.CharField(max_length=100, blank=True)
-#     order_total = models.FloatField()
-#     tax = models.FloatField()
-#     status = models.CharField(max_length=10, choices=STATUS, default='New')
-#     ip = models.CharField(blank=True, max_length=20)
-#     is_ordered = models.BooleanField(default=False)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
 
 
-#     def full_name(self):
-#         return f'{self.first_name} {self.last_name}'
 
-#     def full_address(self):
-#         return f'{self.address_line_1} {self.address_line_2}'
+class PlaceOrder(models.Model):
+    STATUS = (
+        ('New', 'New'),
+        ('Accepted', 'Accepted'),
+        ('Completed', 'Completed'),
+        ('Cancelled', 'Cancelled'),
+    )
 
-#     def __str__(self):
-#         return self.first_name
+    user = models.ForeignKey(BuyerModel, on_delete=models.SET_NULL, null=True)
+    payment = models.ForeignKey(Payment, on_delete=models.SET_NULL, blank=True, null=True)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    phone = models.CharField(max_length=15)
+    email = models.EmailField(max_length=50)
+    address_line_1 = models.CharField(max_length=50)
+    country = models.CharField(max_length=50)
+    state = models.CharField(max_length=50)
+    city = models.CharField(max_length=50)
+    order_total = models.FloatField()
+    tax = models.FloatField()
+    status = models.CharField(max_length=10, choices=STATUS, default='New')
+    ip = models.CharField(blank=True, max_length=20)
+    is_ordered = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
-# class OrderProduct(models.Model):
-#     order = models.ForeignKey(Order, on_delete=models.CASCADE)
-#     payment = models.ForeignKey(Payment, on_delete=models.SET_NULL, blank=True, null=True)
-#     user = models.ForeignKey(BuyerModel, on_delete=models.CASCADE)
-#     product = models.ForeignKey(Products, on_delete=models.CASCADE)
-#     quantity = models.IntegerField()
-#     product_price = models.FloatField()
-#     ordered = models.BooleanField(default=False)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
+    def full_name(self):
+        return f'{self.first_name} {self.last_name}'
 
-#     def __str__(self):
-#         return self.product.product_name
+    def full_address(self):
+        return f'{self.address_line_1} {self.address_line_2}'
 
+    def __str__(self):
+        return self.first_name
