@@ -56,7 +56,6 @@ def cart(request):
         buyer, created = BuyerModel.objects.get_or_create(device=device)
 
     order, created = Order.objects.get_or_create(buyer=buyer, complete=False)
-
     context = {'order':order}
     return render(request, 'cart.html',context)
 
@@ -443,10 +442,10 @@ def place_order(request):
 
 def checkout(request):
     try:
-	    buyer = request.user.buyer
+        buyer = request.user.buyer
     except:
-	    device = request.COOKIES['device']
-	    buyer, created = BuyerModel.objects.get_or_create(device=device)
+        device = request.COOKIES['device']
+        buyer, created = BuyerModel.objects.get_or_create(device=device)
 
     order, created = Order.objects.get_or_create(buyer=buyer, complete=False)
 
