@@ -120,7 +120,7 @@ class Accessories(models.Model):
 
 #Payment models below
 class Payment(models.Model):
-    user = models.ForeignKey(BuyerModel, on_delete=models.CASCADE)
+    buyer = models.ForeignKey(BuyerModel, on_delete=models.CASCADE, null=True)
     payment_id = models.CharField(max_length=100)
     payment_method = models.CharField(max_length=100)
     amount_paid = models.CharField(max_length=100) # this is the total amount paid
@@ -220,6 +220,6 @@ class PlaceOrder(models.Model):
 
     def full_address(self):
         return f'{self.address_line_1} {self.address_line_2}'
-
+    
     def __str__(self):
         return self.first_name

@@ -4,7 +4,7 @@ from django.http import response
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
-from techeria_app.models import BuyerModel, SellerModel, Products, Laptops, Smartphone, Cameras,Order,OrderItem,Accessories,PlaceOrder
+from techeria_app.models import *
 
 from django.contrib.auth.models import User, auth
 from django.core.mail import EmailMessage
@@ -50,13 +50,12 @@ def smartphone(request):
 
 def cart(request):
     try:
-	    buyer = request.user.buyer
+        buyer = request.user.buyer
     except:
-	    device = request.COOKIES['device']
-	    buyer, created = BuyerModel.objects.get_or_create(device=device)
+        device = request.COOKIES['device']
+        buyer, created = BuyerModel.objects.get_or_create(device=device)
 
     order, created = Order.objects.get_or_create(buyer=buyer, complete=False)
-
     context = {'order':order}
     return render(request, 'cart.html',context)
 
@@ -64,10 +63,10 @@ def cart(request):
 def remove_cart(request,pk):
     p = Products.objects.get(id=pk)
     try:
-	    buyer = request.user.buyer
+        buyer = request.user.buyer
     except:
-	    device = request.COOKIES['device']
-	    buyer, created = BuyerModel.objects.get_or_create(device=device)
+        device = request.COOKIES['device']
+        buyer, created = BuyerModel.objects.get_or_create(device=device)
 
     order, created = Order.objects.get_or_create(buyer=buyer, complete=False)
     OrderItem.objects.filter(order=order,product=p).delete()
@@ -443,10 +442,10 @@ def place_order(request):
 
 def checkout(request):
     try:
-	    buyer = request.user.buyer
+        buyer = request.user.buyer
     except:
-	    device = request.COOKIES['device']
-	    buyer, created = BuyerModel.objects.get_or_create(device=device)
+        device = request.COOKIES['device']
+        buyer, created = BuyerModel.objects.get_or_create(device=device)
 
     order, created = Order.objects.get_or_create(buyer=buyer, complete=False)
 
