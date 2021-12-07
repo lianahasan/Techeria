@@ -218,10 +218,9 @@ def registration(request):
 
 
                 if category == "Buyer":
-                    buyer.username = username
+                    buyer.user_name = username
                     buyer.first_name=first_name
                     buyer.last_name=last_name
-                    buyer.username=username
                     buyer.email=email
                     buyer.date_of_birth=date_of_birth
                     buyer.mobile_number=mobile_number
@@ -263,7 +262,7 @@ def registration(request):
                     seller.user_name = username
                     seller.first_name=first_name
                     seller.last_name=last_name
-                    seller.username=username
+                    seller.user_name=username
                     seller.email=email
                     seller.date_of_birth=date_of_birth
                     seller.mobile_number=mobile_number

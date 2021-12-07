@@ -1,1 +1,4 @@
-**/__pycache__
+**/__pycache__/
+techeria_app/migrations/__pycache__/
+techeria_app/__pycache__/
+techeria_controller/__pycache__/
