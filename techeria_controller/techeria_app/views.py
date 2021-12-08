@@ -37,6 +37,9 @@ def contact(request):
 def watch(request):
     return render(request, 'watch.html')
 
+def complete_order(request):
+    return render(request, 'complete_order.html')
+
 
 def smartphone(request):
     smartphone = Smartphone.objects.all()
@@ -74,8 +77,8 @@ def remove_cart(request,pk):
     context = {'order':order}
     return render(request, 'cart.html',context)
 
-def checkout(request):
-    return render(request, 'checkout.html')
+# def checkout(request):
+#     return render(request, 'checkout.html')
 
 
 def search(request):
@@ -218,9 +221,10 @@ def registration(request):
 
 
                 if category == "Buyer":
-                    buyer.user_name = username
+                    buyer.username = username
                     buyer.first_name=first_name
                     buyer.last_name=last_name
+                    buyer.username=username
                     buyer.email=email
                     buyer.date_of_birth=date_of_birth
                     buyer.mobile_number=mobile_number
@@ -262,7 +266,7 @@ def registration(request):
                     seller.user_name = username
                     seller.first_name=first_name
                     seller.last_name=last_name
-                    seller.user_name=username
+                    seller.username=username
                     seller.email=email
                     seller.date_of_birth=date_of_birth
                     seller.mobile_number=mobile_number
@@ -415,7 +419,6 @@ def place_order(request):
             data.phone = form.cleaned_data['phone']
             data.email = form.cleaned_data['email']
             data.address_line_1 = form.cleaned_data['address_line_1']
-            data.address_line_2 = form.cleaned_data['address_line_2']
             data.country = form.cleaned_data['country']
             data.state = form.cleaned_data['state']
             data.city = form.cleaned_data['city']
@@ -440,17 +443,38 @@ def place_order(request):
 #     return render(request, 'checkout.html')
 
 def checkout(request):
-    try:
-        buyer = request.user.buyer
-    except:
-        device = request.COOKIES['device']
-        buyer, created = BuyerModel.objects.get_or_create(device=device)
+    if request.method == 'POST':
+        co = CompleteOrder()
+        co.first_name = request.POST['first_name']
+        co.last_name = request.POST['last_name']
+        co.email = request.POST['email']
+        co.address = request.POST['address']
+        co.mobile_number = request.POST['mobile_number']
+        co.city = request.POST['city']
+        co.state = request.POST['state']
+        co.country = request.POST['country']
+        co.zip_code = request.POST['zip_code']
+        co.save()
+        return redirect('complete_order')
+    else:
+        try:
+            buyer = request.user.buyer
+        except:
+            device = request.COOKIES['device']
+            buyer, created = BuyerModel.objects.get_or_create(device=device)
 
-    order, created = Order.objects.get_or_create(buyer=buyer, complete=False)
+        order, created = Order.objects.get_or_create(buyer=buyer, complete=False)
 
-    context = {'order':order}
-    return render(request, 'checkout.html',context)
+        context = {'order':order}
+        return render(request, 'checkout.html',context)
 
 
 def payments(request):
     return render(request, 'payments.html')
+
+
+def order_complete(request):
+    if request.method == 'POST':
+        return render(request, 'order_complete.html')
+    else:
+        return render(request, 'checkout.html')
