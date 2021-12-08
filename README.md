@@ -4,6 +4,9 @@ Techeria is an ecommerce website that displays numerous technology products (pho
 computers, tablets, TVs, etc.) to be sold. Users can select items to add to their cart and buy them
 through a secure payment gateway.
 
+**Deployed Website**
+https://techeria.herokuapp.com/  
+
 **Documentations**
 https://github.com/lianahasan/Techeria/wiki
 
