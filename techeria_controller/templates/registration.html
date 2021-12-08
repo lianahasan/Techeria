@@ -1,39 +1,209 @@
+{% load static %}
+<!DOCTYPE html>
+<style>
+	body {
+		background-color:#B9CAF1 !important;
+	}
+	
+	.signupbox p{
+		font-size: 20px;
+		margin: 15px, 0;
+		margin-top: 10px;
+		margin-bottom: 10px;
 
+	}
+	.signupbox p1{
+		font-size: 20px;
+		color: red;
+		margin-top: 100px;
+
+	}
+
+	.signupbox input{
+		font-size: 16px;
+		width: 100%;
+		padding: 15px 10px;
+		border: 0;
+		outline: none;
+		border-radius: 5px;
+	}
+
+	.signupbox button{
+		font-size: 18px;
+		font-weight: bold;
+		margin: 20px, 0;
+		padding:10px 15px;
+		width: 40%;
+		border-radius: 5px;
+		margin-top: 20px;
+		color: white;
+		background: black;
+		display: inline-block;
+
+
+
+	}
+	.signupbox button:hover{
+		color: blue;
+	}
+
+
+
+
+	.signupbox a{
+		color: rgb(8, 2, 19);
+		margin-left: 10px;
+		
+	}
+
+	body{
+
+		display: flex;
+		flex-direction: column;
+		background-color: #B9CAF1;
+		background-repeat:no-repeat;
+		background-size: cover;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+	}
+{% comment %} 
+  #submitButton, #resetButton {
+    display:inline-block;
+    margin-right: 5px;
+  } {% endcomment %}
+</style>
 <html>
   <head>
-  <style>
-  body {
-    background-color:#90AACB;
-  }
-    h3{
-      font-family: Calibri;
-      font-size: 25pt;
-      font-style: normal;
-      font-weight: bold;
-      color:#22577A;
-      text-align: center;
-      text-decoration: underline
-    }
+    <title>Sign Up Page</title>
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css_login/style.css' %}"> {% endcomment %}
+    <link rel="icon" href="/media/images/techeria_logo1.png">
+      <!-- Basic -->
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <!-- Mobile Metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <!-- Site Metas -->
+      <meta name="keywords" content="" />
+      <meta name="description" content="" />
+      <meta name="author" content="" />
   
-    table{
-      font-family: Calibri;
-      color:white;
-      font-size: 11pt;
-      font-style: normal;
-      font-weight: bold;
-      text-align:center;
-      background-color: #506D84;
-      border-collapse: collapse;
-      border: 2px solid navy
-    }
   
-  </style>
-  <title>Register</title>
-  <link rel="stylesheet" type="text/css" href="accountStyle.css" />
+      <title>Techeria</title>
+  
+      <!-- slider stylesheet -->
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+  
+      <!-- bootstrap core css -->
+      <link rel="stylesheet" type="text/css" href=" {% static 'css/bootstrap.css' %} " />
+  
+      <!-- fonts style -->
+      <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
+      <!-- Custom styles for this template -->
+      <link href=" {% static 'css/style.css' %} " rel="stylesheet" />
+      <!-- responsive style -->
+      <link href=" {% static 'css/responsive.css' %} " rel="stylesheet" />
+      <!-- icon font awesome-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   
   <body>
-  <h3>Sign UP</h3>
+    <!-- header section strats -->
+	<header class="header_section">
+		<div class="container-fluid">
+			<nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+				<a class="navbar-brand" href=" {% url 'index' %} ">
+					<span>
+		  <img src="/media/images/techeria_logo1.png" style="width: 100px; height: auto;" alt="Techeria">
+		</span>
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+						<ul class="navbar-nav">
+							<li class="nav-item active">
+								<a class="nav-link" href=" {% url 'index' %} ">Home <span class="sr-only">(current)</span></a>
+							</li>
+
+							
+							
+
+							<li>
+								<div class="dropdown">
+									<button class="dropbtn">Categories</button>
+									<div class="dropdown-content">
+										<a href="{% url 'laptop' %}">Laptops</a>
+										<a href="{% url 'smartphone' %}">Smartphones</a>
+										<a href="{% url 'camera' %}">Cameras</a>
+										<a href="{% url 'accessorie' %}">Headphones</a>
+										<a href="{% url 'notFound' %}">Tablets/ipads</a>
+										<a href="{% url 'notFound' %}">TV</a>
+										<a href="{% url 'notFound' %}">Speakers</a>
+										<a href="{% url 'notFound' %}">Chargers</a>
+									</div>
+								</div>
+							</li>
+
+
+
+							<li class="nav-item">
+								<a class="nav-link" href=" {% url 'ourproducts' %} "> Products </a>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link" href=" {% url 'about' %} "> About </a>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link" href=" {% url 'contact' %} ">Contact Us</a>
+							</li>
+						</ul>
+						<form class="form-inline my-2 my-lg-0" action="/search">
+							<input name='q' class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+							<button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
+						</form>
+
+						<div class="dropdown">
+							<button class="dropbtn"><i class="glyphicon glyphicon-user" style="font-size:25px"></i></button>
+							<div class="dropdown-content">
+								{% if user.is_authenticated and not user.is_staff %}
+								<a href="#">Hello, {{user.first_name}}</a>
+								<a href="{% url 'logout' %}">Logout</a>
+								<a href="{% url 'addproduct' %}">Add product</a> 
+								{% elif user.is_authenticated %}
+								<a href="#">Hello, {{user.first_name}}</a>
+								<a href="{% url 'logout' %}">Logout</a>
+								{% else %}
+								<a href="{% url 'loginpage' %}">Login</a>
+								<a href="{% url 'registration' %}">Sign Up</a>
+								 {% endif %}
+							</div>
+						</div>
+
+						{% if user.is_authenticated %}
+
+						<a href="{% url 'cart' %}">
+							<button class="btn"><i class="fa fa-shopping-cart" style="font-size:30px"></i></button>
+						</a>
+
+						{% else %}
+						<a href="{% url 'loginpage' %}">
+							<button class="btn"><i class="fa fa-shopping-cart" style="font-size:30px"></i></button>
+						</a>
+						{%endif%}
+
+
+					</div>
+				</div>
+			</nav>
+		</div>
+
+	</header>
+	<!-- end header section -->
   
   <form action="registration" method="POST">
   
@@ -44,123 +214,161 @@
       {% endfor %}
     </div>
     
-  <table align="center" cellpadding = "10">
-  
-  <!----- First Name ---------------------------------------------------------->
-  <tr>
-  <td>FIRST NAME</td>
-  <td><input type="text" name="First_Name" maxlength="30" required/>
+    <div class="signupbox">
+      <p style="text-align: center; font-size:30px;">Sign Up</p>
+      <form action="#" method = "post">
+        <label for="First_Name">First Name: </label>
+        <input type="text" name="First_Name" placeholder="First Name" maxlength="30" required/>
   (max 30 characters a-z and A-Z)
-  </td>
-  </tr>
-  
-  <!----- Last Name ---------------------------------------------------------->
-  <tr>
-  <td>LAST NAME</td>
-  <td><input type="text" name="Last_Name" maxlength="30" required/>
+        <br> <br>
+        <label for="Last_Name">Last Name: </label>
+        <input type="text" name="Last_Name" placeholder="Last Name" maxlength="30" required/>
   (max 30 characters a-z and A-Z)
-  </td>
-  </tr>
-  <tr>
-    <td>USER NAME</td>
-    <td><input type="text" name="Username" maxlength="30" required/>
-    (max 30 characters a-z and A-Z)
-    </td>
-    </tr>
-  
-  <!----- Date Of Birth -------------------------------------------------------->
-  <tr>
-    <td>Date of Birth</td>
-    <td><input type="Date" name="Date_of_Birth" required/>
-    </td>
-    </tr>
-  
-  <!----- Email Id ---------------------------------------------------------->
-  <tr>
-  <td>EMAIL ID</td>
-  <td><input type="Email" name="Email_Id" required/></td>
-  </tr>
-  
-  <!----- Mobile Number ---------------------------------------------------------->
-  <tr>
-  <td>MOBILE NUMBER</td>
-  <td>
-  <input type="tel" name="Mobile_Number" maxlength="10"/>
+        <br> <br>
+        <label for="Username">Username: </label>
+        <input type="text" name="Username" placeholder="Username" maxlength="30" required/>
+  (max 30 characters a-z and A-Z)
+        <br> <br>
+        <label for="Date_of_Birth">Date of Birth: </label>
+        <input type="Date" name="Date_of_Birth" required/>
+        <br> <br>
+        <label for="Email_Id">Email ID: </label>
+        <input type="Email" name="Email_Id" placeholder="Email ID"required/></td>
+        <br> <br>
+        <label for="Mobile_Number">Mobile Number: </label>
+        <input type="tel" name="Mobile_Number" placeholder="Mobile Number" maxlength="10"/>
   (10 digit number)
-  </td>
-  </tr>
-  
-  <!----- Gender ----------------------------------------------------------->
-  <tr>
-  <td>CATEGORY</td>
-  <td>
-    <select name = "kk">
-      <option value="kk" disabled>Select one</option>
-      <option value="Buyer">Buyer</option>
-      <option value="Seller">Seller</option>
-     </select>
-  </td>
-  </tr>
-  
-  <!----- Address ---------------------------------------------------------->
-  <tr>
-  <td>ADDRESS <br /><br /><br /></td>
-  <td><textarea name="Address" rows="4" cols="30"></textarea></td>
-  </tr>
-  
-  <!----- City ---------------------------------------------------------->
-  <tr>
-  <td>CITY</td>
-  <td><input type="text" name="City" maxlength="30" />
+        <br> <br>
+        <label for="kk">Category: </label>
+        <select name = "kk">
+          <option value="kk" disabled>Select one</option>
+          <option value="Buyer">Buyer</option>
+          <option value="Seller">Seller</option>
+        </select>
+        <br> <br>
+        <label for="Address" style="vertical-align: top;">Address: </label>
+        <textarea style="width:500px;"name="Address" placeholder="Address" rows="4" cols="30"></textarea>
+        <br> <br>
+        <label for="City">City: </label>
+        <input type="text" name="City" placeholder="City" maxlength="30" />
   (max 30 characters a-z and A-Z)
-  </td>
-  </tr>
-  
-  <!----- Pin Code ---------------------------------------------------------->
-  <tr>
-  <td>ZIP CODE</td>
-  <td><input type="text" name="Zip_Code" maxlength="6" />
+        <br> <br>
+        <label for="Zip_Code">Zip Code: </label>
+        <input type="text" name="Zip_Code" placeholder="Zip Code" maxlength="6" />
   (6 digit number)
-  </td>
-  </tr>
-  
-  <!----- State ---------------------------------------------------------->
-  <tr>
-  <td>STATE</td>
-  <td><input type="text" name="State" maxlength="30" />
+        <br> <br>
+        <label for="State">State: </label>
+        <input type="text" name="State" placeholder="State" maxlength="30" />
   (max 30 characters a-z and A-Z)
-  </td>
-  </tr>
+        <br> <br>
+        <label for="Country">Country: </label>
+        <input type="text" name="Country" placeholder="Country"/>
+  (max 30 characters a-z and A-Z)
+        <br> <br>
+        <label for="Password">Password: </label>
+        <input type="password" name="Password" placeholder="Password" required/>
+  (max 30 characters a-z and A-Z)
+        <br> <br>
+        <label for="Confirm Password">Confirm Password: </label>
+        <input type="password" name="Confirm_Password" placeholder="Confirm Password" required/>
+  (max 30 characters a-z and A-Z)
+        <br> <br>
+        <div style="text-align:center;">
+           <button type="submit">Submit</button>
+           <button type="reset">Reset</button>
+        </div>
+        <p>I already have an account  <a style="text-decoration: underline;" href="loginpage">Login</a></p>
+      </form>
+    
+      <br>
+      <br>
+      <br>
+    </div>
   
-  <!----- Country ---------------------------------------------------------->
-  <tr>
-  <td>COUNTRY</td>
-  <td><input type="text" name="Country"/></td>
-  </tr>
-  
-  
-  <tr>
-    <td>Password</td>
-    <td><input type="password" name="Password"  required/></td>
-    </tr>
-    <tr>
-      <td>Confirm Password</td>
-      <td><input type="password" name="Confirm_Password"  required/></td>
-      </tr>
-        
-  
-  
-  <!----- Submit and Reset ------------------------------------------------->
-  <tr>
-  <td colspan="2" align="center">
-  <input type="submit" value="Submit">
-  <input type="reset" value="Reset">
-  <p>I alrerady have an account  <a href="loginpage">Login</a></p>
-  </td>
-  </tr>
-  </table>
-  
-  </form>
+         <!-- footer section -->
+         <section class="container-fluid footer_section">
+          <div class="footer-top-area">
+              <div class="zigzag-bottom"></div>
+              <div class="container">
+                  <div class="row">
+                      <div class="col-md-3 col-sm-6">
+                          <div class="footer-about-us">
+                              <h2><span style="color: white">Techeria</span></h2>
+                              <h2><span style="color: white">Our Values</span></h2>
+                              <p>We are an e-commerce application, focused on making sure all technology products can be purchased in one space with the best deals so you can save your precious time without having to look through multiple websites.</p>
+                              <div class="footer-social">
+                                  <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                                  <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                                  <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                                  <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-md-3 col-sm-6">
+                          <div class="footer-menu">
+                              <h2 class="footer-wid-title" style= "color: white">User Navigation </h2>
+                              <ul>
+                                  <li><a href="#">My account</a></li>
+                                  <li><a href="#">Order history</a></li>
+                                  <li><a href="#">Wishlist</a></li>
+                                  <li><a href="#">Buyer contact</a></li>
+                                  <li><a href="#">Front page</a></li>
+                              </ul>
+                          </div>
+                      </div>
+
+                      <div class="col-md-3 col-sm-6">
+                          <div class="footer-menu">
+                              <h2 class="footer-wid-title" style= "color: white">Categories</h2>
+                              <ul>
+                                  <li><a href="#">Mobile Phone</a></li>
+                                  <li><a href="#">Home accesseries</a></li>
+                                  <li><a href="#">LED TV</a></li>
+                                  <li><a href="#">Computer</a></li>
+                                  <li><a href="#">Gadets</a></li>
+                              </ul>
+                          </div>
+                      </div>
+
+                      <div class="col-md-3 col-sm-6">
+                          <div class="footer-newsletter">
+                              <h2 class="footer-wid-title" style= "color: white">Newsletter</h2>
+                              <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
+                              <div class="newsletter-form">
+                                  <form action="#">
+                                      <input type="email" placeholder="Type your email">
+                                      <input type="submit" value="Subscribe">
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div> <!-- End footer top area -->
+
+          <div class="footer-bottom-area">
+              <div class="container">
+                  <div class="row">
+
+
+                      <div class="col-md-4">
+                          <div class="footer-card-icon">
+                              <i class="fa fa-cc-discover"></i>
+                              <i class="fa fa-cc-mastercard"></i>
+                              <i class="fa fa-cc-paypal"></i>
+                              <i class="fa fa-cc-visa"></i>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div> <!-- End footer bottom area -->
+        </section>
+        <!-- footer section -->
+
+
+        <script type="text/javascript" src=" {% static 'js/jquery-3.4.1.min.js' %} "></script>
+        <script type="text/javascript" src=" {% static 'js/bootstrap.js' %} "></script>
   
   </body>
   </html>
