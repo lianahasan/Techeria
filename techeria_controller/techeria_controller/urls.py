@@ -49,6 +49,7 @@ urlpatterns = [
     path('p/<int:pk>/', views.productInfo, name='p'),
     path('logout', views.logout, name='logout'),
     path('notFound', views.notFound, name='notFound'),
+    path('complete_order', views.complete_order, name='complete_order'),
 
 
     #path('forgotPassword',views.forgotPassword,name='forgotPassword'),
