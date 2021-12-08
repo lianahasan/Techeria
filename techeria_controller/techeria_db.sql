@@ -268,6 +268,21 @@ CREATE TABLE `orders` (
   PRIMARY KEY (`id`)
 )  ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 
+CREATE TABLE `complete_order` (
+  `id` bigint(20) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `email` varchar(254) NOT NULL,
+  `mobile_number` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `state` varchar(255) NOT NULL,
+  `zip_code` varchar(255) NOT NULL,
+  `country` varchar(20) NOT NULL,
+  `price` double NOT NULL,
+  `item` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Table structure for table 'orders_items`
 --

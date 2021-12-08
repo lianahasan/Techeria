@@ -65,7 +65,7 @@
 			<nav class="navbar navbar-expand-lg custom_nav-container pt-3">
 				<a class="navbar-brand" href=" {% url 'index' %} ">
 					<span>
-		  <img src="/media/images/techeria_logo1.png" style="width: 100px; height: auto;" alt="Techeria">
+		  <img src="/media/images/techeria_logo1.png" style="width: 90px; height: auto;" alt="Techeria">
 		</span>
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,8 +79,8 @@
 								<a class="nav-link" href=" {% url 'index' %} ">Home <span class="sr-only">(current)</span></a>
 							</li>
 
-							
-							
+
+
 
 							<li>
 								<div class="dropdown">
@@ -123,7 +123,7 @@
 								{% if user.is_authenticated and not user.is_staff %}
 								<a href="#">Hello, {{user.first_name}}</a>
 								<a href="{% url 'logout' %}">Logout</a>
-								<a href="{% url 'addproduct' %}">Add product</a> 
+								<a href="{% url 'addproduct' %}">Add product</a>
 								{% elif user.is_authenticated %}
 								<a href="#">Hello, {{user.first_name}}</a>
 								<a href="{% url 'logout' %}">Logout</a>
@@ -190,7 +190,7 @@
                                 <div class="form-field">
                                     <input class="form-control" type="text" name="address" placeholder="Address">
                                 </div>
-                               
+
                                 <div class="form-field">
                                     <input class="form-control" type="text" name="city" placeholder="City">
                                 </div>
@@ -204,7 +204,7 @@
                                 <div class="form-field">
                                     <input class="form-control" type="text" name="zip_code" placeholder="Zip code..">
                                 </div>
-                                
+
 
                             </div>
 
@@ -221,7 +221,7 @@
 
 
                         <!-- Include the PayPal JavaScript SDK -->
-                        <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+                        <script src="https://www.paypal.com/sdk/js?client-id=AakEZv5Oa0eUuXNO9tmglvFeI2YpW8kb9oj_z4joaIA_n4doWVLfsDoRmbwtq4kPyBPo6PqB1tVDvSLw&currency=USD"></script>
 
                         <script>
                         // Render the PayPal button into #paypal-button-container
@@ -294,7 +294,7 @@
                         </div>
                         {% endfor %}
 
-                        <button type="submit">Place Order</button>
+                        <button type="submit" name="submit" class="btn btn-primary btn-block">Place Order</button>
 			                     <a href="{% url 'ourproducts' %}" class="btn btn-light btn-block">Continue Shopping</a>
                         <h5>Items: {{order.get_cart_items}}</h5>
                         <h5>Total: ${{order.get_cart_total|floatformat:2}}</h5>

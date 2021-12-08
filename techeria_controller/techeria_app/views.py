@@ -10,6 +10,7 @@ from django.contrib.auth.models import User, auth
 from django.core.mail import EmailMessage
 from django.views import View
 from django.contrib import messages
+import json
 
 
 
@@ -482,6 +483,8 @@ def checkout(request):
 
 
 def payments(request):
+    body  = json.loads(request.body)
+    print(body)
     return render(request, 'payments.html')
 
 
