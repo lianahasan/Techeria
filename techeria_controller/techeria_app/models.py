@@ -8,16 +8,28 @@ class Products(models.Model):
     # cat_image = models.ImageField(upload_to='images/', blank=True)
 
     name = models.CharField(max_length=255)
+
     price = models.FloatField()
     description = models.TextField()
     # slug = models.SlugField(max_length=100, unique=True)
     category = models.CharField(max_length=255)
+
     
-    def __str__(self):
-    	return self.name
+    # def __str__(self):
+    #     return self.name
 
     class Meta:
         db_table = 'products'
+
+class ProductReview(models.Model):
+   name = models.CharField(max_length=255)
+   user = models.ForeignKey(User, related_name='reviews', on_delete=models.CASCADE)
+   reviews = models.TextField()
+   rate = models.IntegerField(default=0)
+   date_added = models.DateTimeField(auto_now_add=True)
+ 
+   class Meta:
+       db_table = "products_reviews"
 
 
 class BuyerModel(models.Model):

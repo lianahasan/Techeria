@@ -4,7 +4,7 @@ from django.http import response
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
-from techeria_app.models import BuyerModel, SellerModel, Products, Laptops, Smartphone, Cameras,Order,OrderItem,Accessories
+from techeria_app.models import BuyerModel, SellerModel, Products, Laptops, Smartphone, Cameras,Order,OrderItem,Accessories,ProductReview
 
 from django.contrib.auth.models import User, auth
 from django.core.mail import EmailMessage
@@ -96,9 +96,25 @@ def ourproducts(request):
     return render(request, 'ourproducts.html')
 
 
-def productInfo(request, pk):
+def productInfo(request, pk, ):
     p = Products.objects.get(id=pk)
-    if request.method == 'POST':
+    #post = get_object_or_404(Post, slug=slug)
+    context = {
+        'p': p
+    }
+    
+    #Add review 
+    if request.method =='POST' and request.user.is_authenticated:
+        rate = request.POST.get('rate',3)
+        reviews = request.POST.get('reviews','')
+
+        postreview = ProductReview.objects.create(user= request.user, rate=rate, reviews=reviews)
+        postreview.save()
+        #return redirect('p')
+        return render(request, 'productInfo.html', context)
+        #return render(request, 'productInfo', context)
+
+    elif request.method == 'POST' and not request.user.is_authenticated:
         p = Products.objects.get(id=pk)
         try:
             buyer = request.user.buyer	
@@ -112,6 +128,7 @@ def productInfo(request, pk):
         orderItem.save()
 
         return redirect('cart')
+        
     context = {
         'p': p
     }

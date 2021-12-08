@@ -214,6 +214,9 @@
         .quantity_inc {
             justify-content: flex-end;
         }
+        .notification.space-below {
+            margin-bottom: 20px;
+        }
     </style>
 
 </head>
@@ -280,11 +283,19 @@
                             </form>
 
                             <div class="dropdown">
-                                <button class="dropbtn"><i class="glyphicon glyphicon-user" style="font-size:25px"></i></button>
-                                <div class="dropdown-content">
-                                    <a href="{% url 'loginpage' %}">Login</a>
-                                    <a href="{% url 'registration' %}">Sign Up</a>
-                                </div>
+                                {% if user.is_authenticated and not user.is_staff %}
+                                <a href="#">Hello, {{user.first_name}}</a>
+                                <a href="{% url 'logout' %}">Logout</a>
+                                <a href="{% url 'addproduct' %}">Add product</a>
+
+                                {% elif user.is_authenticated %}
+                                <a href="#">Hello, {{user.first_name}}</a>
+                                <a href="{% url 'logout' %}">Logout</a>
+                                {% else %}
+
+                                <a href="{% url 'loginpage' %}">Login</a>
+                                <a href="{% url 'registration' %}">Sign Up</a>
+                                {% endif %}
                             </div>
 
                             <a href="{% url 'cart' %}">
@@ -337,6 +348,69 @@
             <br>
             <br>
             <br>
+            <hr>
+            
+            <h2 class="subtitle">Reviews </h2>
+            <div class="reviews-wrapper">
+                {% for review in product.reviews.all %}
+                    <div class="notification space-below">
+                        <p>
+                            <strong>Date: </strong>{{ review.date_added|date:"Y-m-d" }},
+                            <strong>Stars: </strong>{{ review.stars }}
+                        </p>
+    
+                        {{ review.content }}
+                    </div>
+                {% empty %}
+                    <div class="notification space-below">
+                        No reviews yet...
+                    </div>
+                {% endfor %}
+            </div>
+    
+            <div class="notification space-below">
+                {% if request.user.is_authenticated %}
+                    <form method="post" action=".">
+                        {% csrf_token %}
+    
+                        <div class="field">
+                            <label>Stars</label>
+    
+                            <div clas="control">
+                                <div class="select">
+                                    <select name="stars">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3" selected>3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="field">
+                            <label>Content</label>
+    
+                            <div class="control">
+                                <textarea class="textarea" name="content"></textarea>
+                            </div>
+                        </div>
+    
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                {% else %}
+                    <p>Please sign in to add review!</p>
+                {% endif %}
+            </div>
+        </div>
+    
+
+            
 
 
             <!-- footer section -->
