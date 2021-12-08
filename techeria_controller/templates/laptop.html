@@ -153,9 +153,16 @@
                                 </div>
                             </div>
 
+                            {% if user.is_authenticated %}
                             <a href="{% url 'cart' %}">
                                 <button class="btn"><i class="fa fa-shopping-cart" style="font-size:30px"></i></button>
                             </a>
+
+                            {% else %}
+                            <a href="{% url 'loginpage' %}">
+                                <button class="btn"><i class="fa fa-shopping-cart" style="font-size:30px"></i></button>
+                            </a>
+                            {%endif%}
 
                         </div>
                     </div>
