@@ -254,7 +254,7 @@ def registration(request):
                     link = reverse('activate', kwargs={'uidb64':uidb64, 'token': token_generator.make_token(user)})
                     email_subject = 'Activate your account'
                     activate_url = 'http://'+domain+link
-                    email_body = 'Hi '+ user.first_name+'. please use this link to verify ypur account\n' + activate_url
+                    email_body = 'Hi '+ user.first_name+'. please use this link to verify your account\n' + activate_url
                     email = EmailMessage(
                          email_subject,
                          email_body,
