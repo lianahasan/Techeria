@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<style>
+
+body{
+
+		display: flex;
+		flex-direction: column;
+		background-color: #B9CAF1!important;
+		background-repeat:no-repeat;
+		background-size: cover;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+	}
+
+</style>
+<html>
+
+
+        <h1>Your order has been placed. We will email you when its ready to ship</h1>
+        <br>
+        <p>Go back to home page </p>
+        <a class="nav-link" href=" {% url 'index' %} "> Home </a>
+
+
+        <script type="text/javascript" src=" {% static 'js/jquery-3.4.1.min.js' %} "></script>
+        <script type="text/javascript" src=" {% static 'js/bootstrap.js' %} "></script>
+
+
+  </html>
