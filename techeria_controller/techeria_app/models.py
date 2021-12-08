@@ -75,6 +75,29 @@ class Laptops(models.Model):
     class Meta:
         db_table = 'laptops'
 
+# class Trending(models.Model):
+#     # id = models.BigIntegerField()
+#     image = models.ImageField(null=False, blank=False, upload_to='images/')
+#     name = models.CharField(max_length=255)
+#     price = models.FloatField()
+#     description = models.TextField()
+#     category = models.CharField(max_length=255)
+#
+#     class Meta:
+#         db_table = 'trending'
+
+class Trending(models.Model):
+    # id = models.BigAutoField(primary_key=True)
+    image = models.ImageField(null=False, blank=False, upload_to='images/')
+    name = models.CharField(max_length=255)
+    price = models.FloatField()
+    description = models.TextField()
+    category = models.CharField(max_length=255)
+
+    class Meta:
+        # managed = False
+        db_table = 'trending'
+
 class Smartphone(models.Model):
     # id = models.BigIntegerField()
     image = models.ImageField(null=False, blank=False, upload_to='images/')
@@ -220,6 +243,6 @@ class PlaceOrder(models.Model):
 
     def full_address(self):
         return f'{self.address_line_1} {self.address_line_2}'
-    
+
     def __str__(self):
         return self.first_name
