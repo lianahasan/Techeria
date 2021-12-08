@@ -246,3 +246,22 @@ class PlaceOrder(models.Model):
 
     def __str__(self):
         return self.first_name
+
+
+
+class CompleteOrder(models.Model):
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    email = models.EmailField()
+    mobile_number = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    state = models.CharField(max_length=255)
+    zip_code = models.CharField(max_length=255)
+    country = models.CharField(max_length=20)
+    price = models.FloatField()
+    item = models.IntegerField()
+
+
+    class Meta:
+        db_table = "complete_order"
