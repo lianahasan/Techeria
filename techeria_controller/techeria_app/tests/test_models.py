@@ -5,18 +5,34 @@ from techeria_app.models import *
 
 
 class Test_Product(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        Products.objects.create(
+        name = 'HP Laptop, 17.3" FHD',
+        price = '899',
+        description = 'Memory is 16GB high-bandwidth',
+        category = 'laptop')
 
-    def test_fileds(self):
+    def test_product_name_label(self):
+        product = Products.objects.get(name='HP Laptop, 17.3" FHD')
+        field_label = product._meta.get_field('name').verbose_name
+        self.assertEqual(field_label, 'name')
+        
+    def test_product_price_label(self):
+        product = Products.objects.get(price = '899')
+        field_label = product._meta.get_field('price').verbose_name
+        self.assertEqual(field_label, 'price')
+        
+    def test_product_description_label(self):
+        product = Products.objects.get(description = 'Memory is 16GB high-bandwidth')
+        field_label = product._meta.get_field('description').verbose_name
+        self.assertEqual(field_label, 'description')
+        
+    def test_product_category_label(self):
+        product = Products.objects.get(category = 'laptop')
+        field_label = product._meta.get_field('category').verbose_name
+        self.assertEqual(field_label, 'category')      
 
-        def setUp(self):
-             self.product = Products.object.create(
-                name="iPhone13pro",
-                price="999",
-                description="128gb Silver",
-                category="cell phone")
-
-        def test_product_is_assigned_slug_on_creation(self):
-            self.assertEqual(self.product.slug,'product')
 
 class Test_laptop(TestCase):
 
