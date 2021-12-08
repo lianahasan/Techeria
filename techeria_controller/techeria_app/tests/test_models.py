@@ -18,6 +18,7 @@ class Test_Product(TestCase):
         field_label = product._meta.get_field('name').verbose_name
         self.assertEqual(field_label, 'name')
         
+<<<<<<< HEAD
     def test_product_price_label(self):
         product = Products.objects.get(price = '899')
         field_label = product._meta.get_field('price').verbose_name
@@ -120,3 +121,30 @@ class Test_seller(TestCase):
 
         def test_product_is_assigned_slug_on_creation(self):
             self.assertEqual(self.seller.slug,'seller')
+=======
+    def test_complete_label(self):
+        order = Order.objects.get(complete = False)
+        field_label = order._meta.get_field('complete').verbose_name
+        self.assertEqual(field_label, 'complete')
+    
+    def test_quantity_label(self):
+        orderitem = OrderItem.objects.get(quantity = 1)
+        field_label = orderitem._meta.get_field('quantity').verbose_name
+        self.assertEqual(field_label, 'quantity')
+
+
+class Test_Order(TestCase):
+    @classmethod
+
+    def setUpTestData(cls):
+        Order.objects.create(
+            order_date = time,
+            complete = False,
+            transaction_id = None
+        )
+        
+    def test_complete_label(self):
+        order = Order.objects.get(complete = False)
+        field_label = order._meta.get_field('complete').verbose_name
+        self.assertEqual(field_label, 'complete')
+>>>>>>> origin/main
