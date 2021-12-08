@@ -1,40 +1,5 @@
 {% load static %}
 <!DOCTYPE html>
-<style>
-    {
-        % comment %
-    }
-    
-    body {
-        background-color: #B9CAF1 !important;
-    }
-    
-    body {
-        margin: 0px;
-        margin-top: 60px;
-        padding: 0px;
-    }
-    
-    *,
-    *::before,
-    *::after {
-        box-sizing: border-box;
-    }
-    
-    nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background-color: #B9CAF1;
-        overflow: auto;
-        height: auto;
-        text-align: center;
-    }
-    
-    {
-        % endcomment %
-    }
-</style>
 <html>
 
 <head>
@@ -84,98 +49,100 @@
     <div class="hero_area">
         <!-- header section strats -->
         <header class="header_section">
-            <div class="container-fluid">
-                <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
-                    <a class="navbar-brand" href=" {% url 'index' %} ">
-                        <span>
-                <img src="/media/images/techeria_logo1.png" style="width: 100px; height: auto;" alt="Techeria">
-              </span>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
+          <div class="container-fluid">
+              <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+                  <a class="navbar-brand" href=" {% url 'index' %} ">
+                      <span>
+            <img src="/media/images/techeria_logo1.png" style="width: 100px; height: auto;" alt="Techeria">
+          </span>
+                  </a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
-                            <ul class="navbar-nav">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href=" {% url 'index' %} ">Home <span class="sr-only">(current)</span></a>
-                                </li>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+                          <ul class="navbar-nav">
+                              <li class="nav-item active">
+                                  <a class="nav-link" href=" {% url 'index' %} ">Home <span class="sr-only">(current)</span></a>
+                              </li>
 
-                                {% comment %}
-                                <li class="nav-item">
-                                    <a class="nav-link" href=" {% url 'about' %} "> About </a>
-                                </li> {% endcomment %}
+                              
+                              
 
-                                <li>
-                                    <div class="dropdown">
-                                        <button class="dropbtn">Categories</button>
-                                        <div class="dropdown-content">
-                                            <a href="#">Computers</a>
-                                            <a href="#">Phones</a>
-                                            <a href="#">Tablets/Ipads</a>
-                                            <a href="#">Accessory</a>
-                                            <a href="#">Chargers</a>
-                                            <a href="#">TV</a>
-                                            <a href="#">Speakers</a>
-                                            <a href="#">Headsets</a>
-                                        </div>
-                                    </div>
-                                </li>
+                              <li>
+                                  <div class="dropdown">
+                                      <button class="dropbtn">Categories</button>
+                                      <div class="dropdown-content">
+                                          <a href="{% url 'laptop' %}">Laptops</a>
+                                          <a href="{% url 'smartphone' %}">Smartphones</a>
+                                          <a href="{% url 'camera' %}">Cameras</a>
+                                          <a href="{% url 'accessorie' %}">Headphones</a>
+                                          <a href="{% url 'notFound' %}">Tablets/ipads</a>
+                                          <a href="{% url 'notFound' %}">TV</a>
+                                          <a href="{% url 'notFound' %}">Speakers</a>
+                                          <a href="{% url 'notFound' %}">Chargers</a>
+                                      </div>
+                                  </div>
+                              </li>
 
 
 
-                                <li class="nav-item">
-                                    <a class="nav-link" href=" {% url 'ourproducts' %} "> Products </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href=" {% url 'index' %} "> Returns/Orders </a>
-                                </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" href=" {% url 'ourproducts' %} "> Products </a>
+                              </li>
 
-                                {% comment %}
-                                <li class="nav-item">
-                                    <a class="nav-link" href=" {% url 'contact' %} ">Contact us</a>
-                                </li> {% endcomment %}
-                            </ul>
-                            <form class="form-inline my-2 my-lg-0" action="/search">
-                                <input name='q' class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-                            </form>
+                              <li class="nav-item">
+                                  <a class="nav-link" href=" {% url 'about' %} "> About </a>
+                              </li>
 
-                            <div class="dropdown">
-                                <button class="dropbtn"><i class="glyphicon glyphicon-user" style="font-size:25px"></i></button>
-                                <div class="dropdown-content">
-                                    {% if user.is_authenticated and not user.is_staff %}
-                                    <a href="#">Hello, {{user.first_name}}</a>
-                                    <a href="{% url 'logout' %}">Logout</a>
-                                    <a href="{% url 'addproduct' %}">Add product</a> {% elif user.is_authenticated %}
-                                    <a href="#">Hello, {{user.first_name}}</a>
-                                    <a href="{% url 'logout' %}">Logout</a> {% else %}
+                              <li class="nav-item">
+                                  <a class="nav-link" href=" {% url 'contact' %} ">Contact Us</a>
+                              </li>
+                          </ul>
+                          <form class="form-inline my-2 my-lg-0" action="/search">
+                              <input name='q' class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                              <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
+                          </form>
 
-                                    <a href="{% url 'loginpage' %}">Login</a>
-                                    <a href="{% url 'registration' %}">Sign Up</a> {% endif %}
-                                </div>
-                            </div>
+                          <div class="dropdown">
+                              <button class="dropbtn"><i class="glyphicon glyphicon-user" style="font-size:25px"></i></button>
+                              <div class="dropdown-content">
+                                  {% if user.is_authenticated and not user.is_staff %}
+                                  <a href="#">Hello, {{user.first_name}}</a>
+                                  <a href="{% url 'logout' %}">Logout</a>
+                                  <a href="{% url 'addproduct' %}">Add product</a> 
+                                  {% elif user.is_authenticated %}
+                                  <a href="#">Hello, {{user.first_name}}</a>
+                                  <a href="{% url 'logout' %}">Logout</a>
+                                  {% else %}
+                                  <a href="{% url 'loginpage' %}">Login</a>
+                                  <a href="{% url 'registration' %}">Sign Up</a>
+                                   {% endif %}
+                              </div>
+                          </div>
 
-                            {% if user.is_authenticated %}
-                            <a href="{% url 'cart' %}">
-                                <button class="btn"><i class="fa fa-shopping-cart" style="font-size:30px"></i></button>
-                            </a>
+                          {% if user.is_authenticated %}
 
-                            {% else %}
-                            <a href="{% url 'loginpage' %}">
-                                <button class="btn"><i class="fa fa-shopping-cart" style="font-size:30px"></i></button>
-                            </a>
-                            {%endif%}
+                          <a href="{% url 'cart' %}">
+                              <button class="btn"><i class="fa fa-shopping-cart" style="font-size:30px"></i></button>
+                          </a>
 
-                        </div>
-                    </div>
-                </nav>
-            </div>
+                          {% else %}
+                          <a href="{% url 'loginpage' %}">
+                              <button class="btn"><i class="fa fa-shopping-cart" style="font-size:30px"></i></button>
+                          </a>
+                          {%endif%}
 
-        </header>
-        <!-- end header section -->
-        <br>
+
+                      </div>
+                  </div>
+              </nav>
+          </div>
+
+      </header>
+      <!-- end header section -->
+      <br>
 
     </div>
     <div class="bg">
@@ -209,46 +176,46 @@
 
         <!-- info section -->
         <section class="info_section layout_padding">
-            <div class="container">
-                <div class="info_items">
-                    <a href=" {% static '' %} ">
-                        <div class="item ">
-                            <div class="img-box box-1">
-                                <img src=" {% static '' %} " alt="">
-                            </div>
-                            <div class="detail-box">
-                                <p>
-                                    123 Main Street, New York, NY
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href=" {% static '' %} ">
-                        <div class="item ">
-                            <div class="img-box box-2">
-                                <img src=" {% static '' %} " alt="">
-                            </div>
-                            <div class="detail-box">
-                                <p>
-                                    +1-222-222-2222
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href=" {% static '' %} ">
-                        <div class="item ">
-                            <div class="img-box box-3">
-                                <img src=" {% static '' %} " alt="">
-                            </div>
-                            <div class="detail-box">
-                                <p>
-                                    techeria@gmail.com
-                                </p>
-                            </div>
-                        </div>
-                    </a>
+          <div class="container">
+            <div class="info_items">
+              <a href=" {% static '' %} ">
+                <div class="item ">
+                  <div class="img-box box-1">
+                    <img src=" {% static '' %} " alt="">
+                  </div>
+                  <div class="detail-box">
+                    <p>
+                      123 Main Street, New York, NY
+                    </p>
+                  </div>
                 </div>
+              </a>
+              <a href=" {% static '' %} ">
+                <div class="item ">
+                  <div class="img-box box-2">
+                    <img src=" {% static '' %} " alt="">
+                  </div>
+                  <div class="detail-box">
+                    <p>
+                      +1-222-222-2222
+                    </p>
+                  </div>
+                </div>
+              </a>
+              <a href=" {% static '' %} ">
+                <div class="item ">
+                  <div class="img-box box-3">
+                    <img src=" {% static '' %} " alt="">
+                  </div>
+                  <div class="detail-box">
+                    <p>
+                      techeria@gmail.com
+                    </p>
+                  </div>
+                </div>
+              </a>
             </div>
+          </div>
         </section>
 
 
@@ -256,92 +223,90 @@
         <!-- end info_section -->
 
         <!-- footer section -->
-        <!-- footer section -->
+         <!-- footer section -->
         <section class="container-fluid footer_section">
-            <div class="footer-top-area">
-                <div class="zigzag-bottom"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-6">
-                            <div class="footer-about-us">
-                                <h2><span style="color: white">Techeria</span></h2>
-                                <h2><span style="color: white">Our Values</span></h2>
-                                <p>We are an e-commerce application, focused on making sure all technology products can be purchased in one space with the best deals so you can save your precious time without having to look through multiple websites.</p>
-                                <div class="footer-social">
-                                    <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
-                                    <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-                                </div>
-                            </div>
-                        </div>
+          <div class="footer-top-area">
+              <div class="zigzag-bottom"></div>
+              <div class="container">
+                  <div class="row">
+                      <div class="col-md-3 col-sm-6">
+                          <div class="footer-about-us">
+                              <h2><span style="color: white">Techeria</span></h2>
+                              <h2><span style="color: white">Our Values</span></h2>
+                              <p>We are an e-commerce application, focused on making sure all technology products can be purchased in one space with the best deals so you can save your precious time without having to look through multiple websites.</p>
+                              <div class="footer-social">
+                                  <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                                  <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                                  <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                                  <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                              </div>
+                          </div>
+                      </div>
 
-                        <div class="col-md-3 col-sm-6">
-                            <div class="footer-menu">
-                                <h2 class="footer-wid-title" style="color: white">User Navigation </h2>
-                                <ul>
-                                    <li><a href="#">My account</a></li>
-                                    <li><a href="#">Order history</a></li>
-                                    <li><a href="#">Wishlist</a></li>
-                                    <li><a href="#">Buyer contact</a></li>
-                                    <li><a href="#">Front page</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                      <div class="col-md-3 col-sm-6">
+                          <div class="footer-menu">
+                              <h2 class="footer-wid-title" style= "color: white">User Navigation </h2>
+                              <ul>
+                                  <li><a href="#">My account</a></li>
+                                  <li><a href="#">Order history</a></li>
+                                  <li><a href="#">Wishlist</a></li>
+                                  <li><a href="#">Buyer contact</a></li>
+                                  <li><a href="#">Front page</a></li>
+                              </ul>
+                          </div>
+                      </div>
 
-                        <div class="col-md-3 col-sm-6">
-                            <div class="footer-menu">
-                                <h2 class="footer-wid-title" style="color: white">Categories</h2>
-                                <ul>
-                                    <li><a href="#">Mobile Phone</a></li>
-                                    <li><a href="#">Home accesseries</a></li>
-                                    <li><a href="#">LED TV</a></li>
-                                    <li><a href="#">Computer</a></li>
-                                    <li><a href="#">Gadets</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                      <div class="col-md-3 col-sm-6">
+                          <div class="footer-menu">
+                              <h2 class="footer-wid-title" style= "color: white">Categories</h2>
+                              <ul>
+                                  <li><a href="#">Mobile Phone</a></li>
+                                  <li><a href="#">Home accesseries</a></li>
+                                  <li><a href="#">LED TV</a></li>
+                                  <li><a href="#">Computer</a></li>
+                                  <li><a href="#">Gadets</a></li>
+                              </ul>
+                          </div>
+                      </div>
 
-                        <div class="col-md-3 col-sm-6">
-                            <div class="footer-newsletter">
-                                <h2 class="footer-wid-title" style="color: white">Newsletter</h2>
-                                <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
-                                <div class="newsletter-form">
-                                    <form action="#">
-                                        <input type="email" placeholder="Type your email">
-                                        <input type="submit" value="Subscribe">
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End footer top area -->
+                      <div class="col-md-3 col-sm-6">
+                          <div class="footer-newsletter">
+                              <h2 class="footer-wid-title" style= "color: white">Newsletter</h2>
+                              <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
+                              <div class="newsletter-form">
+                                  <form action="#">
+                                      <input type="email" placeholder="Type your email">
+                                      <input type="submit" value="Subscribe">
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div> <!-- End footer top area -->
 
-            <div class="footer-bottom-area">
-                <div class="container">
-                    <div class="row">
+          <div class="footer-bottom-area">
+              <div class="container">
+                  <div class="row">
 
 
-                        <div class="col-md-4">
-                            <div class="footer-card-icon">
-                                <i class="fa fa-cc-discover"></i>
-                                <i class="fa fa-cc-mastercard"></i>
-                                <i class="fa fa-cc-paypal"></i>
-                                <i class="fa fa-cc-visa"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End footer bottom area -->
+                      <div class="col-md-4">
+                          <div class="footer-card-icon">
+                              <i class="fa fa-cc-discover"></i>
+                              <i class="fa fa-cc-mastercard"></i>
+                              <i class="fa fa-cc-paypal"></i>
+                              <i class="fa fa-cc-visa"></i>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div> <!-- End footer bottom area -->
         </section>
         <!-- footer section -->
 
 
         <script type="text/javascript" src=" {% static 'js/jquery-3.4.1.min.js' %} "></script>
         <script type="text/javascript" src=" {% static 'js/bootstrap.js' %} "></script>
-</body>
+      </body>
 
-</html>
+      </html>
