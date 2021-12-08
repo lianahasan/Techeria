@@ -4,23 +4,23 @@
     {
         % comment %
     }
-    
+
     body {
         background-color: #B9CAF1 !important;
     }
-    
+
     body {
         margin: 0px;
         margin-top: 60px;
         padding: 0px;
     }
-    
+
     *,
     *::before,
     *::after {
         box-sizing: border-box;
     }
-    
+
     nav {
         position: fixed;
         top: 0;
@@ -30,7 +30,7 @@
         height: auto;
         text-align: center;
     }
-    
+
     {
         % endcomment %
     }
@@ -223,109 +223,37 @@
             </div>
         </div>
         <!-- End promo area -->
+        <h3 class="my-4 border-bottom pb-1">{{request.GET.p}}</h3>
+        <div class="container bcontent">
+            {% for p in trending%}
+            <hr />
+            <h2 class="section-title">Trending Now</h2>
 
-        <div class="maincontent-area">
-            <div class="zigzag-bottom"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="latest-product">
-                            <h2 class="section-title">Trending Now</h2>
-                            <div class="product-carousel">
-                                <div class="single-product">
-                                    <div class="product-f-image">
-                                        <img src="/static/watch_css/img/products1.jpg" alt="">
-                                        <div class="product-hover">
-                                            <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                        </div>
-                                    </div>
+            <div class="card" style="width: 1000;">
+                <div class="row no-gutters">
 
-                                    <h2><a href="single-product.html">Samsung Galaxy s5- 2015</a></h2>
+                    <div class="col-lg-5">
+                        <img class="card-img-top" src="/media/trending/{{p.image}}" alt="Card image cap">
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ p.name }}</h5>
+                            <p class="card-text">${{ p.price }}</p>
+                            <div> <span class="product_info">{{ p.description }}</span></div>
 
-                                    <div class="product-carousel-price">
-                                        <ins>$700.00</ins> <del>$1000.00</del>
-                                    </div>
-                                </div>
-                                <div class="single-product">
-                                    <div class="product-f-image">
-                                        <img src="/static/watch_css/img/products2.jpg" alt="">
-                                        <div class="product-hover">
-                                            <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                        </div>
-                                    </div>
+                            <!-- <a href="{% url 'p' p.pk %}" class="btn btn-primary">Details</a> -->
+                            <form method="POST" action="{% url 'p' p.id %}">
+                                {% csrf_token %}
 
-                                    <h2>Samsung Galaxy S20</h2>
-                                    <div class="product-carousel-price">
-                                        <ins>$899.00</ins> <del>$1099.00</del>
-                                    </div>
-                                </div>
-                                <div class="single-product">
-                                    <div class="product-f-image">
-                                        <img src="/static/watch_css/img/products3.jpg" alt="">
-                                        <div class="product-hover">
-                                            <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                        </div>
-                                    </div>
+                                <input value=1 type="number" name="quantity">
+                                <input class="btn btn-primary" type="submit" value="Add to Cart">
+                            </form>
 
-                                    <h2>Apple iphone 13</h2>
-
-                                    <div class="product-carousel-price">
-                                        <ins>$1500.00</ins> <del>$1125.00</del>
-                                    </div>
-                                </div>
-                                <div class="single-product">
-                                    <div class="product-f-image">
-                                        <img src="/static/watch_css/img/samsung2.jpg" alt="">
-                                        <div class="product-hover">
-                                            <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                        </div>
-                                    </div>
-
-                                    <h2><a href="single-product.html">Sony Xperia</a></h2>
-
-                                    <div class="product-carousel-price">
-                                        <ins>$500.00</ins> <del>$225.00</del>
-                                    </div>
-                                </div>
-                                <div class="single-product">
-                                    <div class="product-f-image">
-                                        <img src="/static/watch_css/img/smartphones.jpg" alt="">
-                                        <div class="product-hover">
-                                            <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                        </div>
-                                    </div>
-
-                                    <h2>iPhone 11</h2>
-
-                                    <div class="product-carousel-price">
-                                        <ins>$1200.00</ins> <del>$1355.00</del>
-                                    </div>
-                                </div>
-                                <div class="single-product">
-                                    <div class="product-f-image">
-                                        <img src="/static/watch_css/img/Smartphone2.jpg" alt="">
-                                        <div class="product-hover">
-                                            <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                        </div>
-                                    </div>
-
-                                    <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
-
-                                    <div class="product-carousel-price">
-                                        <ins>$400.00</ins>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
         <!-- End main content area -->
 

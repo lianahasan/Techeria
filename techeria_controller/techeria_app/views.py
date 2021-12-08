@@ -106,8 +106,20 @@ def product(request,pk):
     return render(request, 'product.html',context)
 
 
+# def ourproducts(request):
+#     trending = Trending.objects.all()
+#     context = {
+#         'trending': trending
+#     }
+#     return render(request, 'ourproducts.html',context)
+
+
 def ourproducts(request):
-    return render(request, 'ourproducts.html')
+    trending = Trending.objects.all()
+    context = {
+        'trending': trending
+    }
+    return render(request, 'ourproducts.html', context)
 
 
 
