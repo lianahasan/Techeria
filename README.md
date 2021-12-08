@@ -4,6 +4,9 @@ Techeria is an ecommerce website that displays numerous technology products (pho
 computers, tablets, TVs, etc.) to be sold. Users can select items to add to their cart and buy them
 through a secure payment gateway.
 
+**Documentations**
+https://github.com/lianahasan/Techeria/wiki
+
 ## Running the project (Not making changes to the database):
 1. Open PHPMyAdmin (http://localhost/phpmyadmin) or MySQL Workbench
 2. Import techeria_db.sql (creates database, inserts tables)
