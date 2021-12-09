@@ -7,6 +7,10 @@ through a secure payment gateway.
 # Deployed Website:
 https://techeria.herokuapp.com/  
 
+# Demo Video:
+https://www.youtube.com/watch?v=wm5OuwJVCeA
+
+
 ## Documentations:
 https://github.com/lianahasan/Techeria/wiki
 
